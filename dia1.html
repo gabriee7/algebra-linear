@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dia 1 · Matrizes | Guia P1</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">Guia P1 — Álgebra Linear
+      <small>MPA06855 · Plano de estudo de 3 dias</small>
+    </a>
+    <nav class="top-nav">
+      <a href="index.html">Início</a>
+      <a href="dia1.html" class="active">Dia 1 · Matrizes</a>
+      <a href="dia2.html">Dia 2 · Inversíveis</a>
+      <a href="dia3.html">Dia 3 · Determinantes</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="toc">
+  <details class="toc-details" open>
+  <summary>Nesta página</summary>
+  <ul>
+    <li><a href="#teoria">Teoria: definições e tipos</a></li>
+    <li><a href="#operacoes">Operações básicas</a></li>
+    <li><a href="#propriedades">Propriedades</a></li>
+    <li><a href="#ex1">Exercício 1</a></li>
+    <li><a href="#ex2">Exercício 2</a></li>
+    <li><a href="#ex3">Exercício 3</a></li>
+  </ul>
+  </details>
+</aside>
+
+<main>
+  <h1>Dia 1 — Matrizes</h1>
+  <p class="subtitle">Bloco de 2h. Meta: dominar operações e a armadilha nº1 da prova — a multiplicação de matrizes não é comutativa.</p>
+
+  <h2 id="teoria">Teoria: definições e tipos</h2>
+  <div class="theory-box">
+    <p><span class="badge badge-prereq">📌</span> Uma matriz \(A\) de ordem \(m\times n\) é uma tabela \(A=[a_{ij}]\), onde \(a_{ij}\) é o elemento na <strong>linha \(i\), coluna \(j\)</strong>. Duas matrizes só são iguais se têm a mesma ordem <em>e</em> os mesmos elementos em cada posição.</p>
+  </div>
+
+  <div class="eli5">
+    <span class="eli5-label">💡 Explicando bem devagar</span>
+    <p>Pense numa matriz como uma planilha de Excel: \(m\) é o número de linhas, \(n\) o número de colunas. \(a_{23}\) é a célula na linha 2, coluna 3 — nessa ordem, sempre "linha primeiro".</p>
+  </div>
+
+  <table class="variations">
+    <tr><th>Tipo</th><th>Definição</th></tr>
+    <tr><td>Nula</td><td>\(a_{ij}=0\) para todo \(i,j\)</td></tr>
+    <tr><td>Quadrada</td><td>\(m=n\)</td></tr>
+    <tr><td>Diagonal</td><td>quadrada, \(a_{ij}=0\) para \(i\neq j\)</td></tr>
+    <tr><td>Identidade \(I_n\)</td><td>diagonal com \(a_{ii}=1\)</td></tr>
+    <tr><td>Triangular superior</td><td>quadrada, \(a_{ij}=0\) para \(i>j\)</td></tr>
+    <tr><td>Triangular inferior</td><td>quadrada, \(a_{ij}=0\) para \(i<j\)</td></tr>
+  </table>
+
+  <h2 id="operacoes">Operações básicas</h2>
+
+  <div class="example-box">
+    <strong>Soma:</strong> só existe entre matrizes de <strong>mesma ordem</strong>. \(c_{ij}=a_{ij}+b_{ij}\).<br>
+    <strong>Escalar:</strong> \(B=\alpha A \Rightarrow b_{ij}=\alpha\, a_{ij}\). Ex.: \(2\begin{pmatrix}1&3\\0&-2\end{pmatrix}=\begin{pmatrix}2&6\\0&-4\end{pmatrix}\).
+  </div>
+
+  <div class="theory-box">
+    <p><strong>Multiplicação \(AB\):</strong> só é definida se o <strong>número de colunas de \(A\)</strong> = <strong>número de linhas de \(B\)</strong>. Se \(A_{m\times p}\) e \(B_{p\times n}\), então \(AB\) é \(m\times n\):
+    \[c_{ij}=\sum_{k=1}^{p} a_{ik}b_{kj}\]</p>
+  </div>
+
+  <div class="alert-warning">
+    <span class="badge badge-trap">❗ armadilha clássica</span> A multiplicação de matrizes <strong>NÃO é comutativa</strong>: \(AB\neq BA\) em geral. Pior: \(BA\) pode <strong>nem existir</strong>, mesmo que \(AB\) exista (se o nº de colunas de \(B\) ≠ nº de linhas de \(A\)).
+  </div>
+
+  <p><strong>Transposta</strong> \(A'\): troca linhas por colunas.</p>
+
+  <h2 id="propriedades">Propriedades importantes</h2>
+  <table class="variations">
+    <tr><th>Soma</th><th>Transposta</th></tr>
+    <tr><td>\(A+B=B+A\)</td><td>\((A')'=A\)</td></tr>
+    <tr><td>\((A+B)+C=A+(B+C)\)</td><td>\((A+B)'=A'+B'\)</td></tr>
+    <tr><td>\(\alpha(A+B)=\alpha A+\alpha B\)</td><td>\((AB)'=B'A'\) ⚠️ inverte a ordem!</td></tr>
+  </table>
+  <div class="alert-info">Inversa (aprofundado no Dia 2): se \(A\) é invertível, a inversa é única, \((AB)^{-1}=B^{-1}A^{-1}\), \((A^{-1})^{-1}=A\), \((A')^{-1}=(A^{-1})'\).</div>
+
+  <!-- Exercício 1 -->
+  <div class="exercise" id="ex1">
+    <h3>Questão 1 — Multiplicação de matrizes <button class="gabarito-btn" onclick="abrirGabarito('modal-ex1')">Ver gabarito</button></h3>
+    <div class="enunciado">Dadas \(A=\begin{pmatrix}3&0\\2&1\\0&1\end{pmatrix}\) e \(B=\begin{pmatrix}1&2\\0&-1\end{pmatrix}\), calcule \(AB\).</div>
+    <div class="step"><strong class="step-label">O que o enunciado dá</strong> \(A\) é \(3\times2\), \(B\) é \(2\times2\). Colunas de \(A\) (2) = linhas de \(B\) (2) → produto \(AB\) existe e será \(3\times2\).</div>
+  </div>
+
+  <div class="modal-overlay" id="modal-ex1">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito — Questão 1</h3>
+      <div class="step"><strong class="step-label">Resolvendo</strong>
+      \[AB=\begin{pmatrix}3\cdot1+0\cdot0 & 3\cdot2+0\cdot(-1)\\2\cdot1+1\cdot0 & 2\cdot2+1\cdot(-1)\\0\cdot1+1\cdot0 & 0\cdot2+1\cdot(-1)\end{pmatrix}=\begin{pmatrix}3&6\\2&3\\0&-1\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">🔁</span> Cada elemento \(c_{ij}\) é o produto escalar da linha \(i\) de \(A\) pela coluna \(j\) de \(B\).
+      <span class="answer-final">Resposta: \(AB=\begin{pmatrix}3&6\\2&3\\0&-1\end{pmatrix}\)</span></div>
+    </div>
+  </div>
+
+  <!-- Exercício 2 -->
+  <div class="exercise" id="ex2">
+    <h3>Questão 2 — Quando \(BA\) não existe <button class="gabarito-btn" onclick="abrirGabarito('modal-ex2')">Ver gabarito</button></h3>
+    <div class="enunciado">Dadas \(A=\begin{pmatrix}2&3\\1&-5\end{pmatrix}\) e \(B=\begin{pmatrix}4&3&6\\1&-2&3\end{pmatrix}\), calcule \(AB\) e verifique se \(BA\) existe.</div>
+    <div class="step"><strong class="step-label">Cuidado</strong> <span class="badge badge-trap">❗</span> Antes de multiplicar, sempre confira as ordens: \(A\) é \(2\times2\), \(B\) é \(2\times3\).</div>
+  </div>
+
+  <div class="modal-overlay" id="modal-ex2">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito — Questão 2</h3>
+      <div class="step"><strong class="step-label">Resolvendo \(AB\)</strong>
+      \[AB=\begin{pmatrix}2\cdot4+3\cdot1 & 2\cdot3+3\cdot(-2) & 2\cdot6+3\cdot3\\1\cdot4+(-5)\cdot1 & 1\cdot3+(-5)\cdot(-2) & 1\cdot6+(-5)\cdot3\end{pmatrix}=\begin{pmatrix}11&0&21\\-1&13&-9\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">E o \(BA\)?</strong> \(B\) é \(2\times3\), \(A\) é \(2\times2\): colunas de \(B\) (3) ≠ linhas de \(A\) (2). <strong>\(BA\) não existe.</strong></div>
+      <span class="answer-final">Resposta: \(AB=\begin{pmatrix}11&0&21\\-1&13&-9\end{pmatrix}\); \(BA\) indefinido.</span>
+    </div>
+  </div>
+
+  <!-- Exercício 3 -->
+  <div class="exercise" id="ex3">
+    <h3>Questão 3 — Equação matricial com transposta e inversa <button class="gabarito-btn" onclick="abrirGabarito('modal-ex3')">Ver gabarito</button></h3>
+    <div class="enunciado">Considere \(A=\begin{pmatrix}1&2\\0&-1\end{pmatrix}\) e \(B=\begin{pmatrix}3&1\\4&2\end{pmatrix}\). (1) Verifique que \(A=A^{-1}\). (2) Resolva a equação matricial \((AX)'=B\).</div>
+  </div>
+
+  <div class="modal-overlay" id="modal-ex3">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito — Questão 3</h3>
+      <div class="step"><strong class="step-label">Item 1</strong>
+      \[A\cdot A=\begin{pmatrix}1&2\\0&-1\end{pmatrix}\begin{pmatrix}1&2\\0&-1\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=I_2 \;\Rightarrow\; A=A^{-1}\]</div>
+      <div class="step"><strong class="step-label">Item 2 — Resolvendo</strong>
+      \[(AX)'=B \;\Rightarrow\; ((AX)')'=B' \;\Rightarrow\; AX=B'\]
+      \[A^{-1}(AX)=A^{-1}B' \;\Rightarrow\; X=A\cdot B' \quad(\text{usando } A^{-1}=A)\]</div>
+      <div class="step"><strong class="step-label">Cuidado</strong> <span class="badge badge-trap">❗</span> Ao "desfazer" a transposta, transponha os dois lados; ao "desfazer" o \(A\) multiplicando, aplique \(A^{-1}\) pela <strong>esquerda</strong> nos dois lados — a ordem de multiplicação de matrizes importa.</div>
+      <span class="answer-final">Resposta: \(X=A\cdot B'\) (expressão fechada; substitua \(B'\) e multiplique se pedirem o resultado numérico).</span>
+    </div>
+  </div>
+
+  <div class="alert-success">✅ Fim do Dia 1. Refaça as 3 questões sem olhar o gabarito antes de seguir para o <a href="dia2.html">Dia 2 — Matrizes Inversíveis</a>.</div>
+
+</main>
+</div>
+
+<footer class="site-footer">
+  Guia de estudos pessoal — Álgebra Linear (MPA06855) — Dia 1 de 3.
+</footer>
+<script src="modal.js"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dia 2 · Matrizes Inversíveis | Guia P1</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">Guia P1 — Álgebra Linear
+      <small>MPA06855 · Plano de estudo de 3 dias</small>
+    </a>
+    <nav class="top-nav">
+      <a href="index.html">Início</a>
+      <a href="dia1.html">Dia 1 · Matrizes</a>
+      <a href="dia2.html" class="active">Dia 2 · Inversíveis</a>
+      <a href="dia3.html">Dia 3 · Determinantes</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="toc">
+  <details class="toc-details" open>
+  <summary>Nesta página</summary>
+  <ul>
+    <li><a href="#teoria">Teoria: inversa e Gauss-Jordan</a></li>
+    <li><a href="#ex1">Exercício 1 (2×2)</a></li>
+    <li><a href="#ex2">Exercício 2 (3×3)</a></li>
+    <li><a href="#ex3">Exercício 3 (3×3)</a></li>
+    <li><a href="#ex4">Exercício 4 (verificação)</a></li>
+    <li><a href="#hill">Aplicação: Cifra de Hill</a></li>
+  </ul>
+  </details>
+</aside>
+
+<main>
+  <h1>Dia 2 — Matrizes Inversíveis</h1>
+  <p class="subtitle">Bloco de 2h. Meta: dominar o método de Gauss-Jordan para calcular \(A^{-1}\) sem erro de conta.</p>
+
+  <h2 id="teoria">Teoria: inversa e Gauss-Jordan</h2>
+  <div class="theory-box">
+    <p><span class="badge badge-prereq">📌</span> \(A\) quadrada de ordem \(n\) é <strong>invertível</strong> se existe \(B\) tal que \(AB=BA=I_n\). Denotamos \(B=A^{-1}\).</p>
+  </div>
+
+  <div class="eli5">
+    <span class="eli5-label">💡 Explicando bem devagar</span>
+    <p>A inversa é o "oposto multiplicativo" de uma matriz, assim como \(\tfrac{1}{5}\) é o oposto de \(5\) na multiplicação de números. \(A\cdot A^{-1}\) "desfaz" \(A\), voltando para a identidade.</p>
+  </div>
+
+  <p><strong>Operações elementares</strong> (linhas de \(A_{m\times n}\)):</p>
+  <table class="variations">
+    <tr><th>Operação</th><th>Notação</th></tr>
+    <tr><td>Permutar linhas</td><td>\(L_i \leftrightarrow L_j\)</td></tr>
+    <tr><td>Multiplicar linha por escalar ≠ 0</td><td>\(L_i \to \alpha L_i\)</td></tr>
+    <tr><td>Substituição</td><td>\(L_i \to L_i + \alpha L_j\)</td></tr>
+  </table>
+
+  <div class="theory-box">
+    <p><strong>Método prático (Gauss-Jordan):</strong> monte a matriz ampliada \([A\,|\,I]\) e aplique operações elementares até o bloco esquerdo virar \(I\). O bloco direito vira \(A^{-1}\):
+    \[[A\,|\,I]\;\longrightarrow\;[I\,|\,A^{-1}]\]</p>
+  </div>
+
+  <div class="alert-warning"><span class="badge badge-trap">❗ armadilha</span> Se durante o escalonamento aparecer uma <strong>linha toda nula</strong> no bloco esquerdo, a matriz <strong>não é invertível</strong> — pare e conclua isso, não insista em "zerar" o que não pode.</div>
+
+  <!-- Exercício 1 -->
+  <div class="exercise" id="ex1">
+    <h3>Questão 1 — Inversa 2×2 <button class="gabarito-btn" onclick="abrirGabarito('modal-ex1')">Ver gabarito</button></h3>
+    <div class="enunciado">Verifique se \(A=\begin{pmatrix}0&1\\1&2\end{pmatrix}\) é inversível e, se for, calcule \(A^{-1}\).</div>
+    <div class="step"><strong class="step-label">Dica</strong> Se o pivô da 1ª linha for 0, comece trocando linhas.</div>
+  </div>
+
+  <div class="modal-overlay" id="modal-ex1">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito — Questão 1</h3>
+      <div class="board-solve">
+        <span class="board-label">Gauss-Jordan</span>
+        \([A|I]=\left[\begin{smallmatrix}0&1&|&1&0\\1&2&|&0&1\end{smallmatrix}\right]\)<br>
+        \(L_1\leftrightarrow L_2:\; \left[\begin{smallmatrix}1&2&|&0&1\\0&1&|&1&0\end{smallmatrix}\right]\)<br>
+        \(L_1\to L_1-2L_2:\; \left[\begin{smallmatrix}1&0&|&-2&1\\0&1&|&1&0\end{smallmatrix}\right]\)
+      </div>
+      <div class="step"><strong class="step-label">Conferindo</strong> \(\begin{pmatrix}0&1\\1&2\end{pmatrix}\begin{pmatrix}-2&1\\1&0\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}\) ✓</div>
+      <span class="answer-final">Resposta: \(A^{-1}=\begin{pmatrix}-2&1\\1&0\end{pmatrix}\)</span>
+    </div>
+  </div>
+
+  <!-- Exercício 2 -->
+  <div class="exercise" id="ex2">
+    <h3>Questão 2 — Inversa 3×3 <button class="gabarito-btn" onclick="abrirGabarito('modal-ex2')">Ver gabarito</button></h3>
+    <div class="enunciado">Encontre \(A^{-1}\) para \(A=\begin{pmatrix}0&1&2\\1&0&3\\4&-3&8\end{pmatrix}\) via matriz ampliada \([A|I]\).</div>
+  </div>
+
+  <div class="modal-overlay" id="modal-ex2">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito — Questão 2</h3>
+      <div class="step"><strong class="step-label">Resolvendo (passo a passo)</strong>
+      1. \(L_1\leftrightarrow L_2\)<br>
+      2. \(L_3\to L_3-4L_1\)<br>
+      3. \(L_3\to L_3+3L_2\)<br>
+      4. \(L_3\to \tfrac12 L_3\)<br>
+      5. \(L_1\to L_1-3L_3\), \(L_2\to L_2-2L_3\)</div>
+      <div class="board-solve">
+        <span class="board-label">Resultado final</span>
+        \(\left[\begin{smallmatrix}1&0&0&|&-9/2&7&-3/2\\0&1&0&|&-2&4&1\\0&0&1&|&3/2&-2&1/2\end{smallmatrix}\right]\)
+      </div>
+      <span class="answer-final">Resposta: \(A^{-1}=\begin{pmatrix}-9/2&7&-3/2\\-2&4&1\\3/2&-2&1/2\end{pmatrix}\)</span>
+    </div>
+  </div>
+
+  <!-- Exercício 3 -->
+  <div class="exercise" id="ex3">
+    <h3>Questão 3 — Inversa 3×3 (outra matriz) <button class="gabarito-btn" onclick="abrirGabarito('modal-ex3')">Ver gabarito</button></h3>
+    <div class="enunciado">Considere \(A=\begin{pmatrix}1&-1&-1\\-1&2&2\\1&-2&1\end{pmatrix}\). \(A\) é inversível? Calcule a inversa.</div>
+  </div>
+
+  <div class="modal-overlay" id="modal-ex3">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito — Questão 3</h3>
+      <div class="board-solve">
+        <span class="board-label">Gauss-Jordan</span>
+        \(L_2\to L_2+L_1,\; L_3\to L_3-L_1\)<br>
+        \(L_1\to L_1+L_2,\; L_3\to L_3+L_2\)<br>
+        \(L_3\to L_3/3,\; L_2\to L_2-L_3\)
+      </div>
+      <span class="answer-final">Resposta: \(A\) é inversível, \(A^{-1}=\begin{pmatrix}2&1&0\\1/3&1/3&-1\\2/3&2/3&1/3\end{pmatrix}\)</span>
+      <div class="alert-info">No material original, a mesma questão pedia também a inversa de \(B=\begin{pmatrix}1&0&1\\1&2&1\\0&2&0\end{pmatrix}\) — treine aplicando o mesmo método nela como exercício extra.</div>
+    </div>
+  </div>
+
+  <!-- Exercício 4 -->
+  <div class="exercise" id="ex4">
+    <h3>Questão 4 — Verificação por multiplicação (atalho) <button class="gabarito-btn" onclick="abrirGabarito('modal-ex4')">Ver gabarito</button></h3>
+    <div class="enunciado">Mostre que a inversa de \(A=\begin{pmatrix}1&1&0\\0&2&1\\1&0&1\end{pmatrix}\) é \(B=\begin{pmatrix}2/3&-1/3&1/3\\1/3&1/3&-1/2\\-2/3&1/3&2/3\end{pmatrix}\).</div>
+  </div>
+
+  <div class="modal-overlay" id="modal-ex4">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito — Questão 4</h3>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">🔁</span> Quando a inversa <strong>já é dada</strong>, não refaça o escalonamento: basta calcular \(A\cdot B\) (ou \(B\cdot A\)) e verificar que o resultado é \(I_3\). É muito mais rápido na prova.</div>
+      <span class="answer-final">Estratégia: \(A\cdot B = I_3 \Rightarrow B=A^{-1}\).</span>
+    </div>
+  </div>
+
+  <h2 id="hill">Aplicação: Cifra de Hill</h2>
+  <div class="theory-box">
+    <p>Converte letras em números (A=1,...,Z=26), agrupa em matriz mensagem \(M\), cifra com \(C=K\cdot M\) (chave \(K\) invertível) e decifra com \(M=K^{-1}\cdot C\). <strong>Condição:</strong> \(K\) precisa ter \(\det(K)\neq0\).</p>
+  </div>
+
+  <div class="exercise" id="hill-ex">
+    <h3>Exemplo completo — palavra "GATO" <button class="gabarito-btn" onclick="abrirGabarito('modal-hill')">Ver gabarito</button></h3>
+    <div class="enunciado">Cifre e decifre "GATO" usando a chave \(K=\begin{pmatrix}3&5\\1&2\end{pmatrix}\).</div>
+  </div>
+
+  <div class="modal-overlay" id="modal-hill">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito — Cifra de Hill</h3>
+      <div class="step"><strong class="step-label">Montando</strong> \(G{=}7,A{=}1,T{=}20,O{=}15 \Rightarrow M=\begin{pmatrix}7&1\\20&15\end{pmatrix}\). \(\det(K)=3\cdot2-5\cdot1=1\neq0\) ✓ inversível.</div>
+      <div class="step"><strong class="step-label">Cifrando</strong> \[C=K\cdot M=\begin{pmatrix}3&5\\1&2\end{pmatrix}\begin{pmatrix}7&1\\20&15\end{pmatrix}=\begin{pmatrix}121&78\\47&31\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">Decifrando</strong> \(K^{-1}=\begin{pmatrix}2&-5\\-1&3\end{pmatrix}\); \[M=K^{-1}C=\begin{pmatrix}7&1\\20&15\end{pmatrix}\to\text{"GATO"}\]</div>
+      <span class="answer-final">Resposta: mensagem cifrada \((121,78,47,31)\); decifrada volta a "GATO".</span>
+    </div>
+  </div>
+
+  <div class="alert-success">✅ Fim do Dia 2. Cronometre-se refazendo a Questão 2 (3×3) do zero antes de ir para o <a href="dia3.html">Dia 3 — Determinantes</a>.</div>
+
+</main>
+</div>
+
+<footer class="site-footer">
+  Guia de estudos pessoal — Álgebra Linear (MPA06855) — Dia 2 de 3.
+</footer>
+<script src="modal.js"></script>
+</body>
+</html>

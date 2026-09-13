@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia P1 | Álgebra Linear</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">Guia P1 — Álgebra Linear
+      <small>MPA06855 · Plano de estudo de 3 dias</small>
+    </a>
+    <nav class="top-nav">
+      <a href="index.html" class="active">Início</a>
+      <a href="dia1.html">Dia 1 · Matrizes</a>
+      <a href="dia2.html">Dia 2 · Inversíveis</a>
+      <a href="dia3.html">Dia 3 · Determinantes</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Reta final para a P1</h1>
+  <p class="hero-subtitle">3 dias, 2h por dia, foco total no que cai na prova: Matrizes, Matrizes Inversíveis e Determinantes/Adjunta. Teoria direto ao ponto, armadilhas destacadas e exercícios reais do seu material com gabarito em modal.</p>
+  <div class="hero-actions">
+    <a class="btn-outline" href="dia1.html">Começar pelo Dia 1</a>
+  </div>
+  <div class="hero-cards">
+    <a class="hero-card" href="dia1.html"><h3>Dia 1 — Matrizes</h3><p>Definições, tipos, operações, propriedades e transposta.</p></a>
+    <a class="hero-card" href="dia2.html"><h3>Dia 2 — Matrizes Inversíveis</h3><p>Gauss-Jordan, escalonamento, inversa e Cifra de Hill.</p></a>
+    <a class="hero-card" href="dia3.html"><h3>Dia 3 — Determinantes</h3><p>Laplace, adjunta, Cramer e revisão geral cronometrada.</p></a>
+  </div>
+</section>
+
+<div class="layout" style="grid-template-columns: 1fr;">
+<main style="max-width:1100px;">
+
+  <h2 id="como-usar">Como usar este guia</h2>
+  <div class="theory-box">
+    <p><span class="badge badge-prereq">📌</span> Cada dia tem <strong>2 blocos de ~50 min + 1 de revisão de 20 min</strong>. Leia a teoria, preste atenção nos badges <span class="badge badge-trap">❗ armadilha</span>, resolva o exercício sozinho antes de clicar em <strong>"Ver gabarito"</strong> (abre em uma janela popup) e só depois confira o passo a passo.</p>
+  </div>
+  <div class="alert-warning">Regra de ouro: <strong>não olhe o gabarito antes de tentar</strong>. O ganho de aprendizado rápido vem de errar, comparar e corrigir — não de ler a solução pronta.</div>
+
+  <h2 id="cronograma">Cronograma — 3 dias × 2h</h2>
+
+  <div class="plan-day">
+    <h3>📅 Dia 1 (hoje) — Matrizes <span class="badge badge-green">2h</span></h3>
+    <div class="plan-block"><span class="plan-time">0:00–0:50</span> Teoria: definição, tipos especiais de matrizes, soma e multiplicação por escalar. Fazer Exercícios 1 e 2 (multiplicação).</div>
+    <div class="plan-block"><span class="plan-time">0:50–1:40</span> Multiplicação de matrizes (ordem importa!), transposta, propriedades de soma/transposta. Fazer Exercício 3 (equação matricial).</div>
+    <div class="plan-block"><span class="plan-time">1:40–2:00</span> Revisão rápida: refazer os 3 exercícios de cabeça, sem consultar. Marcar dúvidas.</div>
+  </div>
+
+  <div class="plan-day">
+    <h3>📅 Dia 2 (amanhã) — Matrizes Inversíveis <span class="badge badge-green">2h</span></h3>
+    <div class="plan-block"><span class="plan-time">0:00–0:50</span> Teoria: definição de inversa, operações elementares, forma escada, método de Gauss-Jordan (\([A|I]\to[I|A^{-1}]\)). Fazer Exercícios 1 e 2.</div>
+    <div class="plan-block"><span class="plan-time">0:50–1:40</span> Fazer Exercícios 3 e 4 (matrizes 3×3, verificação por multiplicação). Ver aplicação prática: Cifra de Hill.</div>
+    <div class="plan-block"><span class="plan-time">1:40–2:00</span> Revisão: refazer 1 exercício 2×2 e 1 exercício 3×3 do zero, cronometrando o tempo.</div>
+  </div>
+
+  <div class="plan-day">
+    <h3>📅 Dia 3 (véspera da prova) — Determinantes e Matriz Adjunta <span class="badge badge-green">2h</span></h3>
+    <div class="plan-block"><span class="plan-time">0:00–0:40</span> Teoria: determinante, cofator, Laplace, propriedades dos determinantes. Fazer Exercício 1.</div>
+    <div class="plan-block"><span class="plan-time">0:40–1:20</span> Matriz adjunta, relação \(A^{-1}=\frac{1}{\det A}\operatorname{adj}A\), Regra de Cramer. Fazer Exercícios 2 e 3.</div>
+    <div class="plan-block"><span class="plan-time">1:20–2:00</span> <strong>Simulado geral</strong>: revisão dos 3 dias + exercício em aberto (4×4) como desafio final + checklist de pré-prova.</div>
+  </div>
+
+  <h2 id="mapa">O que cai na prova (mapa mental rápido)</h2>
+  <table class="variations">
+    <tr><th>Tópico</th><th>Fórmula-chave</th><th>Onde mais erra</th></tr>
+    <tr><td>Multiplicação de matrizes</td><td>\(c_{ij}=\sum_k a_{ik}b_{kj}\)</td><td>Achar que \(AB=BA\); esquecer que \(BA\) pode não existir</td></tr>
+    <tr><td>Transposta</td><td>\((AB)'=B'A'\)</td><td>Inverter a ordem do produto ao transpor</td></tr>
+    <tr><td>Inversa (Gauss-Jordan)</td><td>\([A|I]\to[I|A^{-1}]\)</td><td>Errar sinal ou conta numa operação de linha</td></tr>
+    <tr><td>Determinante (Laplace)</td><td>\(\det A=\sum_j a_{ij}\Delta_{ij}\)</td><td>Esquecer o sinal \((-1)^{i+j}\) do cofator</td></tr>
+    <tr><td>Adjunta / inversa</td><td>\(A^{-1}=\frac{1}{\det A}\operatorname{adj}A\)</td><td>Confundir matriz de cofatores com a adjunta (a adjunta é a <em>transposta</em> dos cofatores)</td></tr>
+    <tr><td>Regra de Cramer</td><td>\(x_i=\frac{\det A_i}{\det A}\)</td><td>Aplicar em sistema não quadrado; trocar a coluna errada por \(b\)</td></tr>
+  </table>
+
+</main>
+</div>
+
+<footer class="site-footer">
+  Guia de estudos pessoal — Álgebra Linear (MPA06855) — material extraído dos slides e do caderno para a P1.
+</footer>
+</body>
+</html>

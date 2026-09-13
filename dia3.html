@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dia 3 · Determinantes e Adjunta | Guia P1</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">Guia P1 — Álgebra Linear
+      <small>MPA06855 · Plano de estudo de 3 dias</small>
+    </a>
+    <nav class="top-nav">
+      <a href="index.html">Início</a>
+      <a href="dia1.html">Dia 1 · Matrizes</a>
+      <a href="dia2.html">Dia 2 · Inversíveis</a>
+      <a href="dia3.html" class="active">Dia 3 · Determinantes</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="toc">
+  <details class="toc-details" open>
+  <summary>Nesta página</summary>
+  <ul>
+    <li><a href="#teoria">Teoria: Laplace e propriedades</a></li>
+    <li><a href="#ex1">Exercício 1 (Laplace)</a></li>
+    <li><a href="#adjunta">Matriz adjunta</a></li>
+    <li><a href="#ex2">Exercício 2 (adjunta)</a></li>
+    <li><a href="#cramer">Regra de Cramer</a></li>
+    <li><a href="#ex3">Exercício 3 (Cramer)</a></li>
+    <li><a href="#desafio">Desafio final (4×4)</a></li>
+    <li><a href="#checklist">Checklist pré-prova</a></li>
+  </ul>
+  </details>
+</aside>
+
+<main>
+  <h1>Dia 3 — Determinantes e Matriz Adjunta</h1>
+  <p class="subtitle">Bloco de 2h + simulado geral. Meta: fechar os 3 tópicos e treinar sob tempo.</p>
+
+  <h2 id="teoria">Teoria: Laplace e propriedades</h2>
+  <div class="theory-box">
+    <p><span class="badge badge-prereq">📌</span> Ordem 2: \(\det A=ad-bc\) para \(A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\). Para ordem ≥ 3, use <strong>cofatores</strong>: \(\Delta_{ij}=(-1)^{i+j}\det A_{ij}\) (\(A_{ij}\) = matriz sem a linha \(i\) e coluna \(j\)).</p>
+  </div>
+
+  <div class="theory-box">
+    <p><strong>Desenvolvimento de Laplace</strong> pela linha \(i\):
+    \[\det A=\sum_{j=1}^{n}a_{ij}\Delta_{ij}\]
+    Vale por qualquer linha ou coluna — <strong>escolha a com mais zeros</strong> para economizar contas.</p>
+  </div>
+
+  <div class="eli5">
+    <span class="eli5-label">💡 Explicando bem devagar</span>
+    <p>Laplace "quebra" um determinante grande em vários determinantes menores. Se uma linha tem zeros, os termos com esses zeros somem da conta — por isso vale a pena escolher a linha/coluna "mais vazia".</p>
+  </div>
+
+  <table class="variations">
+    <tr><th>Propriedade</th><th>Consequência</th></tr>
+    <tr><td>Linha nula</td><td>\(\det A=0\)</td></tr>
+    <tr><td>Multiplicar linha por \(k\)</td><td>\(\det\) multiplica por \(k\)</td></tr>
+    <tr><td>Trocar duas linhas</td><td>\(\det\) troca de sinal</td></tr>
+    <tr><td>Transposta</td><td>\(\det A'=\det A\)</td></tr>
+    <tr><td>Produto</td><td>\(\det(AB)=\det A\cdot\det B\)</td></tr>
+  </table>
+
+  <div class="alert-info"><strong>Teorema-chave:</strong> \(A\) é invertível \(\iff\) \(\det A\neq0\). É a ponte entre os 3 dias de estudo.</div>
+
+  <!-- Exercício 1 -->
+  <div class="exercise" id="ex1">
+    <h3>Questão 1 — Laplace com escolha esperta de linha <button class="gabarito-btn" onclick="abrirGabarito('modal-ex1')">Ver gabarito</button></h3>
+    <div class="enunciado">Calcule \(\det A\) para \(A=\begin{pmatrix}1&5&0\\2&4&-1\\0&-2&0\end{pmatrix}\).</div>
+    <div class="step"><strong class="step-label">Dica</strong> A 3ª linha tem dois zeros — expanda por ela.</div>
+  </div>
+
+  <div class="modal-overlay" id="modal-ex1">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito — Questão 1</h3>
+      <div class="step"><strong class="step-label">Resolvendo (Laplace pela 3ª linha)</strong>
+      \(a_{31}=0,\;a_{32}=-2,\;a_{33}=0 \Rightarrow \det A = a_{32}\Delta_{32}\)<br>
+      \(A_{32}=\begin{pmatrix}1&0\\2&-1\end{pmatrix},\; \det A_{32}=-1,\; \Delta_{32}=(-1)^{3+2}(-1)=1\)<br>
+      \(\det A = -2\cdot1=-2\)</div>
+      <div class="step"><strong class="step-label">Conferindo</strong> Expandindo pela 1ª linha: \(1\cdot(-2)+5\cdot0+0\cdot(-4)=-2\) ✓</div>
+      <span class="answer-final">Resposta: \(\det A=-2\)</span>
+    </div>
+  </div>
+
+  <h2 id="adjunta">Matriz adjunta</h2>
+  <div class="theory-box">
+    <p><strong>Matriz de cofatores</strong> \(\overline{A}=[\Delta_{ij}]\). <strong>Adjunta:</strong> \(\operatorname{adj}A=\overline{A}'\) (transposta dos cofatores — não confundir!).</p>
+    <p><strong>Teorema central:</strong>
+    \[A^{-1}=\frac{1}{\det A}\operatorname{adj}A, \quad \text{válido se e somente se } \det A\neq0\]</p>
+  </div>
+  <div class="alert-warning"><span class="badge badge-trap">❗ armadilha</span> A adjunta é a <strong>transposta</strong> da matriz de cofatores, não a matriz de cofatores em si. Esse é o erro mais comum nessa questão.</div>
+
+  <!-- Exercício 2 -->
+  <div class="exercise" id="ex2">
+    <h3>Questão 2 — Adjunta e \(A\cdot\operatorname{adj}A\) <button class="gabarito-btn" onclick="abrirGabarito('modal-ex2')">Ver gabarito</button></h3>
+    <div class="enunciado">Para \(A=\begin{pmatrix}1&5&0\\2&4&-1\\0&-2&0\end{pmatrix}\) (mesma da Q1, \(\det A=-2\)), determine \(\operatorname{adj}A\) e calcule \(A\cdot\operatorname{adj}A\).</div>
+  </div>
+
+  <div class="modal-overlay" id="modal-ex2">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito — Questão 2</h3>
+      <div class="step"><strong class="step-label">Resolvendo</strong>
+      Matriz de cofatores: \(\overline{A}=\begin{pmatrix}-2&0&4\\0&0&2\\-5&1&-6\end{pmatrix}\)<br>
+      Adjunta (transposta): \(\operatorname{adj}A=\begin{pmatrix}-2&0&-5\\0&0&1\\4&2&-6\end{pmatrix}\)</div>
+      <div class="step"><strong class="step-label">Conferindo</strong>
+      \[A\cdot\operatorname{adj}A=\begin{pmatrix}-2&0&0\\0&-2&0\\0&0&-2\end{pmatrix}=(\det A)\cdot I_3\]
+      Confirma a fórmula \(A^{-1}=\frac{1}{\det A}\operatorname{adj}A\).</div>
+      <span class="answer-final">Resposta: \(A\cdot\operatorname{adj}A=-2I_3\), consistente com \(\det A=-2\).</span>
+    </div>
+  </div>
+
+  <h2 id="cramer">Regra de Cramer</h2>
+  <div class="theory-box">
+    <p>Para \(Ax=b\) com \(A\) <strong>quadrada</strong> e \(\det A\neq0\): \(x_i=\dfrac{\det A_i}{\det A}\), onde \(A_i\) é \(A\) com a coluna \(i\) trocada por \(b\).</p>
+  </div>
+  <div class="alert-warning"><span class="badge badge-trap">❗ armadilha</span> Só funciona se o sistema for quadrado (nº equações = nº incógnitas) e \(\det A\neq0\). Troque a coluna certa — errar a coluna é o erro mais comum.</div>
+
+  <!-- Exercício 3 -->
+  <div class="exercise" id="ex3">
+    <h3>Questão 3 — Sistema por Cramer <button class="gabarito-btn" onclick="abrirGabarito('modal-ex3')">Ver gabarito</button></h3>
+    <div class="enunciado">Resolva pela Regra de Cramer: \(\begin{cases}2x+y-z=3\\x-y+2z=4\\3x+2y+z=10\end{cases}\)</div>
+  </div>
+
+  <div class="modal-overlay" id="modal-ex3">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito — Questão 3</h3>
+      <div class="step"><strong class="step-label">Resolvendo</strong>
+      \(A=\begin{pmatrix}2&1&-1\\1&-1&2\\3&2&1\end{pmatrix}\), \(\det A=-10\) (≠0, sistema determinado)</div>
+      <div class="board-solve">
+        <span class="board-label">Substituindo colunas</span>
+        \(A_x\): coluna \(x\) → \((3,4,10)\), \(\det A_x=-11 \Rightarrow x=\frac{-11}{-10}=\frac{11}{10}\)<br>
+        \(A_y\): coluna \(y\) → \((3,4,10)\), \(\det A_y=-15 \Rightarrow y=\frac{-15}{-10}=\frac{3}{2}\)<br>
+        \(z\): mesmo método, \(z=\det A_z/\det A\)
+        <div class="board-note">Sempre confira: \(2x+y-z\) deve bater com 3 ao final.</div>
+      </div>
+      <span class="answer-final">Resposta: \(x=\frac{11}{10}\), \(y=\frac{3}{2}\) (calcule \(z\) analogamente como treino).</span>
+    </div>
+  </div>
+
+  <h2 id="desafio">Desafio final (exercício em aberto no material)</h2>
+  <div class="exercise" id="desafio-ex">
+    <h3>Questão desafio — matriz 4×4 <button class="gabarito-btn" onclick="abrirGabarito('modal-desafio')">Ver dica</button></h3>
+    <div class="enunciado">\(A=\begin{pmatrix}2&-8&6&8\\3&-9&5&10\\-3&0&1&-1\\1&-4&0&6\end{pmatrix}\). (a) \(A\) é inversível? (b) Se for, calcule \(A^{-1}\).</div>
+  </div>
+
+  <div class="modal-overlay" id="modal-desafio">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Dica — Questão desafio</h3>
+      <div class="step"><strong class="step-label">Este exercício não tem resolução pronta no material — é o seu treino de prova.</strong> Estratégia recomendada: <strong>não</strong> use Laplace direto em 4×4 (fica longo demais); use <strong>Gauss-Jordan</strong> \([A|I]\) como no Dia 2, e no fim confira invertibilidade também calculando \(\det A\) via Laplace escolhendo a linha/coluna com mais zeros.</div>
+      <div class="step"><strong class="step-label">Passo sugerido</strong> 1) Escalone \(A\) até a forma escada; se aparecer linha nula, \(A\) não é inversível. 2) Se \(A\) reduz a \(I_4\), o bloco direito da ampliada é \(A^{-1}\).</div>
+    </div>
+  </div>
+
+  <h2 id="checklist">Checklist final pré-prova</h2>
+  <table class="variations">
+    <tr><th>✔</th><th>Item</th></tr>
+    <tr><td>☐</td><td>Sei fazer \(AB\) e explicar por que \(AB\neq BA\) em geral</td></tr>
+    <tr><td>☐</td><td>Sei aplicar \((AB)'=B'A'\)</td></tr>
+    <tr><td>☐</td><td>Sei calcular \(A^{-1}\) por Gauss-Jordan em 2×2 e 3×3 sem erro de sinal</td></tr>
+    <tr><td>☐</td><td>Sei calcular \(\det A\) por Laplace escolhendo a linha/coluna com mais zeros</td></tr>
+    <tr><td>☐</td><td>Sei montar a matriz de cofatores e transpor para achar a adjunta</td></tr>
+    <tr><td>☐</td><td>Sei usar \(A^{-1}=\frac{1}{\det A}\operatorname{adj}A\)</td></tr>
+    <tr><td>☐</td><td>Sei aplicar Cramer trocando a coluna certa</td></tr>
+    <tr><td>☐</td><td>Tentei a questão desafio 4×4 sem consultar o gabarito antes</td></tr>
+  </table>
+
+  <div class="alert-success">✅ Fim do plano de 3 dias. Revise o <a href="index.html#mapa">mapa mental do início</a> na manhã da prova.</div>
+
+</main>
+</div>
+
+<footer class="site-footer">
+  Guia de estudos pessoal — Álgebra Linear (MPA06855) — Dia 3 de 3.
+</footer>
+<script src="modal.js"></script>
+</body>
+</html>
