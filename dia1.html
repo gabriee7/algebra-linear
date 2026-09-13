@@ -102,10 +102,33 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
       <h3>Gabarito — Questão 1</h3>
-      <div class="step"><strong class="step-label">Resolvendo</strong>
-      \[AB=\begin{pmatrix}3\cdot1+0\cdot0 & 3\cdot2+0\cdot(-1)\\2\cdot1+1\cdot0 & 2\cdot2+1\cdot(-1)\\0\cdot1+1\cdot0 & 0\cdot2+1\cdot(-1)\end{pmatrix}=\begin{pmatrix}3&6\\2&3\\0&-1\end{pmatrix}\]</div>
-      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">🔁</span> Cada elemento \(c_{ij}\) é o produto escalar da linha \(i\) de \(A\) pela coluna \(j\) de \(B\).
-      <span class="answer-final">Resposta: \(AB=\begin{pmatrix}3&6\\2&3\\0&-1\end{pmatrix}\)</span></div>
+      <div class="step"><strong class="step-label">1. Confirme que o produto existe</strong>
+      \(A\) tem ordem \(3\times2\) (3 linhas, 2 colunas) e \(B\) tem ordem \(2\times2\). A regra é: número de <strong>colunas de \(A\)</strong> deve ser igual ao número de <strong>linhas de \(B\)</strong>. Aqui, \(2=2\) ✓. O resultado \(AB\) terá a ordem "linhas de \(A\) × colunas de \(B\)" = \(3\times2\).</div>
+
+      <div class="step"><strong class="step-label">2. Entenda a regra de cada elemento</strong>
+      Cada elemento \(c_{ij}\) da matriz produto é obtido "andando" pela linha \(i\) de \(A\) e pela coluna \(j\) de \(B\) ao mesmo tempo, multiplicando os pares e somando tudo:
+      \[c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}\]
+      (aqui só até o índice 2 porque \(A\) tem só 2 colunas). Como o resultado é \(3\times2\), vamos calcular 6 elementos: \(c_{11},c_{12},c_{21},c_{22},c_{31},c_{32}\).</div>
+
+      <div class="step"><strong class="step-label">3. Calcule linha por linha</strong>
+      <strong>Linha 1 de \(A\)</strong> é \((3,0)\):
+      \[c_{11}=3\cdot1+0\cdot0=3+0=3\]
+      \[c_{12}=3\cdot2+0\cdot(-1)=6+0=6\]
+      <strong>Linha 2 de \(A\)</strong> é \((2,1)\):
+      \[c_{21}=2\cdot1+1\cdot0=2+0=2\]
+      \[c_{22}=2\cdot2+1\cdot(-1)=4-1=3\]
+      <strong>Linha 3 de \(A\)</strong> é \((0,1)\):
+      \[c_{31}=0\cdot1+1\cdot0=0+0=0\]
+      \[c_{32}=0\cdot2+1\cdot(-1)=0-1=-1\]</div>
+
+      <div class="step"><strong class="step-label">4. Monte a matriz final</strong>
+      Juntando os 6 valores calculados na posição correta:
+      \[AB=\begin{pmatrix}3&6\\2&3\\0&-1\end{pmatrix}\]</div>
+
+      <div class="step"><strong class="step-label">5. Padrão geral para memorizar</strong> <span class="badge badge-pattern">🔁</span>
+      "Linha do primeiro vezes coluna do segundo, soma tudo." Sempre confira antes as ordens das matrizes — é o erro nº1 que derruba nota em prova.</div>
+
+      <span class="answer-final">Resposta final: \(AB=\begin{pmatrix}3&6\\2&3\\0&-1\end{pmatrix}\)</span>
     </div>
   </div>
 
@@ -120,10 +143,30 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
       <h3>Gabarito — Questão 2</h3>
-      <div class="step"><strong class="step-label">Resolvendo \(AB\)</strong>
-      \[AB=\begin{pmatrix}2\cdot4+3\cdot1 & 2\cdot3+3\cdot(-2) & 2\cdot6+3\cdot3\\1\cdot4+(-5)\cdot1 & 1\cdot3+(-5)\cdot(-2) & 1\cdot6+(-5)\cdot3\end{pmatrix}=\begin{pmatrix}11&0&21\\-1&13&-9\end{pmatrix}\]</div>
-      <div class="step"><strong class="step-label">E o \(BA\)?</strong> \(B\) é \(2\times3\), \(A\) é \(2\times2\): colunas de \(B\) (3) ≠ linhas de \(A\) (2). <strong>\(BA\) não existe.</strong></div>
-      <span class="answer-final">Resposta: \(AB=\begin{pmatrix}11&0&21\\-1&13&-9\end{pmatrix}\); \(BA\) indefinido.</span>
+      <div class="step"><strong class="step-label">1. Confira se \(AB\) existe</strong>
+      \(A\) é \(2\times2\) (2 colunas) e \(B\) é \(2\times3\) (2 linhas). Colunas de \(A\) = linhas de \(B\) = 2 ✓. Logo \(AB\) existe e terá ordem \(2\times3\) (linhas de \(A\) × colunas de \(B\)) — ou seja, 6 elementos a calcular.</div>
+
+      <div class="step"><strong class="step-label">2. Calcule a linha 1 de \(AB\)</strong>
+      A linha 1 de \(A\) é \((2,3)\). Combine com cada coluna de \(B\):
+      \[c_{11}=2\cdot4+3\cdot1=8+3=11\]
+      \[c_{12}=2\cdot3+3\cdot(-2)=6-6=0\]
+      \[c_{13}=2\cdot6+3\cdot3=12+9=21\]</div>
+
+      <div class="step"><strong class="step-label">3. Calcule a linha 2 de \(AB\)</strong>
+      A linha 2 de \(A\) é \((1,-5)\):
+      \[c_{21}=1\cdot4+(-5)\cdot1=4-5=-1\]
+      \[c_{22}=1\cdot3+(-5)\cdot(-2)=3+10=13\]
+      \[c_{23}=1\cdot6+(-5)\cdot3=6-15=-9\]</div>
+
+      <div class="step"><strong class="step-label">4. Monte a matriz \(AB\)</strong>
+      \[AB=\begin{pmatrix}11&0&21\\-1&13&-9\end{pmatrix}\]</div>
+
+      <div class="step"><strong class="step-label">5. Agora verifique \(BA\) — aqui mora a armadilha</strong> <span class="badge badge-trap">❗</span>
+      Para \(BA\) existir, o número de <strong>colunas de \(B\)</strong> precisa ser igual ao número de <strong>linhas de \(A\)</strong>. \(B\) é \(2\times3\) → tem <strong>3 colunas</strong>. \(A\) é \(2\times2\) → tem <strong>2 linhas</strong>. Como \(3\neq2\), a multiplicação \(BA\) <strong>não pode nem ser tentada</strong> — não é que "dá errado", é que a operação não está definida matematicamente.</div>
+
+      <div class="step"><strong class="step-label">6. Padrão geral</strong> <span class="badge badge-pattern">🔁</span> Sempre que \(A\) é \(m\times n\) e \(B\) é \(n\times p\) com \(m\neq p\), \(AB\) existe mas \(BA\) não. Escreva as ordens ao lado das matrizes antes de multiplicar — evita perder tempo tentando uma conta impossível.</div>
+
+      <span class="answer-final">Resposta final: \(AB=\begin{pmatrix}11&0&21\\-1&13&-9\end{pmatrix}\); \(BA\) não existe (indefinido).</span>
     </div>
   </div>
 
@@ -137,13 +180,41 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
       <h3>Gabarito — Questão 3</h3>
-      <div class="step"><strong class="step-label">Item 1</strong>
-      \[A\cdot A=\begin{pmatrix}1&2\\0&-1\end{pmatrix}\begin{pmatrix}1&2\\0&-1\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=I_2 \;\Rightarrow\; A=A^{-1}\]</div>
-      <div class="step"><strong class="step-label">Item 2 — Resolvendo</strong>
-      \[(AX)'=B \;\Rightarrow\; ((AX)')'=B' \;\Rightarrow\; AX=B'\]
-      \[A^{-1}(AX)=A^{-1}B' \;\Rightarrow\; X=A\cdot B' \quad(\text{usando } A^{-1}=A)\]</div>
-      <div class="step"><strong class="step-label">Cuidado</strong> <span class="badge badge-trap">❗</span> Ao "desfazer" a transposta, transponha os dois lados; ao "desfazer" o \(A\) multiplicando, aplique \(A^{-1}\) pela <strong>esquerda</strong> nos dois lados — a ordem de multiplicação de matrizes importa.</div>
-      <span class="answer-final">Resposta: \(X=A\cdot B'\) (expressão fechada; substitua \(B'\) e multiplique se pedirem o resultado numérico).</span>
+
+      <div class="step"><strong class="step-label">Item 1 — Por que verificar \(A=A^{-1}\)?</strong>
+      Por definição, \(A^{-1}\) é a matriz que multiplicada por \(A\) dá a identidade \(I_2=\begin{pmatrix}1&0\\0&1\end{pmatrix}\). Se ao multiplicar \(A\) por ela mesma já obtivermos \(I_2\), isso prova que \(A\) é a sua própria inversa — não precisamos calcular \(A^{-1}\) por Gauss-Jordan, só multiplicar e conferir.</div>
+
+      <div class="step"><strong class="step-label">1.1 Calculando \(A\cdot A\)</strong>
+      \(A=\begin{pmatrix}1&2\\0&-1\end{pmatrix}\). Multiplicando linha por coluna:
+      \[c_{11}=1\cdot1+2\cdot0=1,\quad c_{12}=1\cdot2+2\cdot(-1)=2-2=0\]
+      \[c_{21}=0\cdot1+(-1)\cdot0=0,\quad c_{22}=0\cdot2+(-1)\cdot(-1)=1\]
+      \[A\cdot A=\begin{pmatrix}1&0\\0&1\end{pmatrix}=I_2\]
+      Como \(A\cdot A=I_2\), concluímos \(A^{-1}=A\).</div>
+
+      <div class="step"><strong class="step-label">Item 2 — Entendendo o que a equação pede</strong>
+      A equação \((AX)'=B\) diz: "transponha o produto \(AX\) e o resultado deve ser \(B\)". Queremos isolar \(X\). Isso exige duas operações inversas em sequência: primeiro desfazer a transposição, depois desfazer a multiplicação por \(A\).</div>
+
+      <div class="step"><strong class="step-label">2.1 Desfazendo a transposta</strong>
+      Toda matriz transposta duas vezes volta ao original: \((M')'=M\). Então, transpondo os <strong>dois lados</strong> da equação:
+      \[\big((AX)'\big)'=B' \;\Longrightarrow\; AX=B'\]
+      (o lado esquerdo "desfaz" a transposta; o lado direito simplesmente vira \(B'\), pois é o que estava lá).</div>
+
+      <div class="step"><strong class="step-label">2.2 Desfazendo a multiplicação por \(A\)</strong>
+      Agora temos \(AX=B'\), uma equação matricial comum. Para "cancelar" o \(A\) que multiplica \(X\) <strong>pela esquerda</strong>, multiplicamos os dois lados por \(A^{-1}\) <strong>também pela esquerda</strong> (a ordem importa, pois matrizes não comutam!):
+      \[A^{-1}(AX)=A^{-1}B'\]
+      Como \(A^{-1}A=I_2\) e \(I_2X=X\):
+      \[X=A^{-1}B'\]</div>
+
+      <div class="step"><strong class="step-label">2.3 Usando o resultado do item 1</strong>
+      Já provamos que \(A^{-1}=A\). Substituindo:
+      \[X=A\cdot B'\]</div>
+
+      <div class="step"><strong class="step-label">Cuidado — armadilhas desta questão</strong> <span class="badge badge-trap">❗</span>
+      (1) Transponha <strong>os dois lados</strong> da igualdade, nunca só um. (2) Ao multiplicar por \(A^{-1}\) para cancelar, aplique sempre do <strong>mesmo lado</strong> nos dois membros da equação (aqui, pela esquerda) — matrizes não comutam, então "cancelar pela direita" daria um resultado diferente e errado.</div>
+
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">🔁</span> Para isolar \(X\) numa equação matricial, desfaça as operações na <strong>ordem inversa</strong> de como foram aplicadas (aqui: primeiro veio o produto por \(A\), depois a transposição; para isolar, desfaça primeiro a transposição, depois o produto).</div>
+
+      <span class="answer-final">Resposta final: \(X=A\cdot B'\) (expressão fechada). Se quiser o valor numérico, calcule \(B'=\begin{pmatrix}3&4\\1&2\end{pmatrix}\) e multiplique por \(A\).</span>
     </div>
   </div>
 

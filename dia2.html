@@ -80,14 +80,31 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
       <h3>Gabarito — Questão 1</h3>
-      <div class="board-solve">
-        <span class="board-label">Gauss-Jordan</span>
-        \([A|I]=\left[\begin{smallmatrix}0&1&|&1&0\\1&2&|&0&1\end{smallmatrix}\right]\)<br>
-        \(L_1\leftrightarrow L_2:\; \left[\begin{smallmatrix}1&2&|&0&1\\0&1&|&1&0\end{smallmatrix}\right]\)<br>
-        \(L_1\to L_1-2L_2:\; \left[\begin{smallmatrix}1&0&|&-2&1\\0&1&|&1&0\end{smallmatrix}\right]\)
-      </div>
-      <div class="step"><strong class="step-label">Conferindo</strong> \(\begin{pmatrix}0&1\\1&2\end{pmatrix}\begin{pmatrix}-2&1\\1&0\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}\) ✓</div>
-      <span class="answer-final">Resposta: \(A^{-1}=\begin{pmatrix}-2&1\\1&0\end{pmatrix}\)</span>
+
+      <div class="step"><strong class="step-label">1. Monte a matriz ampliada</strong>
+      A ideia do Gauss-Jordan é colar a identidade \(I_2\) ao lado de \(A\) e aplicar as <strong>mesmas</strong> operações de linha nos dois blocos ao mesmo tempo, até o bloco esquerdo virar \(I_2\):
+      \[[A\,|\,I]=\left[\begin{smallmatrix}0&1&|&1&0\\1&2&|&0&1\end{smallmatrix}\right]\]</div>
+
+      <div class="step"><strong class="step-label">2. Por que trocar de linha primeiro?</strong>
+      O elemento \(a_{11}=0\) (canto superior esquerdo). Não dá para usar uma linha com pivô 0 para "zerar" as outras — precisamos de um número diferente de zero ali. Como \(a_{21}=1\neq0\), trocamos as linhas:
+      \[L_1\leftrightarrow L_2:\quad \left[\begin{smallmatrix}1&2&|&0&1\\0&1&|&1&0\end{smallmatrix}\right]\]
+      Agora o pivô da linha 1 é 1, exatamente o que queremos.</div>
+
+      <div class="step"><strong class="step-label">3. Zere o resto da coluna 1</strong>
+      A coluna 1 já está pronta: \(a_{11}=1\) e \(a_{21}=0\) — nada a fazer aqui.</div>
+
+      <div class="step"><strong class="step-label">4. Zere o resto da coluna 2 (acima do pivô)</strong>
+      O pivô da linha 2 já é 1 (\(a_{22}=1\)). Falta zerar o \(2\) que está acima dele, na posição \(a_{12}\). Fazemos \(L_1\to L_1-2L_2\): subtraímos 2 vezes a linha 2 da linha 1, elemento a elemento:
+      \[\text{Linha 1: } (1,2\,|\,0,1) - 2\cdot(0,1\,|\,1,0) = (1-0,\;2-2\,|\,0-2,\;1-0) = (1,0\,|\,-2,1)\]
+      Resultado:
+      \[\left[\begin{smallmatrix}1&0&|&-2&1\\0&1&|&1&0\end{smallmatrix}\right]\]
+      O bloco esquerdo virou \(I_2\) — terminamos! O bloco direito é a inversa.</div>
+
+      <div class="step"><strong class="step-label">5. Confira multiplicando</strong>
+      Todo cálculo de inversa deve ser conferido: \(A\cdot A^{-1}\) tem que dar \(I_2\).
+      \[\begin{pmatrix}0&1\\1&2\end{pmatrix}\begin{pmatrix}-2&1\\1&0\end{pmatrix}=\begin{pmatrix}0\cdot(-2)+1\cdot1 & 0\cdot1+1\cdot0\\1\cdot(-2)+2\cdot1 & 1\cdot1+2\cdot0\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}\;✓\]</div>
+
+      <span class="answer-final">Resposta final: \(A\) é inversível e \(A^{-1}=\begin{pmatrix}-2&1\\1&0\end{pmatrix}\).</span>
     </div>
   </div>
 
@@ -101,17 +118,42 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
       <h3>Gabarito — Questão 2</h3>
-      <div class="step"><strong class="step-label">Resolvendo (passo a passo)</strong>
-      1. \(L_1\leftrightarrow L_2\)<br>
-      2. \(L_3\to L_3-4L_1\)<br>
-      3. \(L_3\to L_3+3L_2\)<br>
-      4. \(L_3\to \tfrac12 L_3\)<br>
-      5. \(L_1\to L_1-3L_3\), \(L_2\to L_2-2L_3\)</div>
-      <div class="board-solve">
-        <span class="board-label">Resultado final</span>
-        \(\left[\begin{smallmatrix}1&0&0&|&-9/2&7&-3/2\\0&1&0&|&-2&4&1\\0&0&1&|&3/2&-2&1/2\end{smallmatrix}\right]\)
-      </div>
-      <span class="answer-final">Resposta: \(A^{-1}=\begin{pmatrix}-9/2&7&-3/2\\-2&4&1\\3/2&-2&1/2\end{pmatrix}\)</span>
+
+      <div class="step"><strong class="step-label">1. Monte a matriz ampliada \([A|I]\)</strong>
+      \[\left[\begin{smallmatrix}0&1&2&|&1&0&0\\1&0&3&|&0&1&0\\4&-3&8&|&0&0&1\end{smallmatrix}\right]\]
+      Objetivo: transformar o bloco da esquerda em \(I_3\) usando operações de linha, aplicando sempre a mesma operação nos dois blocos.</div>
+
+      <div class="step"><strong class="step-label">2. Consiga um pivô 1 na coluna 1</strong>
+      \(a_{11}=0\), não serve como pivô. A linha 2 já tem \(1\) na primeira posição, então trocamos \(L_1\leftrightarrow L_2\):
+      \[\left[\begin{smallmatrix}1&0&3&|&0&1&0\\0&1&2&|&1&0&0\\4&-3&8&|&0&0&1\end{smallmatrix}\right]\]</div>
+
+      <div class="step"><strong class="step-label">3. Zere o resto da coluna 1</strong>
+      A linha 3 tem \(a_{31}=4\). Para zerar, fazemos \(L_3\to L_3-4L_1\) (subtrai 4 vezes a linha 1, que já tem pivô 1, da linha 3):
+      \[(4,-3,8\,|\,0,0,1)-4\cdot(1,0,3\,|\,0,1,0)=(4-4,\,-3-0,\,8-12\,|\,0-0,\,0-4,\,1-0)=(0,-3,-4\,|\,0,-4,1)\]
+      \[\left[\begin{smallmatrix}1&0&3&|&0&1&0\\0&1&2&|&1&0&0\\0&-3&-4&|&0&-4&1\end{smallmatrix}\right]\]</div>
+
+      <div class="step"><strong class="step-label">4. Zere o resto da coluna 2</strong>
+      A linha 2 já tem pivô 1 em \(a_{22}\). A linha 1 tem \(0\) nessa coluna — ok. A linha 3 tem \(-3\); fazemos \(L_3\to L_3+3L_2\):
+      \[(0,-3,-4\,|\,0,-4,1)+3\cdot(0,1,2\,|\,1,0,0)=(0,0,-4+6\,|\,0+3,-4+0,1+0)=(0,0,2\,|\,3,-4,1)\]
+      \[\left[\begin{smallmatrix}1&0&3&|&0&1&0\\0&1&2&|&1&0&0\\0&0&2&|&3&-4&1\end{smallmatrix}\right]\]</div>
+
+      <div class="step"><strong class="step-label">5. Transforme o pivô da linha 3 em 1</strong>
+      \(a_{33}=2\), não é 1. Multiplicamos toda a linha 3 por \(\tfrac12\) (\(L_3\to \tfrac12 L_3\)):
+      \[\left[\begin{smallmatrix}1&0&3&|&0&1&0\\0&1&2&|&1&0&0\\0&0&1&|&3/2&-2&1/2\end{smallmatrix}\right]\]</div>
+
+      <div class="step"><strong class="step-label">6. Zere acima do pivô da coluna 3</strong>
+      Agora "subimos" eliminando os \(3\) e \(2\) que ficaram acima do pivô da coluna 3:
+      \(L_1\to L_1-3L_3\): \((1,0,3\,|\,0,1,0)-3\cdot(0,0,1\,|\,3/2,-2,1/2)=(1,0,0\,|\,-9/2,7,-3/2)\)<br>
+      \(L_2\to L_2-2L_3\): \((0,1,2\,|\,1,0,0)-2\cdot(0,0,1\,|\,3/2,-2,1/2)=(0,1,0\,|\,-2,4,1)\)</div>
+
+      <div class="step"><strong class="step-label">7. Resultado final</strong>
+      O bloco esquerdo é \(I_3\) — pronto:
+      \[\left[\begin{smallmatrix}1&0&0&|&-9/2&7&-3/2\\0&1&0&|&-2&4&1\\0&0&1&|&3/2&-2&1/2\end{smallmatrix}\right]\]
+      O bloco direito é a inversa procurada.</div>
+
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">🔁</span> Sempre trabalhe coluna por coluna, da esquerda para a direita: (1) consiga pivô 1, (2) zere abaixo dele, repita para todas as colunas, depois (3) zere acima de cada pivô de baixo para cima.</div>
+
+      <span class="answer-final">Resposta final: \(A^{-1}=\begin{pmatrix}-9/2&7&-3/2\\-2&4&1\\3/2&-2&1/2\end{pmatrix}\)</span>
     </div>
   </div>
 
@@ -125,29 +167,84 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
       <h3>Gabarito — Questão 3</h3>
-      <div class="board-solve">
-        <span class="board-label">Gauss-Jordan</span>
-        \(L_2\to L_2+L_1,\; L_3\to L_3-L_1\)<br>
-        \(L_1\to L_1+L_2,\; L_3\to L_3+L_2\)<br>
-        \(L_3\to L_3/3,\; L_2\to L_2-L_3\)
-      </div>
-      <span class="answer-final">Resposta: \(A\) é inversível, \(A^{-1}=\begin{pmatrix}2&1&0\\1/3&1/3&-1\\2/3&2/3&1/3\end{pmatrix}\)</span>
-      <div class="alert-info">No material original, a mesma questão pedia também a inversa de \(B=\begin{pmatrix}1&0&1\\1&2&1\\0&2&0\end{pmatrix}\) — treine aplicando o mesmo método nela como exercício extra.</div>
+
+      <div class="step"><strong class="step-label">1. Matriz ampliada</strong>
+      \[[A|I]=\left[\begin{smallmatrix}1&-1&-1&|&1&0&0\\-1&2&2&|&0&1&0\\1&-2&1&|&0&0&1\end{smallmatrix}\right]\]
+      A coluna 1 já tem pivô 1 na linha 1 — bom sinal, vamos usar a linha 1 para zerar as demais linhas dessa coluna.</div>
+
+      <div class="step"><strong class="step-label">2. Zere a coluna 1 usando a linha 1</strong>
+      \(L_2\to L_2+L_1\) (porque \(a_{21}=-1\), somar a linha 1 cancela): \((-1,2,2\,|\,0,1,0)+(1,-1,-1\,|\,1,0,0)=(0,1,1\,|\,1,1,0)\)<br>
+      \(L_3\to L_3-L_1\) (porque \(a_{31}=1\), subtrair a linha 1 cancela): \((1,-2,1\,|\,0,0,1)-(1,-1,-1\,|\,1,0,0)=(0,-1,2\,|\,-1,0,1)\)
+      \[\left[\begin{smallmatrix}1&-1&-1&|&1&0&0\\0&1&1&|&1&1&0\\0&-1&2&|&-1&0&1\end{smallmatrix}\right]\]</div>
+
+      <div class="step"><strong class="step-label">3. Zere a coluna 2 usando a linha 2 (pivô já é 1)</strong>
+      \(L_1\to L_1+L_2\) (cancela o \(-1\) de \(a_{12}\)): \((1,-1,-1\,|\,1,0,0)+(0,1,1\,|\,1,1,0)=(1,0,0\,|\,2,1,0)\)<br>
+      \(L_3\to L_3+L_2\) (cancela o \(-1\) de \(a_{32}\)): \((0,-1,2\,|\,-1,0,1)+(0,1,1\,|\,1,1,0)=(0,0,3\,|\,0,1,1)\)
+      \[\left[\begin{smallmatrix}1&0&0&|&2&1&0\\0&1&1&|&1&1&0\\0&0&3&|&0&1&1\end{smallmatrix}\right]\]
+      Repare: a coluna 1 já ficou pronta e não muda mais.</div>
+
+      <div class="step"><strong class="step-label">4. Normalize o pivô da linha 3</strong>
+      \(a_{33}=3\); fazemos \(L_3\to L_3/3\): \((0,0,1\,|\,0,1/3,1/3)\)
+      \[\left[\begin{smallmatrix}1&0&0&|&2&1&0\\0&1&1&|&1&1&0\\0&0&1&|&0&1/3&1/3\end{smallmatrix}\right]\]</div>
+
+      <div class="step"><strong class="step-label">5. Zere acima do pivô da coluna 3</strong>
+      Só falta zerar o \(1\) na posição \(a_{23}\) (a coluna 3 na linha 1 já é 0). Fazemos \(L_2\to L_2-L_3\), subtraindo elemento a elemento:
+      \[(0,1,1\,|\,1,1,0)-(0,0,1\,|\,0,1/3,1/3)=\Big(0,\,1,\,1-1\,\Big|\,1-0,\;1-\tfrac13,\;0-\tfrac13\Big)=(0,1,0\,|\,1,\tfrac23,-\tfrac13)\]
+      Resultado final:
+      \[\left[\begin{smallmatrix}1&0&0&|&2&1&0\\0&1&0&|&1&2/3&-1/3\\0&0&1&|&0&1/3&1/3\end{smallmatrix}\right]\]</div>
+
+      <div class="step"><strong class="step-label">6. Confira multiplicando \(A\cdot A^{-1}\)</strong> <span class="badge badge-trap">❗</span>
+      Esse é o passo mais importante e evita perder pontos por erro de conta: pegue o bloco direito e multiplique por \(A\); tem que dar exatamente \(I_3\).
+      \[\begin{pmatrix}1&-1&-1\\-1&2&2\\1&-2&1\end{pmatrix}\begin{pmatrix}2&1&0\\1&2/3&-1/3\\0&1/3&1/3\end{pmatrix}=\begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}\;✓\]
+      (confira linha 1: \(1\cdot2+(-1)\cdot1+(-1)\cdot0=1\); \(1\cdot1+(-1)\cdot\frac23+(-1)\cdot\frac13=1-1=0\); \(1\cdot0+(-1)\cdot(-\frac13)+(-1)\cdot\frac13=0\) — bate com a linha 1 de \(I_3\).)</div>
+
+      <span class="answer-final">Resposta final: \(A\) é inversível, \(A^{-1}=\begin{pmatrix}2&1&0\\1&2/3&-1/3\\0&1/3&1/3\end{pmatrix}\).</span>
+
+      <div class="alert-info">No material original, esta questão também pedia a inversa de \(B=\begin{pmatrix}1&0&1\\1&2&1\\0&2&0\end{pmatrix}\). Repita exatamente os 6 passos acima nela como treino cronometrado.</div>
     </div>
   </div>
 
   <!-- Exercício 4 -->
   <div class="exercise" id="ex4">
     <h3>Questão 4 — Verificação por multiplicação (atalho) <button class="gabarito-btn" onclick="abrirGabarito('modal-ex4')">Ver gabarito</button></h3>
-    <div class="enunciado">Mostre que a inversa de \(A=\begin{pmatrix}1&1&0\\0&2&1\\1&0&1\end{pmatrix}\) é \(B=\begin{pmatrix}2/3&-1/3&1/3\\1/3&1/3&-1/2\\-2/3&1/3&2/3\end{pmatrix}\).</div>
+    <div class="enunciado">Mostre que a inversa de \(A=\begin{pmatrix}1&1&0\\0&2&1\\1&0&1\end{pmatrix}\) é \(B=\begin{pmatrix}2/3&-1/3&1/3\\1/3&1/3&-1/3\\-2/3&1/3&2/3\end{pmatrix}\).</div>
   </div>
 
   <div class="modal-overlay" id="modal-ex4">
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
       <h3>Gabarito — Questão 4</h3>
-      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">🔁</span> Quando a inversa <strong>já é dada</strong>, não refaça o escalonamento: basta calcular \(A\cdot B\) (ou \(B\cdot A\)) e verificar que o resultado é \(I_3\). É muito mais rápido na prova.</div>
-      <span class="answer-final">Estratégia: \(A\cdot B = I_3 \Rightarrow B=A^{-1}\).</span>
+
+      <div class="step"><strong class="step-label">1. Por que NÃO escalonar aqui</strong>
+      A questão já te dá a suposta inversa \(B\) pronta. Refazer Gauss-Jordan do zero seria desperdiçar tempo de prova. Pela própria definição de inversa (\(AB=I\)), <strong>basta multiplicar</strong> e checar se dá a identidade.</div>
+
+      <div class="step"><strong class="step-label">2. Monte o produto \(A\cdot B\)</strong>
+      \(A=\begin{pmatrix}1&1&0\\0&2&1\\1&0&1\end{pmatrix}\), \(B=\begin{pmatrix}2/3&-1/3&1/3\\1/3&1/3&-1/3\\-2/3&1/3&2/3\end{pmatrix}\). Calcule cada elemento \(c_{ij}\) = linha \(i\) de \(A\) · coluna \(j\) de \(B\).</div>
+
+      <div class="step"><strong class="step-label">3. Linha 1 de \(A\cdot B\)</strong>
+      Linha 1 de \(A\) é \((1,1,0)\):
+      \[c_{11}=1\cdot\tfrac23+1\cdot\tfrac13+0\cdot(-\tfrac23)=\tfrac23+\tfrac13=1\]
+      \[c_{12}=1\cdot(-\tfrac13)+1\cdot\tfrac13+0\cdot\tfrac13=0\]
+      \[c_{13}=1\cdot\tfrac13+1\cdot(-\tfrac13)+0\cdot\tfrac23=0\]
+      Linha 1 de \(AB\) = \((1,0,0)\) — igual à linha 1 de \(I_3\). ✓</div>
+
+      <div class="step"><strong class="step-label">4. Linha 2 de \(A\cdot B\)</strong>
+      Linha 2 de \(A\) é \((0,2,1)\):
+      \[c_{21}=0\cdot\tfrac23+2\cdot\tfrac13+1\cdot(-\tfrac23)=\tfrac23-\tfrac23=0\]
+      \[c_{22}=0\cdot(-\tfrac13)+2\cdot\tfrac13+1\cdot\tfrac13=\tfrac23+\tfrac13=1\]
+      \[c_{23}=0\cdot\tfrac13+2\cdot(-\tfrac13)+1\cdot\tfrac23=-\tfrac23+\tfrac23=0\]
+      Linha 2 de \(AB\) = \((0,1,0)\). ✓</div>
+
+      <div class="step"><strong class="step-label">5. Linha 3 de \(A\cdot B\)</strong>
+      Linha 3 de \(A\) é \((1,0,1)\):
+      \[c_{31}=1\cdot\tfrac23+0\cdot\tfrac13+1\cdot(-\tfrac23)=0\]
+      \[c_{32}=1\cdot(-\tfrac13)+0\cdot\tfrac13+1\cdot\tfrac13=0\]
+      \[c_{33}=1\cdot\tfrac13+0\cdot(-\tfrac13)+1\cdot\tfrac23=1\]
+      Linha 3 de \(AB\) = \((0,0,1)\). ✓ Logo \(A\cdot B=I_3\), confirmando que \(B=A^{-1}\).</div>
+
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">🔁</span> Quando a inversa já é dada pelo enunciado, não refaça o escalonamento do zero: calcule \(A\cdot B\) (ou \(B\cdot A\)) e verifique se dá \(I_3\). É bem mais rápido e igualmente rigoroso — ótima estratégia sob pressão de tempo de prova.</div>
+
+      <span class="answer-final">Resposta final: \(A\cdot B=I_3\), portanto \(B=A^{-1}\).</span>
     </div>
   </div>
 
@@ -165,10 +262,41 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
       <h3>Gabarito — Cifra de Hill</h3>
-      <div class="step"><strong class="step-label">Montando</strong> \(G{=}7,A{=}1,T{=}20,O{=}15 \Rightarrow M=\begin{pmatrix}7&1\\20&15\end{pmatrix}\). \(\det(K)=3\cdot2-5\cdot1=1\neq0\) ✓ inversível.</div>
-      <div class="step"><strong class="step-label">Cifrando</strong> \[C=K\cdot M=\begin{pmatrix}3&5\\1&2\end{pmatrix}\begin{pmatrix}7&1\\20&15\end{pmatrix}=\begin{pmatrix}121&78\\47&31\end{pmatrix}\]</div>
-      <div class="step"><strong class="step-label">Decifrando</strong> \(K^{-1}=\begin{pmatrix}2&-5\\-1&3\end{pmatrix}\); \[M=K^{-1}C=\begin{pmatrix}7&1\\20&15\end{pmatrix}\to\text{"GATO"}\]</div>
-      <span class="answer-final">Resposta: mensagem cifrada \((121,78,47,31)\); decifrada volta a "GATO".</span>
+
+      <div class="step"><strong class="step-label">1. Converta a palavra em números</strong>
+      Usando A=1, B=2, ..., Z=26: G=7, A=1, T=20, O=15. Agrupamos em pares nas colunas de uma matriz \(2\times2\) (2 letras por coluna, na ordem em que aparecem):
+      \[M=\begin{pmatrix}7&1\\20&15\end{pmatrix}\]
+      (primeira coluna = "GA" → 7,20; segunda coluna = "TO" → 1,15 — cada coluna é um bloco de 2 letras.)</div>
+
+      <div class="step"><strong class="step-label">2. Confirme que a chave é utilizável</strong>
+      A chave é \(K=\begin{pmatrix}3&5\\1&2\end{pmatrix}\). Para poder decifrar depois, \(K\) precisa ser inversível, ou seja, \(\det K\neq0\):
+      \[\det K=3\cdot2-5\cdot1=6-5=1\neq0\;✓\]
+      Como o determinante é \(1\), a inversa de \(K\) terá frações "limpas" — bom sinal para a conta.</div>
+
+      <div class="step"><strong class="step-label">3. Cifre: \(C=K\cdot M\)</strong>
+      Multiplicando linha de \(K\) por coluna de \(M\):
+      \[c_{11}=3\cdot7+5\cdot20=21+100=121\]
+      \[c_{12}=3\cdot1+5\cdot15=3+75=78\]
+      \[c_{21}=1\cdot7+2\cdot20=7+40=47\]
+      \[c_{22}=1\cdot1+2\cdot15=1+30=31\]
+      \[C=\begin{pmatrix}121&78\\47&31\end{pmatrix}\]
+      A mensagem cifrada enviada é a sequência \((121,78,47,31)\).</div>
+
+      <div class="step"><strong class="step-label">4. Calcule \(K^{-1}\) para poder decifrar</strong>
+      Para uma matriz \(2\times2\) \(\begin{pmatrix}a&b\\c&d\end{pmatrix}\), a inversa é \(\frac{1}{\det K}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}\) (troca a diagonal principal, inverte o sinal da secundária, divide pelo determinante). Como \(\det K=1\):
+      \[K^{-1}=\begin{pmatrix}2&-5\\-1&3\end{pmatrix}\]</div>
+
+      <div class="step"><strong class="step-label">5. Decifre: \(M=K^{-1}\cdot C\)</strong>
+      \[c_{11}=2\cdot121+(-5)\cdot47=242-235=7\]
+      \[c_{12}=2\cdot78+(-5)\cdot31=156-155=1\]
+      \[c_{21}=-1\cdot121+3\cdot47=-121+141=20\]
+      \[c_{22}=-1\cdot78+3\cdot31=-78+93=15\]
+      \[M=\begin{pmatrix}7&1\\20&15\end{pmatrix}\]
+      Exatamente a matriz mensagem original — a decodificação recuperou os números \(7,1,20,15\), que voltam a ser G, A, T, O.</div>
+
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">🔁</span> A Cifra de Hill é só multiplicação e inversão de matrizes aplicadas a texto. O ponto de prova mais cobrado é: <strong>\(K\) só serve como chave se \(\det K\neq0\)</strong> — sem isso, a mensagem não pode ser decifrada, pois \(K^{-1}\) não existe.</div>
+
+      <span class="answer-final">Resposta: mensagem "GATO" → \(M=\begin{pmatrix}7&1\\20&15\end{pmatrix}\) → cifrada com \(K\) → decifrada com \(K^{-1}\), recuperando \(M\) e portanto "GATO".</span>
     </div>
   </div>
 
