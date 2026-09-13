@@ -68,7 +68,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <tr><td>Linha nula</td><td>\(\det A=0\)</td></tr>
     <tr><td>Multiplicar linha por \(k\)</td><td>\(\det\) multiplica por \(k\)</td></tr>
     <tr><td>Trocar duas linhas</td><td>\(\det\) troca de sinal</td></tr>
-    <tr><td>Transposta</td><td>\(\det A'=\det A\)</td></tr>
+    <tr><td>Transposta</td><td>\(\det A^t=\det A\)</td></tr>
     <tr><td>Produto</td><td>\(\det(AB)=\det A\cdot\det B\)</td></tr>
   </table>
 
@@ -120,7 +120,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 
   <h2 id="adjunta">Matriz adjunta</h2>
   <div class="theory-box">
-    <p><strong>Matriz de cofatores</strong> \(\overline{A}=[\Delta_{ij}]\). <strong>Adjunta:</strong> \(\operatorname{adj}A=\overline{A}'\) (transposta dos cofatores - não confundir!).</p>
+    <p><strong>Matriz de cofatores</strong> \(\overline{A}=[\Delta_{ij}]\). <strong>Adjunta:</strong> \(\operatorname{adj}A=\overline{A}^t\) (transposta dos cofatores - não confundir!).</p>
     <p><strong>Teorema central:</strong>
     \[A^{-1}=\frac{1}{\det A}\operatorname{adj}A, \quad \text{válido se e somente se } \det A\neq0\]</p>
   </div>
@@ -161,7 +161,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 
       <div class="step"><strong class="step-label">6. Transponha para obter a adjunta</strong> <span class="badge badge-trap">ARMADILHA</span>
       A armadilha clássica é <strong>parar aqui</strong> achando que \(\overline{A}\) já é a resposta. A adjunta é a <strong>transposta</strong> da matriz de cofatores (linhas viram colunas):
-      \[\operatorname{adj}A=\overline{A}'=\begin{pmatrix}-2&0&-5\\0&0&1\\-4&2&-6\end{pmatrix}\]</div>
+      \[\operatorname{adj}A=\overline{A}^t=\begin{pmatrix}-2&0&-5\\0&0&1\\-4&2&-6\end{pmatrix}\]</div>
 
       <div class="step"><strong class="step-label">7. Confira com o teorema \(A\cdot\operatorname{adj}A=(\det A)I_3\)</strong>
       Esse teorema é a "prova dos nove" da adjunta: multiplicando \(A\) pela sua adjunta, o resultado tem que ser o determinante de \(A\) vezes a identidade - nunca outra coisa.
@@ -359,7 +359,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       \[\Delta_{21}=-\det\begin{pmatrix}0&2\\0&1\end{pmatrix}=0,\quad \Delta_{22}=+\det\begin{pmatrix}1&2\\4&1\end{pmatrix}=1-8=-7,\quad \Delta_{23}=-\det\begin{pmatrix}1&0\\4&0\end{pmatrix}=0\]
       \[\Delta_{31}=+\det\begin{pmatrix}0&2\\3&1\end{pmatrix}=-6,\quad \Delta_{32}=-\det\begin{pmatrix}1&2\\0&1\end{pmatrix}=-1,\quad \Delta_{33}=+\det\begin{pmatrix}1&0\\0&3\end{pmatrix}=3\]</div>
       <div class="step"><strong class="step-label">2. Monte a matriz de cofatores e transponha</strong>
-      \[\overline{A}=\begin{pmatrix}3&4&-12\\0&-7&0\\-6&-1&3\end{pmatrix} \;\Rightarrow\; \operatorname{adj}A=\overline{A}'=\begin{pmatrix}3&0&-6\\4&-7&-1\\-12&0&3\end{pmatrix}\]</div>
+      \[\overline{A}=\begin{pmatrix}3&4&-12\\0&-7&0\\-6&-1&3\end{pmatrix} \;\Rightarrow\; \operatorname{adj}A=\overline{A}^t=\begin{pmatrix}3&0&-6\\4&-7&-1\\-12&0&3\end{pmatrix}\]</div>
       <div class="step"><strong class="step-label">3. Calcule \(\det A\) usando um dos cofatores já prontos (coluna 2, que tem dois zeros)</strong>
       \[\det A=a_{22}\Delta_{22}=3\cdot(-7)=-21\]</div>
       <div class="step"><strong class="step-label">4. Confira: \(A\cdot\operatorname{adj}A\) deve dar \(-21\cdot I_3\)</strong>
@@ -414,7 +414,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
   <table class="variations">
     <tr><th>✔</th><th>Item</th></tr>
     <tr><td>☐</td><td>Sei fazer \(AB\) e explicar por que \(AB\neq BA\) em geral</td></tr>
-    <tr><td>☐</td><td>Sei aplicar \((AB)'=B'A'\)</td></tr>
+    <tr><td>☐</td><td>Sei aplicar \((AB)^t=B^tA^t\)</td></tr>
     <tr><td>☐</td><td>Sei calcular \(A^{-1}\) por Gauss-Jordan em 2×2 e 3×3 sem erro de sinal</td></tr>
     <tr><td>☐</td><td>Sei calcular \(\det A\) por Laplace escolhendo a linha/coluna com mais zeros</td></tr>
     <tr><td>☐</td><td>Sei montar a matriz de cofatores e transpor para achar a adjunta</td></tr>

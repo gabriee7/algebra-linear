@@ -81,16 +81,16 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <span class="badge badge-trap">ARMADILHA CLÁSSICA</span> A multiplicação de matrizes <strong>NÃO é comutativa</strong>: \(AB\neq BA\) em geral. Pior: \(BA\) pode <strong>nem existir</strong>, mesmo que \(AB\) exista (se o nº de colunas de \(B\) ≠ nº de linhas de \(A\)).
   </div>
 
-  <p><strong>Transposta</strong> \(A'\): troca linhas por colunas.</p>
+  <p><strong>Transposta</strong> \(A^t\): troca linhas por colunas.</p>
 
   <h2 id="propriedades">Propriedades importantes</h2>
   <table class="variations">
     <tr><th>Soma</th><th>Transposta</th></tr>
-    <tr><td>\(A+B=B+A\)</td><td>\((A')'=A\)</td></tr>
-    <tr><td>\((A+B)+C=A+(B+C)\)</td><td>\((A+B)'=A'+B'\)</td></tr>
-    <tr><td>\(\alpha(A+B)=\alpha A+\alpha B\)</td><td>\((AB)'=B'A'\) inverte a ordem!</td></tr>
+    <tr><td>\(A+B=B+A\)</td><td>\((A^t)^t=A\)</td></tr>
+    <tr><td>\((A+B)+C=A+(B+C)\)</td><td>\((A+B)^t=A^t+B^t\)</td></tr>
+    <tr><td>\(\alpha(A+B)=\alpha A+\alpha B\)</td><td>\((AB)^t=B^tA^t\) inverte a ordem!</td></tr>
   </table>
-  <div class="alert-info">Inversa (aprofundado no Dia 2): se \(A\) é invertível, a inversa é única, \((AB)^{-1}=B^{-1}A^{-1}\), \((A^{-1})^{-1}=A\), \((A')^{-1}=(A^{-1})'\).</div>
+  <div class="alert-info">Inversa (aprofundado no Dia 2): se \(A\) é invertível, a inversa é única, \((AB)^{-1}=B^{-1}A^{-1}\), \((A^{-1})^{-1}=A\), \((A^t)^{-1}=(A^{-1})^t\).</div>
 
   <!-- Exercício 1 -->
   <div class="exercise" id="ex1">
@@ -174,7 +174,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
   <!-- Exercício 3 -->
   <div class="exercise" id="ex3">
     <h3>Questão 3 - Equação matricial com transposta e inversa <button class="gabarito-btn" onclick="abrirGabarito('modal-ex3')">Ver gabarito</button></h3>
-    <div class="enunciado">Considere \(A=\begin{pmatrix}1&2\\0&-1\end{pmatrix}\) e \(B=\begin{pmatrix}3&1\\4&2\end{pmatrix}\). (1) Verifique que \(A=A^{-1}\). (2) Resolva a equação matricial \((AX)'=B\).</div>
+    <div class="enunciado">Considere \(A=\begin{pmatrix}1&2\\0&-1\end{pmatrix}\) e \(B=\begin{pmatrix}3&1\\4&2\end{pmatrix}\). (1) Verifique que \(A=A^{-1}\). (2) Resolva a equação matricial \((AX)^t=B\).</div>
   </div>
 
   <div class="modal-overlay" id="modal-ex3">
@@ -193,29 +193,29 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       Como \(A\cdot A=I_2\), concluímos \(A^{-1}=A\).</div>
 
       <div class="step"><strong class="step-label">Item 2 - Entendendo o que a equação pede</strong>
-      A equação \((AX)'=B\) diz: "transponha o produto \(AX\) e o resultado deve ser \(B\)". Queremos isolar \(X\). Isso exige duas operações inversas em sequência: primeiro desfazer a transposição, depois desfazer a multiplicação por \(A\).</div>
+      A equação \((AX)^t=B\) diz: "transponha o produto \(AX\) e o resultado deve ser \(B\)". Queremos isolar \(X\). Isso exige duas operações inversas em sequência: primeiro desfazer a transposição, depois desfazer a multiplicação por \(A\).</div>
 
       <div class="step"><strong class="step-label">2.1 Desfazendo a transposta</strong>
-      Toda matriz transposta duas vezes volta ao original: \((M')'=M\). Então, transpondo os <strong>dois lados</strong> da equação:
-      \[\big((AX)'\big)'=B' \;\Longrightarrow\; AX=B'\]
-      (o lado esquerdo "desfaz" a transposta; o lado direito simplesmente vira \(B'\), pois é o que estava lá).</div>
+      Toda matriz transposta duas vezes volta ao original: \((M^t)^t=M\). Então, transpondo os <strong>dois lados</strong> da equação:
+      \[\big((AX)^t\big)^t=B^t \;\Longrightarrow\; AX=B^t\]
+      (o lado esquerdo "desfaz" a transposta; o lado direito simplesmente vira \(B^t\), pois é o que estava lá).</div>
 
       <div class="step"><strong class="step-label">2.2 Desfazendo a multiplicação por \(A\)</strong>
-      Agora temos \(AX=B'\), uma equação matricial comum. Para "cancelar" o \(A\) que multiplica \(X\) <strong>pela esquerda</strong>, multiplicamos os dois lados por \(A^{-1}\) <strong>também pela esquerda</strong> (a ordem importa, pois matrizes não comutam!):
-      \[A^{-1}(AX)=A^{-1}B'\]
+      Agora temos \(AX=B^t\), uma equação matricial comum. Para "cancelar" o \(A\) que multiplica \(X\) <strong>pela esquerda</strong>, multiplicamos os dois lados por \(A^{-1}\) <strong>também pela esquerda</strong> (a ordem importa, pois matrizes não comutam!):
+      \[A^{-1}(AX)=A^{-1}B^t\]
       Como \(A^{-1}A=I_2\) e \(I_2X=X\):
-      \[X=A^{-1}B'\]</div>
+      \[X=A^{-1}B^t\]</div>
 
       <div class="step"><strong class="step-label">2.3 Usando o resultado do item 1</strong>
       Já provamos que \(A^{-1}=A\). Substituindo:
-      \[X=A\cdot B'\]</div>
+      \[X=A\cdot B^t\]</div>
 
       <div class="step"><strong class="step-label">Cuidado - armadilhas desta questão</strong> <span class="badge badge-trap">ARMADILHA</span>
       (1) Transponha <strong>os dois lados</strong> da igualdade, nunca só um. (2) Ao multiplicar por \(A^{-1}\) para cancelar, aplique sempre do <strong>mesmo lado</strong> nos dois membros da equação (aqui, pela esquerda) - matrizes não comutam, então "cancelar pela direita" daria um resultado diferente e errado.</div>
 
       <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Para isolar \(X\) numa equação matricial, desfaça as operações na <strong>ordem inversa</strong> de como foram aplicadas (aqui: primeiro veio o produto por \(A\), depois a transposição; para isolar, desfaça primeiro a transposição, depois o produto).</div>
 
-      <span class="answer-final">Resposta final: \(X=A\cdot B'\) (expressão fechada). Se quiser o valor numérico, calcule \(B'=\begin{pmatrix}3&4\\1&2\end{pmatrix}\) e multiplique por \(A\).</span>
+      <span class="answer-final">Resposta final: \(X=A\cdot B^t\) (expressão fechada). Se quiser o valor numérico, calcule \(B^t=\begin{pmatrix}3&4\\1&2\end{pmatrix}\) e multiplique por \(A\).</span>
     </div>
   </div>
 
@@ -301,7 +301,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 
   <div class="exercise" id="ex5e">
     <h3><span class="badge badge-gray">EXTRA</span> Extra 5 - Verificando \((AB)'=B'A'\) <button class="gabarito-btn" onclick="abrirGabarito('modal-ex5e')">Ver gabarito</button></h3>
-    <div class="enunciado">Para \(A=\begin{pmatrix}1&2\\3&4\end{pmatrix}\) e \(B=\begin{pmatrix}0&1\\-1&2\end{pmatrix}\), calcule \((AB)'\) e \(B'A'\) separadamente e confirme que são iguais.</div>
+    <div class="enunciado">Para \(A=\begin{pmatrix}1&2\\3&4\end{pmatrix}\) e \(B=\begin{pmatrix}0&1\\-1&2\end{pmatrix}\), calcule \((AB)^t\) e \(B^tA^t\) separadamente e confirme que são iguais.</div>
   </div>
   <div class="modal-overlay" id="modal-ex5e">
     <div class="modal-box">
@@ -309,14 +309,14 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       <h3>Gabarito - Extra 5</h3>
       <div class="step"><strong class="step-label">1. Calcule \(AB\) e depois transponha</strong>
       \[AB=\begin{pmatrix}1\cdot0+2\cdot(-1)&1\cdot1+2\cdot2\\3\cdot0+4\cdot(-1)&3\cdot1+4\cdot2\end{pmatrix}=\begin{pmatrix}-2&5\\-4&11\end{pmatrix}\]
-      \[(AB)'=\begin{pmatrix}-2&-4\\5&11\end{pmatrix}\]</div>
-      <div class="step"><strong class="step-label">2. Calcule \(B'A'\) separadamente</strong>
-      Primeiro transponha cada uma: \(B'=\begin{pmatrix}0&-1\\1&2\end{pmatrix}\), \(A'=\begin{pmatrix}1&3\\2&4\end{pmatrix}\). Agora multiplique NESSA ordem, \(B'\) vezes \(A'\):
-      \[B'A'=\begin{pmatrix}0\cdot1+(-1)\cdot2&0\cdot3+(-1)\cdot4\\1\cdot1+2\cdot2&1\cdot3+2\cdot4\end{pmatrix}=\begin{pmatrix}-2&-4\\5&11\end{pmatrix}\]</div>
+      \[(AB)^t=\begin{pmatrix}-2&-4\\5&11\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">2. Calcule \(B^tA^t\) separadamente</strong>
+      Primeiro transponha cada uma: \(B^t=\begin{pmatrix}0&-1\\1&2\end{pmatrix}\), \(A^t=\begin{pmatrix}1&3\\2&4\end{pmatrix}\). Agora multiplique NESSA ordem, \(B^t\) vezes \(A^t\):
+      \[B^tA^t=\begin{pmatrix}0\cdot1+(-1)\cdot2&0\cdot3+(-1)\cdot4\\1\cdot1+2\cdot2&1\cdot3+2\cdot4\end{pmatrix}=\begin{pmatrix}-2&-4\\5&11\end{pmatrix}\]</div>
       <div class="step"><strong class="step-label">3. Compare</strong>
-      \((AB)'=\begin{pmatrix}-2&-4\\5&11\end{pmatrix}\) é exatamente igual a \(B'A'=\begin{pmatrix}-2&-4\\5&11\end{pmatrix}\). Confirmado.</div>
-      <div class="step"><strong class="step-label">Cuidado</strong> <span class="badge badge-trap">ARMADILHA</span> Se você tivesse calculado \(A'B'\) (na ordem errada) o resultado seria diferente - sempre inverta a ordem ao transpor um produto.</div>
-      <span class="answer-final">Resposta final: \((AB)'=B'A'=\begin{pmatrix}-2&-4\\5&11\end{pmatrix}\)</span>
+      \((AB)^t=\begin{pmatrix}-2&-4\\5&11\end{pmatrix}\) é exatamente igual a \(B^tA^t=\begin{pmatrix}-2&-4\\5&11\end{pmatrix}\). Confirmado.</div>
+      <div class="step"><strong class="step-label">Cuidado</strong> <span class="badge badge-trap">ARMADILHA</span> Se você tivesse calculado \(A^tB^t\) (na ordem errada) o resultado seria diferente - sempre inverta a ordem ao transpor um produto.</div>
+      <span class="answer-final">Resposta final: \((AB)^t=B^tA^t=\begin{pmatrix}-2&-4\\5&11\end{pmatrix}\)</span>
     </div>
   </div>
 
