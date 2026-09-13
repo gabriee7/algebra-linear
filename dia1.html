@@ -13,7 +13,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 <body>
 <header class="site-header">
   <div class="bar">
-    <a class="brand" href="index.html">Guia P1 — Álgebra Linear
+    <a class="brand" href="index.html">Guia P1 - Álgebra Linear
       <small>MPA06855 · Plano de estudo de 3 dias</small>
     </a>
     <nav class="top-nav">
@@ -41,17 +41,17 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 </aside>
 
 <main>
-  <h1>Dia 1 — Matrizes</h1>
-  <p class="subtitle">Bloco de 2h. Meta: dominar operações e a armadilha nº1 da prova — a multiplicação de matrizes não é comutativa.</p>
+  <h1>Dia 1 - Matrizes</h1>
+  <p class="subtitle">Bloco de 2h. Meta: dominar operações e a armadilha nº1 da prova - a multiplicação de matrizes não é comutativa.</p>
 
   <h2 id="teoria">Teoria: definições e tipos</h2>
   <div class="theory-box">
-    <p><span class="badge badge-prereq">📌</span> Uma matriz \(A\) de ordem \(m\times n\) é uma tabela \(A=[a_{ij}]\), onde \(a_{ij}\) é o elemento na <strong>linha \(i\), coluna \(j\)</strong>. Duas matrizes só são iguais se têm a mesma ordem <em>e</em> os mesmos elementos em cada posição.</p>
+    <p><span class="badge badge-prereq">PRÉ-REQUISITO</span> Uma matriz \(A\) de ordem \(m\times n\) é uma tabela \(A=[a_{ij}]\), onde \(a_{ij}\) é o elemento na <strong>linha \(i\), coluna \(j\)</strong>. Duas matrizes só são iguais se têm a mesma ordem <em>e</em> os mesmos elementos em cada posição.</p>
   </div>
 
   <div class="eli5">
-    <span class="eli5-label">💡 Explicando bem devagar</span>
-    <p>Pense numa matriz como uma planilha de Excel: \(m\) é o número de linhas, \(n\) o número de colunas. \(a_{23}\) é a célula na linha 2, coluna 3 — nessa ordem, sempre "linha primeiro".</p>
+    <span class="eli5-label">Explicando bem devagar</span>
+    <p>Pense numa matriz como uma planilha de Excel: \(m\) é o número de linhas, \(n\) o número de colunas. \(a_{23}\) é a célula na linha 2, coluna 3 - nessa ordem, sempre "linha primeiro".</p>
   </div>
 
   <table class="variations">
@@ -77,7 +77,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
   </div>
 
   <div class="alert-warning">
-    <span class="badge badge-trap">❗ armadilha clássica</span> A multiplicação de matrizes <strong>NÃO é comutativa</strong>: \(AB\neq BA\) em geral. Pior: \(BA\) pode <strong>nem existir</strong>, mesmo que \(AB\) exista (se o nº de colunas de \(B\) ≠ nº de linhas de \(A\)).
+    <span class="badge badge-trap">ARMADILHA CLÁSSICA</span> A multiplicação de matrizes <strong>NÃO é comutativa</strong>: \(AB\neq BA\) em geral. Pior: \(BA\) pode <strong>nem existir</strong>, mesmo que \(AB\) exista (se o nº de colunas de \(B\) ≠ nº de linhas de \(A\)).
   </div>
 
   <p><strong>Transposta</strong> \(A'\): troca linhas por colunas.</p>
@@ -87,13 +87,13 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <tr><th>Soma</th><th>Transposta</th></tr>
     <tr><td>\(A+B=B+A\)</td><td>\((A')'=A\)</td></tr>
     <tr><td>\((A+B)+C=A+(B+C)\)</td><td>\((A+B)'=A'+B'\)</td></tr>
-    <tr><td>\(\alpha(A+B)=\alpha A+\alpha B\)</td><td>\((AB)'=B'A'\) ⚠️ inverte a ordem!</td></tr>
+    <tr><td>\(\alpha(A+B)=\alpha A+\alpha B\)</td><td>\((AB)'=B'A'\) inverte a ordem!</td></tr>
   </table>
   <div class="alert-info">Inversa (aprofundado no Dia 2): se \(A\) é invertível, a inversa é única, \((AB)^{-1}=B^{-1}A^{-1}\), \((A^{-1})^{-1}=A\), \((A')^{-1}=(A^{-1})'\).</div>
 
   <!-- Exercício 1 -->
   <div class="exercise" id="ex1">
-    <h3>Questão 1 — Multiplicação de matrizes <button class="gabarito-btn" onclick="abrirGabarito('modal-ex1')">Ver gabarito</button></h3>
+    <h3>Questão 1 - Multiplicação de matrizes <button class="gabarito-btn" onclick="abrirGabarito('modal-ex1')">Ver gabarito</button></h3>
     <div class="enunciado">Dadas \(A=\begin{pmatrix}3&0\\2&1\\0&1\end{pmatrix}\) e \(B=\begin{pmatrix}1&2\\0&-1\end{pmatrix}\), calcule \(AB\).</div>
     <div class="step"><strong class="step-label">O que o enunciado dá</strong> \(A\) é \(3\times2\), \(B\) é \(2\times2\). Colunas de \(A\) (2) = linhas de \(B\) (2) → produto \(AB\) existe e será \(3\times2\).</div>
   </div>
@@ -101,7 +101,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
   <div class="modal-overlay" id="modal-ex1">
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
-      <h3>Gabarito — Questão 1</h3>
+      <h3>Gabarito - Questão 1</h3>
       <div class="step"><strong class="step-label">1. Confirme que o produto existe</strong>
       \(A\) tem ordem \(3\times2\) (3 linhas, 2 colunas) e \(B\) tem ordem \(2\times2\). A regra é: número de <strong>colunas de \(A\)</strong> deve ser igual ao número de <strong>linhas de \(B\)</strong>. Aqui, \(2=2\) ✓. O resultado \(AB\) terá a ordem "linhas de \(A\) × colunas de \(B\)" = \(3\times2\).</div>
 
@@ -125,8 +125,8 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       Juntando os 6 valores calculados na posição correta:
       \[AB=\begin{pmatrix}3&6\\2&3\\0&-1\end{pmatrix}\]</div>
 
-      <div class="step"><strong class="step-label">5. Padrão geral para memorizar</strong> <span class="badge badge-pattern">🔁</span>
-      "Linha do primeiro vezes coluna do segundo, soma tudo." Sempre confira antes as ordens das matrizes — é o erro nº1 que derruba nota em prova.</div>
+      <div class="step"><strong class="step-label">5. Padrão geral para memorizar</strong> <span class="badge badge-pattern">PADRÃO</span>
+      "Linha do primeiro vezes coluna do segundo, soma tudo." Sempre confira antes as ordens das matrizes - é o erro nº1 que derruba nota em prova.</div>
 
       <span class="answer-final">Resposta final: \(AB=\begin{pmatrix}3&6\\2&3\\0&-1\end{pmatrix}\)</span>
     </div>
@@ -134,17 +134,17 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 
   <!-- Exercício 2 -->
   <div class="exercise" id="ex2">
-    <h3>Questão 2 — Quando \(BA\) não existe <button class="gabarito-btn" onclick="abrirGabarito('modal-ex2')">Ver gabarito</button></h3>
+    <h3>Questão 2 - Quando \(BA\) não existe <button class="gabarito-btn" onclick="abrirGabarito('modal-ex2')">Ver gabarito</button></h3>
     <div class="enunciado">Dadas \(A=\begin{pmatrix}2&3\\1&-5\end{pmatrix}\) e \(B=\begin{pmatrix}4&3&6\\1&-2&3\end{pmatrix}\), calcule \(AB\) e verifique se \(BA\) existe.</div>
-    <div class="step"><strong class="step-label">Cuidado</strong> <span class="badge badge-trap">❗</span> Antes de multiplicar, sempre confira as ordens: \(A\) é \(2\times2\), \(B\) é \(2\times3\).</div>
+    <div class="step"><strong class="step-label">Cuidado</strong> <span class="badge badge-trap">ARMADILHA</span> Antes de multiplicar, sempre confira as ordens: \(A\) é \(2\times2\), \(B\) é \(2\times3\).</div>
   </div>
 
   <div class="modal-overlay" id="modal-ex2">
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
-      <h3>Gabarito — Questão 2</h3>
+      <h3>Gabarito - Questão 2</h3>
       <div class="step"><strong class="step-label">1. Confira se \(AB\) existe</strong>
-      \(A\) é \(2\times2\) (2 colunas) e \(B\) é \(2\times3\) (2 linhas). Colunas de \(A\) = linhas de \(B\) = 2 ✓. Logo \(AB\) existe e terá ordem \(2\times3\) (linhas de \(A\) × colunas de \(B\)) — ou seja, 6 elementos a calcular.</div>
+      \(A\) é \(2\times2\) (2 colunas) e \(B\) é \(2\times3\) (2 linhas). Colunas de \(A\) = linhas de \(B\) = 2 ✓. Logo \(AB\) existe e terá ordem \(2\times3\) (linhas de \(A\) × colunas de \(B\)) - ou seja, 6 elementos a calcular.</div>
 
       <div class="step"><strong class="step-label">2. Calcule a linha 1 de \(AB\)</strong>
       A linha 1 de \(A\) é \((2,3)\). Combine com cada coluna de \(B\):
@@ -161,10 +161,10 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       <div class="step"><strong class="step-label">4. Monte a matriz \(AB\)</strong>
       \[AB=\begin{pmatrix}11&0&21\\-1&13&-9\end{pmatrix}\]</div>
 
-      <div class="step"><strong class="step-label">5. Agora verifique \(BA\) — aqui mora a armadilha</strong> <span class="badge badge-trap">❗</span>
-      Para \(BA\) existir, o número de <strong>colunas de \(B\)</strong> precisa ser igual ao número de <strong>linhas de \(A\)</strong>. \(B\) é \(2\times3\) → tem <strong>3 colunas</strong>. \(A\) é \(2\times2\) → tem <strong>2 linhas</strong>. Como \(3\neq2\), a multiplicação \(BA\) <strong>não pode nem ser tentada</strong> — não é que "dá errado", é que a operação não está definida matematicamente.</div>
+      <div class="step"><strong class="step-label">5. Agora verifique \(BA\) - aqui mora a armadilha</strong> <span class="badge badge-trap">ARMADILHA</span>
+      Para \(BA\) existir, o número de <strong>colunas de \(B\)</strong> precisa ser igual ao número de <strong>linhas de \(A\)</strong>. \(B\) é \(2\times3\) → tem <strong>3 colunas</strong>. \(A\) é \(2\times2\) → tem <strong>2 linhas</strong>. Como \(3\neq2\), a multiplicação \(BA\) <strong>não pode nem ser tentada</strong> - não é que "dá errado", é que a operação não está definida matematicamente.</div>
 
-      <div class="step"><strong class="step-label">6. Padrão geral</strong> <span class="badge badge-pattern">🔁</span> Sempre que \(A\) é \(m\times n\) e \(B\) é \(n\times p\) com \(m\neq p\), \(AB\) existe mas \(BA\) não. Escreva as ordens ao lado das matrizes antes de multiplicar — evita perder tempo tentando uma conta impossível.</div>
+      <div class="step"><strong class="step-label">6. Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Sempre que \(A\) é \(m\times n\) e \(B\) é \(n\times p\) com \(m\neq p\), \(AB\) existe mas \(BA\) não. Escreva as ordens ao lado das matrizes antes de multiplicar - evita perder tempo tentando uma conta impossível.</div>
 
       <span class="answer-final">Resposta final: \(AB=\begin{pmatrix}11&0&21\\-1&13&-9\end{pmatrix}\); \(BA\) não existe (indefinido).</span>
     </div>
@@ -172,17 +172,17 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 
   <!-- Exercício 3 -->
   <div class="exercise" id="ex3">
-    <h3>Questão 3 — Equação matricial com transposta e inversa <button class="gabarito-btn" onclick="abrirGabarito('modal-ex3')">Ver gabarito</button></h3>
+    <h3>Questão 3 - Equação matricial com transposta e inversa <button class="gabarito-btn" onclick="abrirGabarito('modal-ex3')">Ver gabarito</button></h3>
     <div class="enunciado">Considere \(A=\begin{pmatrix}1&2\\0&-1\end{pmatrix}\) e \(B=\begin{pmatrix}3&1\\4&2\end{pmatrix}\). (1) Verifique que \(A=A^{-1}\). (2) Resolva a equação matricial \((AX)'=B\).</div>
   </div>
 
   <div class="modal-overlay" id="modal-ex3">
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
-      <h3>Gabarito — Questão 3</h3>
+      <h3>Gabarito - Questão 3</h3>
 
-      <div class="step"><strong class="step-label">Item 1 — Por que verificar \(A=A^{-1}\)?</strong>
-      Por definição, \(A^{-1}\) é a matriz que multiplicada por \(A\) dá a identidade \(I_2=\begin{pmatrix}1&0\\0&1\end{pmatrix}\). Se ao multiplicar \(A\) por ela mesma já obtivermos \(I_2\), isso prova que \(A\) é a sua própria inversa — não precisamos calcular \(A^{-1}\) por Gauss-Jordan, só multiplicar e conferir.</div>
+      <div class="step"><strong class="step-label">Item 1 - Por que verificar \(A=A^{-1}\)?</strong>
+      Por definição, \(A^{-1}\) é a matriz que multiplicada por \(A\) dá a identidade \(I_2=\begin{pmatrix}1&0\\0&1\end{pmatrix}\). Se ao multiplicar \(A\) por ela mesma já obtivermos \(I_2\), isso prova que \(A\) é a sua própria inversa - não precisamos calcular \(A^{-1}\) por Gauss-Jordan, só multiplicar e conferir.</div>
 
       <div class="step"><strong class="step-label">1.1 Calculando \(A\cdot A\)</strong>
       \(A=\begin{pmatrix}1&2\\0&-1\end{pmatrix}\). Multiplicando linha por coluna:
@@ -191,7 +191,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       \[A\cdot A=\begin{pmatrix}1&0\\0&1\end{pmatrix}=I_2\]
       Como \(A\cdot A=I_2\), concluímos \(A^{-1}=A\).</div>
 
-      <div class="step"><strong class="step-label">Item 2 — Entendendo o que a equação pede</strong>
+      <div class="step"><strong class="step-label">Item 2 - Entendendo o que a equação pede</strong>
       A equação \((AX)'=B\) diz: "transponha o produto \(AX\) e o resultado deve ser \(B\)". Queremos isolar \(X\). Isso exige duas operações inversas em sequência: primeiro desfazer a transposição, depois desfazer a multiplicação por \(A\).</div>
 
       <div class="step"><strong class="step-label">2.1 Desfazendo a transposta</strong>
@@ -209,22 +209,22 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       Já provamos que \(A^{-1}=A\). Substituindo:
       \[X=A\cdot B'\]</div>
 
-      <div class="step"><strong class="step-label">Cuidado — armadilhas desta questão</strong> <span class="badge badge-trap">❗</span>
-      (1) Transponha <strong>os dois lados</strong> da igualdade, nunca só um. (2) Ao multiplicar por \(A^{-1}\) para cancelar, aplique sempre do <strong>mesmo lado</strong> nos dois membros da equação (aqui, pela esquerda) — matrizes não comutam, então "cancelar pela direita" daria um resultado diferente e errado.</div>
+      <div class="step"><strong class="step-label">Cuidado - armadilhas desta questão</strong> <span class="badge badge-trap">ARMADILHA</span>
+      (1) Transponha <strong>os dois lados</strong> da igualdade, nunca só um. (2) Ao multiplicar por \(A^{-1}\) para cancelar, aplique sempre do <strong>mesmo lado</strong> nos dois membros da equação (aqui, pela esquerda) - matrizes não comutam, então "cancelar pela direita" daria um resultado diferente e errado.</div>
 
-      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">🔁</span> Para isolar \(X\) numa equação matricial, desfaça as operações na <strong>ordem inversa</strong> de como foram aplicadas (aqui: primeiro veio o produto por \(A\), depois a transposição; para isolar, desfaça primeiro a transposição, depois o produto).</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Para isolar \(X\) numa equação matricial, desfaça as operações na <strong>ordem inversa</strong> de como foram aplicadas (aqui: primeiro veio o produto por \(A\), depois a transposição; para isolar, desfaça primeiro a transposição, depois o produto).</div>
 
       <span class="answer-final">Resposta final: \(X=A\cdot B'\) (expressão fechada). Se quiser o valor numérico, calcule \(B'=\begin{pmatrix}3&4\\1&2\end{pmatrix}\) e multiplique por \(A\).</span>
     </div>
   </div>
 
-  <div class="alert-success">✅ Fim do Dia 1. Refaça as 3 questões sem olhar o gabarito antes de seguir para o <a href="dia2.html">Dia 2 — Matrizes Inversíveis</a>.</div>
+  <div class="alert-success">Fim do Dia 1. Refaça as 3 questões sem olhar o gabarito antes de seguir para o <a href="dia2.html">Dia 2 - Matrizes Inversíveis</a>.</div>
 
 </main>
 </div>
 
 <footer class="site-footer">
-  Guia de estudos pessoal — Álgebra Linear (MPA06855) — Dia 1 de 3.
+  Guia de estudos pessoal - Álgebra Linear (MPA06855) - Dia 1 de 3.
 </footer>
 <script src="modal.js"></script>
 </body>

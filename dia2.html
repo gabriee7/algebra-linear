@@ -13,7 +13,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 <body>
 <header class="site-header">
   <div class="bar">
-    <a class="brand" href="index.html">Guia P1 — Álgebra Linear
+    <a class="brand" href="index.html">Guia P1 - Álgebra Linear
       <small>MPA06855 · Plano de estudo de 3 dias</small>
     </a>
     <nav class="top-nav">
@@ -41,16 +41,16 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 </aside>
 
 <main>
-  <h1>Dia 2 — Matrizes Inversíveis</h1>
+  <h1>Dia 2 - Matrizes Inversíveis</h1>
   <p class="subtitle">Bloco de 2h. Meta: dominar o método de Gauss-Jordan para calcular \(A^{-1}\) sem erro de conta.</p>
 
   <h2 id="teoria">Teoria: inversa e Gauss-Jordan</h2>
   <div class="theory-box">
-    <p><span class="badge badge-prereq">📌</span> \(A\) quadrada de ordem \(n\) é <strong>invertível</strong> se existe \(B\) tal que \(AB=BA=I_n\). Denotamos \(B=A^{-1}\).</p>
+    <p><span class="badge badge-prereq">PRÉ-REQUISITO</span> \(A\) quadrada de ordem \(n\) é <strong>invertível</strong> se existe \(B\) tal que \(AB=BA=I_n\). Denotamos \(B=A^{-1}\).</p>
   </div>
 
   <div class="eli5">
-    <span class="eli5-label">💡 Explicando bem devagar</span>
+    <span class="eli5-label">Explicando bem devagar</span>
     <p>A inversa é o "oposto multiplicativo" de uma matriz, assim como \(\tfrac{1}{5}\) é o oposto de \(5\) na multiplicação de números. \(A\cdot A^{-1}\) "desfaz" \(A\), voltando para a identidade.</p>
   </div>
 
@@ -67,11 +67,11 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     \[[A\,|\,I]\;\longrightarrow\;[I\,|\,A^{-1}]\]</p>
   </div>
 
-  <div class="alert-warning"><span class="badge badge-trap">❗ armadilha</span> Se durante o escalonamento aparecer uma <strong>linha toda nula</strong> no bloco esquerdo, a matriz <strong>não é invertível</strong> — pare e conclua isso, não insista em "zerar" o que não pode.</div>
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Se durante o escalonamento aparecer uma <strong>linha toda nula</strong> no bloco esquerdo, a matriz <strong>não é invertível</strong> - pare e conclua isso, não insista em "zerar" o que não pode.</div>
 
   <!-- Exercício 1 -->
   <div class="exercise" id="ex1">
-    <h3>Questão 1 — Inversa 2×2 <button class="gabarito-btn" onclick="abrirGabarito('modal-ex1')">Ver gabarito</button></h3>
+    <h3>Questão 1 - Inversa 2×2 <button class="gabarito-btn" onclick="abrirGabarito('modal-ex1')">Ver gabarito</button></h3>
     <div class="enunciado">Verifique se \(A=\begin{pmatrix}0&1\\1&2\end{pmatrix}\) é inversível e, se for, calcule \(A^{-1}\).</div>
     <div class="step"><strong class="step-label">Dica</strong> Se o pivô da 1ª linha for 0, comece trocando linhas.</div>
   </div>
@@ -79,26 +79,26 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
   <div class="modal-overlay" id="modal-ex1">
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
-      <h3>Gabarito — Questão 1</h3>
+      <h3>Gabarito - Questão 1</h3>
 
       <div class="step"><strong class="step-label">1. Monte a matriz ampliada</strong>
       A ideia do Gauss-Jordan é colar a identidade \(I_2\) ao lado de \(A\) e aplicar as <strong>mesmas</strong> operações de linha nos dois blocos ao mesmo tempo, até o bloco esquerdo virar \(I_2\):
       \[[A\,|\,I]=\left[\begin{smallmatrix}0&1&|&1&0\\1&2&|&0&1\end{smallmatrix}\right]\]</div>
 
       <div class="step"><strong class="step-label">2. Por que trocar de linha primeiro?</strong>
-      O elemento \(a_{11}=0\) (canto superior esquerdo). Não dá para usar uma linha com pivô 0 para "zerar" as outras — precisamos de um número diferente de zero ali. Como \(a_{21}=1\neq0\), trocamos as linhas:
+      O elemento \(a_{11}=0\) (canto superior esquerdo). Não dá para usar uma linha com pivô 0 para "zerar" as outras - precisamos de um número diferente de zero ali. Como \(a_{21}=1\neq0\), trocamos as linhas:
       \[L_1\leftrightarrow L_2:\quad \left[\begin{smallmatrix}1&2&|&0&1\\0&1&|&1&0\end{smallmatrix}\right]\]
       Agora o pivô da linha 1 é 1, exatamente o que queremos.</div>
 
       <div class="step"><strong class="step-label">3. Zere o resto da coluna 1</strong>
-      A coluna 1 já está pronta: \(a_{11}=1\) e \(a_{21}=0\) — nada a fazer aqui.</div>
+      A coluna 1 já está pronta: \(a_{11}=1\) e \(a_{21}=0\) - nada a fazer aqui.</div>
 
       <div class="step"><strong class="step-label">4. Zere o resto da coluna 2 (acima do pivô)</strong>
       O pivô da linha 2 já é 1 (\(a_{22}=1\)). Falta zerar o \(2\) que está acima dele, na posição \(a_{12}\). Fazemos \(L_1\to L_1-2L_2\): subtraímos 2 vezes a linha 2 da linha 1, elemento a elemento:
       \[\text{Linha 1: } (1,2\,|\,0,1) - 2\cdot(0,1\,|\,1,0) = (1-0,\;2-2\,|\,0-2,\;1-0) = (1,0\,|\,-2,1)\]
       Resultado:
       \[\left[\begin{smallmatrix}1&0&|&-2&1\\0&1&|&1&0\end{smallmatrix}\right]\]
-      O bloco esquerdo virou \(I_2\) — terminamos! O bloco direito é a inversa.</div>
+      O bloco esquerdo virou \(I_2\) - terminamos! O bloco direito é a inversa.</div>
 
       <div class="step"><strong class="step-label">5. Confira multiplicando</strong>
       Todo cálculo de inversa deve ser conferido: \(A\cdot A^{-1}\) tem que dar \(I_2\).
@@ -110,14 +110,14 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 
   <!-- Exercício 2 -->
   <div class="exercise" id="ex2">
-    <h3>Questão 2 — Inversa 3×3 <button class="gabarito-btn" onclick="abrirGabarito('modal-ex2')">Ver gabarito</button></h3>
+    <h3>Questão 2 - Inversa 3×3 <button class="gabarito-btn" onclick="abrirGabarito('modal-ex2')">Ver gabarito</button></h3>
     <div class="enunciado">Encontre \(A^{-1}\) para \(A=\begin{pmatrix}0&1&2\\1&0&3\\4&-3&8\end{pmatrix}\) via matriz ampliada \([A|I]\).</div>
   </div>
 
   <div class="modal-overlay" id="modal-ex2">
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
-      <h3>Gabarito — Questão 2</h3>
+      <h3>Gabarito - Questão 2</h3>
 
       <div class="step"><strong class="step-label">1. Monte a matriz ampliada \([A|I]\)</strong>
       \[\left[\begin{smallmatrix}0&1&2&|&1&0&0\\1&0&3&|&0&1&0\\4&-3&8&|&0&0&1\end{smallmatrix}\right]\]
@@ -133,7 +133,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       \[\left[\begin{smallmatrix}1&0&3&|&0&1&0\\0&1&2&|&1&0&0\\0&-3&-4&|&0&-4&1\end{smallmatrix}\right]\]</div>
 
       <div class="step"><strong class="step-label">4. Zere o resto da coluna 2</strong>
-      A linha 2 já tem pivô 1 em \(a_{22}\). A linha 1 tem \(0\) nessa coluna — ok. A linha 3 tem \(-3\); fazemos \(L_3\to L_3+3L_2\):
+      A linha 2 já tem pivô 1 em \(a_{22}\). A linha 1 tem \(0\) nessa coluna - ok. A linha 3 tem \(-3\); fazemos \(L_3\to L_3+3L_2\):
       \[(0,-3,-4\,|\,0,-4,1)+3\cdot(0,1,2\,|\,1,0,0)=(0,0,-4+6\,|\,0+3,-4+0,1+0)=(0,0,2\,|\,3,-4,1)\]
       \[\left[\begin{smallmatrix}1&0&3&|&0&1&0\\0&1&2&|&1&0&0\\0&0&2&|&3&-4&1\end{smallmatrix}\right]\]</div>
 
@@ -147,11 +147,11 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       \(L_2\to L_2-2L_3\): \((0,1,2\,|\,1,0,0)-2\cdot(0,0,1\,|\,3/2,-2,1/2)=(0,1,0\,|\,-2,4,1)\)</div>
 
       <div class="step"><strong class="step-label">7. Resultado final</strong>
-      O bloco esquerdo é \(I_3\) — pronto:
+      O bloco esquerdo é \(I_3\) - pronto:
       \[\left[\begin{smallmatrix}1&0&0&|&-9/2&7&-3/2\\0&1&0&|&-2&4&1\\0&0&1&|&3/2&-2&1/2\end{smallmatrix}\right]\]
       O bloco direito é a inversa procurada.</div>
 
-      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">🔁</span> Sempre trabalhe coluna por coluna, da esquerda para a direita: (1) consiga pivô 1, (2) zere abaixo dele, repita para todas as colunas, depois (3) zere acima de cada pivô de baixo para cima.</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Sempre trabalhe coluna por coluna, da esquerda para a direita: (1) consiga pivô 1, (2) zere abaixo dele, repita para todas as colunas, depois (3) zere acima de cada pivô de baixo para cima.</div>
 
       <span class="answer-final">Resposta final: \(A^{-1}=\begin{pmatrix}-9/2&7&-3/2\\-2&4&1\\3/2&-2&1/2\end{pmatrix}\)</span>
     </div>
@@ -159,18 +159,18 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 
   <!-- Exercício 3 -->
   <div class="exercise" id="ex3">
-    <h3>Questão 3 — Inversa 3×3 (outra matriz) <button class="gabarito-btn" onclick="abrirGabarito('modal-ex3')">Ver gabarito</button></h3>
+    <h3>Questão 3 - Inversa 3×3 (outra matriz) <button class="gabarito-btn" onclick="abrirGabarito('modal-ex3')">Ver gabarito</button></h3>
     <div class="enunciado">Considere \(A=\begin{pmatrix}1&-1&-1\\-1&2&2\\1&-2&1\end{pmatrix}\). \(A\) é inversível? Calcule a inversa.</div>
   </div>
 
   <div class="modal-overlay" id="modal-ex3">
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
-      <h3>Gabarito — Questão 3</h3>
+      <h3>Gabarito - Questão 3</h3>
 
       <div class="step"><strong class="step-label">1. Matriz ampliada</strong>
       \[[A|I]=\left[\begin{smallmatrix}1&-1&-1&|&1&0&0\\-1&2&2&|&0&1&0\\1&-2&1&|&0&0&1\end{smallmatrix}\right]\]
-      A coluna 1 já tem pivô 1 na linha 1 — bom sinal, vamos usar a linha 1 para zerar as demais linhas dessa coluna.</div>
+      A coluna 1 já tem pivô 1 na linha 1 - bom sinal, vamos usar a linha 1 para zerar as demais linhas dessa coluna.</div>
 
       <div class="step"><strong class="step-label">2. Zere a coluna 1 usando a linha 1</strong>
       \(L_2\to L_2+L_1\) (porque \(a_{21}=-1\), somar a linha 1 cancela): \((-1,2,2\,|\,0,1,0)+(1,-1,-1\,|\,1,0,0)=(0,1,1\,|\,1,1,0)\)<br>
@@ -193,10 +193,10 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       Resultado final:
       \[\left[\begin{smallmatrix}1&0&0&|&2&1&0\\0&1&0&|&1&2/3&-1/3\\0&0&1&|&0&1/3&1/3\end{smallmatrix}\right]\]</div>
 
-      <div class="step"><strong class="step-label">6. Confira multiplicando \(A\cdot A^{-1}\)</strong> <span class="badge badge-trap">❗</span>
+      <div class="step"><strong class="step-label">6. Confira multiplicando \(A\cdot A^{-1}\)</strong> <span class="badge badge-trap">ARMADILHA</span>
       Esse é o passo mais importante e evita perder pontos por erro de conta: pegue o bloco direito e multiplique por \(A\); tem que dar exatamente \(I_3\).
       \[\begin{pmatrix}1&-1&-1\\-1&2&2\\1&-2&1\end{pmatrix}\begin{pmatrix}2&1&0\\1&2/3&-1/3\\0&1/3&1/3\end{pmatrix}=\begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}\;✓\]
-      (confira linha 1: \(1\cdot2+(-1)\cdot1+(-1)\cdot0=1\); \(1\cdot1+(-1)\cdot\frac23+(-1)\cdot\frac13=1-1=0\); \(1\cdot0+(-1)\cdot(-\frac13)+(-1)\cdot\frac13=0\) — bate com a linha 1 de \(I_3\).)</div>
+      (confira linha 1: \(1\cdot2+(-1)\cdot1+(-1)\cdot0=1\); \(1\cdot1+(-1)\cdot\frac23+(-1)\cdot\frac13=1-1=0\); \(1\cdot0+(-1)\cdot(-\frac13)+(-1)\cdot\frac13=0\) - bate com a linha 1 de \(I_3\).)</div>
 
       <span class="answer-final">Resposta final: \(A\) é inversível, \(A^{-1}=\begin{pmatrix}2&1&0\\1&2/3&-1/3\\0&1/3&1/3\end{pmatrix}\).</span>
 
@@ -206,14 +206,14 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 
   <!-- Exercício 4 -->
   <div class="exercise" id="ex4">
-    <h3>Questão 4 — Verificação por multiplicação (atalho) <button class="gabarito-btn" onclick="abrirGabarito('modal-ex4')">Ver gabarito</button></h3>
+    <h3>Questão 4 - Verificação por multiplicação (atalho) <button class="gabarito-btn" onclick="abrirGabarito('modal-ex4')">Ver gabarito</button></h3>
     <div class="enunciado">Mostre que a inversa de \(A=\begin{pmatrix}1&1&0\\0&2&1\\1&0&1\end{pmatrix}\) é \(B=\begin{pmatrix}2/3&-1/3&1/3\\1/3&1/3&-1/3\\-2/3&1/3&2/3\end{pmatrix}\).</div>
   </div>
 
   <div class="modal-overlay" id="modal-ex4">
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
-      <h3>Gabarito — Questão 4</h3>
+      <h3>Gabarito - Questão 4</h3>
 
       <div class="step"><strong class="step-label">1. Por que NÃO escalonar aqui</strong>
       A questão já te dá a suposta inversa \(B\) pronta. Refazer Gauss-Jordan do zero seria desperdiçar tempo de prova. Pela própria definição de inversa (\(AB=I\)), <strong>basta multiplicar</strong> e checar se dá a identidade.</div>
@@ -226,7 +226,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       \[c_{11}=1\cdot\tfrac23+1\cdot\tfrac13+0\cdot(-\tfrac23)=\tfrac23+\tfrac13=1\]
       \[c_{12}=1\cdot(-\tfrac13)+1\cdot\tfrac13+0\cdot\tfrac13=0\]
       \[c_{13}=1\cdot\tfrac13+1\cdot(-\tfrac13)+0\cdot\tfrac23=0\]
-      Linha 1 de \(AB\) = \((1,0,0)\) — igual à linha 1 de \(I_3\). ✓</div>
+      Linha 1 de \(AB\) = \((1,0,0)\) - igual à linha 1 de \(I_3\). ✓</div>
 
       <div class="step"><strong class="step-label">4. Linha 2 de \(A\cdot B\)</strong>
       Linha 2 de \(A\) é \((0,2,1)\):
@@ -242,7 +242,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       \[c_{33}=1\cdot\tfrac13+0\cdot(-\tfrac13)+1\cdot\tfrac23=1\]
       Linha 3 de \(AB\) = \((0,0,1)\). ✓ Logo \(A\cdot B=I_3\), confirmando que \(B=A^{-1}\).</div>
 
-      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">🔁</span> Quando a inversa já é dada pelo enunciado, não refaça o escalonamento do zero: calcule \(A\cdot B\) (ou \(B\cdot A\)) e verifique se dá \(I_3\). É bem mais rápido e igualmente rigoroso — ótima estratégia sob pressão de tempo de prova.</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Quando a inversa já é dada pelo enunciado, não refaça o escalonamento do zero: calcule \(A\cdot B\) (ou \(B\cdot A\)) e verifique se dá \(I_3\). É bem mais rápido e igualmente rigoroso - ótima estratégia sob pressão de tempo de prova.</div>
 
       <span class="answer-final">Resposta final: \(A\cdot B=I_3\), portanto \(B=A^{-1}\).</span>
     </div>
@@ -254,24 +254,24 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
   </div>
 
   <div class="exercise" id="hill-ex">
-    <h3>Exemplo completo — palavra "GATO" <button class="gabarito-btn" onclick="abrirGabarito('modal-hill')">Ver gabarito</button></h3>
+    <h3>Exemplo completo - palavra "GATO" <button class="gabarito-btn" onclick="abrirGabarito('modal-hill')">Ver gabarito</button></h3>
     <div class="enunciado">Cifre e decifre "GATO" usando a chave \(K=\begin{pmatrix}3&5\\1&2\end{pmatrix}\).</div>
   </div>
 
   <div class="modal-overlay" id="modal-hill">
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
-      <h3>Gabarito — Cifra de Hill</h3>
+      <h3>Gabarito - Cifra de Hill</h3>
 
       <div class="step"><strong class="step-label">1. Converta a palavra em números</strong>
       Usando A=1, B=2, ..., Z=26: G=7, A=1, T=20, O=15. Agrupamos em pares nas colunas de uma matriz \(2\times2\) (2 letras por coluna, na ordem em que aparecem):
       \[M=\begin{pmatrix}7&1\\20&15\end{pmatrix}\]
-      (primeira coluna = "GA" → 7,20; segunda coluna = "TO" → 1,15 — cada coluna é um bloco de 2 letras.)</div>
+      (primeira coluna = "GA" → 7,20; segunda coluna = "TO" → 1,15 - cada coluna é um bloco de 2 letras.)</div>
 
       <div class="step"><strong class="step-label">2. Confirme que a chave é utilizável</strong>
       A chave é \(K=\begin{pmatrix}3&5\\1&2\end{pmatrix}\). Para poder decifrar depois, \(K\) precisa ser inversível, ou seja, \(\det K\neq0\):
       \[\det K=3\cdot2-5\cdot1=6-5=1\neq0\;✓\]
-      Como o determinante é \(1\), a inversa de \(K\) terá frações "limpas" — bom sinal para a conta.</div>
+      Como o determinante é \(1\), a inversa de \(K\) terá frações "limpas" - bom sinal para a conta.</div>
 
       <div class="step"><strong class="step-label">3. Cifre: \(C=K\cdot M\)</strong>
       Multiplicando linha de \(K\) por coluna de \(M\):
@@ -292,21 +292,21 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       \[c_{21}=-1\cdot121+3\cdot47=-121+141=20\]
       \[c_{22}=-1\cdot78+3\cdot31=-78+93=15\]
       \[M=\begin{pmatrix}7&1\\20&15\end{pmatrix}\]
-      Exatamente a matriz mensagem original — a decodificação recuperou os números \(7,1,20,15\), que voltam a ser G, A, T, O.</div>
+      Exatamente a matriz mensagem original - a decodificação recuperou os números \(7,1,20,15\), que voltam a ser G, A, T, O.</div>
 
-      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">🔁</span> A Cifra de Hill é só multiplicação e inversão de matrizes aplicadas a texto. O ponto de prova mais cobrado é: <strong>\(K\) só serve como chave se \(\det K\neq0\)</strong> — sem isso, a mensagem não pode ser decifrada, pois \(K^{-1}\) não existe.</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> A Cifra de Hill é só multiplicação e inversão de matrizes aplicadas a texto. O ponto de prova mais cobrado é: <strong>\(K\) só serve como chave se \(\det K\neq0\)</strong> - sem isso, a mensagem não pode ser decifrada, pois \(K^{-1}\) não existe.</div>
 
       <span class="answer-final">Resposta: mensagem "GATO" → \(M=\begin{pmatrix}7&1\\20&15\end{pmatrix}\) → cifrada com \(K\) → decifrada com \(K^{-1}\), recuperando \(M\) e portanto "GATO".</span>
     </div>
   </div>
 
-  <div class="alert-success">✅ Fim do Dia 2. Cronometre-se refazendo a Questão 2 (3×3) do zero antes de ir para o <a href="dia3.html">Dia 3 — Determinantes</a>.</div>
+  <div class="alert-success">Fim do Dia 2. Cronometre-se refazendo a Questão 2 (3×3) do zero antes de ir para o <a href="dia3.html">Dia 3 - Determinantes</a>.</div>
 
 </main>
 </div>
 
 <footer class="site-footer">
-  Guia de estudos pessoal — Álgebra Linear (MPA06855) — Dia 2 de 3.
+  Guia de estudos pessoal - Álgebra Linear (MPA06855) - Dia 2 de 3.
 </footer>
 <script src="modal.js"></script>
 </body>

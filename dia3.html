@@ -13,7 +13,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 <body>
 <header class="site-header">
   <div class="bar">
-    <a class="brand" href="index.html">Guia P1 — Álgebra Linear
+    <a class="brand" href="index.html">Guia P1 - Álgebra Linear
       <small>MPA06855 · Plano de estudo de 3 dias</small>
     </a>
     <nav class="top-nav">
@@ -43,23 +43,23 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 </aside>
 
 <main>
-  <h1>Dia 3 — Determinantes e Matriz Adjunta</h1>
+  <h1>Dia 3 - Determinantes e Matriz Adjunta</h1>
   <p class="subtitle">Bloco de 2h + simulado geral. Meta: fechar os 3 tópicos e treinar sob tempo.</p>
 
   <h2 id="teoria">Teoria: Laplace e propriedades</h2>
   <div class="theory-box">
-    <p><span class="badge badge-prereq">📌</span> Ordem 2: \(\det A=ad-bc\) para \(A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\). Para ordem ≥ 3, use <strong>cofatores</strong>: \(\Delta_{ij}=(-1)^{i+j}\det A_{ij}\) (\(A_{ij}\) = matriz sem a linha \(i\) e coluna \(j\)).</p>
+    <p><span class="badge badge-prereq">PRÉ-REQUISITO</span> Ordem 2: \(\det A=ad-bc\) para \(A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\). Para ordem ≥ 3, use <strong>cofatores</strong>: \(\Delta_{ij}=(-1)^{i+j}\det A_{ij}\) (\(A_{ij}\) = matriz sem a linha \(i\) e coluna \(j\)).</p>
   </div>
 
   <div class="theory-box">
     <p><strong>Desenvolvimento de Laplace</strong> pela linha \(i\):
     \[\det A=\sum_{j=1}^{n}a_{ij}\Delta_{ij}\]
-    Vale por qualquer linha ou coluna — <strong>escolha a com mais zeros</strong> para economizar contas.</p>
+    Vale por qualquer linha ou coluna - <strong>escolha a com mais zeros</strong> para economizar contas.</p>
   </div>
 
   <div class="eli5">
-    <span class="eli5-label">💡 Explicando bem devagar</span>
-    <p>Laplace "quebra" um determinante grande em vários determinantes menores. Se uma linha tem zeros, os termos com esses zeros somem da conta — por isso vale a pena escolher a linha/coluna "mais vazia".</p>
+    <span class="eli5-label">Explicando bem devagar</span>
+    <p>Laplace "quebra" um determinante grande em vários determinantes menores. Se uma linha tem zeros, os termos com esses zeros somem da conta - por isso vale a pena escolher a linha/coluna "mais vazia".</p>
   </div>
 
   <table class="variations">
@@ -75,18 +75,18 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 
   <!-- Exercício 1 -->
   <div class="exercise" id="ex1">
-    <h3>Questão 1 — Laplace com escolha esperta de linha <button class="gabarito-btn" onclick="abrirGabarito('modal-ex1')">Ver gabarito</button></h3>
+    <h3>Questão 1 - Laplace com escolha esperta de linha <button class="gabarito-btn" onclick="abrirGabarito('modal-ex1')">Ver gabarito</button></h3>
     <div class="enunciado">Calcule \(\det A\) para \(A=\begin{pmatrix}1&5&0\\2&4&-1\\0&-2&0\end{pmatrix}\).</div>
-    <div class="step"><strong class="step-label">Dica</strong> A 3ª linha tem dois zeros — expanda por ela.</div>
+    <div class="step"><strong class="step-label">Dica</strong> A 3ª linha tem dois zeros - expanda por ela.</div>
   </div>
 
   <div class="modal-overlay" id="modal-ex1">
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
-      <h3>Gabarito — Questão 1</h3>
+      <h3>Gabarito - Questão 1</h3>
 
       <div class="step"><strong class="step-label">1. Escolha a linha/coluna mais vantajosa</strong>
-      \(A=\begin{pmatrix}1&5&0\\2&4&-1\\0&-2&0\end{pmatrix}\). Antes de expandir, olhe todas as linhas e colunas procurando a que tem <strong>mais zeros</strong>: a linha 3 é \((0,-2,0)\) — dois zeros! Expandir por ela elimina 2 dos 3 termos da soma de Laplace automaticamente.</div>
+      \(A=\begin{pmatrix}1&5&0\\2&4&-1\\0&-2&0\end{pmatrix}\). Antes de expandir, olhe todas as linhas e colunas procurando a que tem <strong>mais zeros</strong>: a linha 3 é \((0,-2,0)\) - dois zeros! Expandir por ela elimina 2 dos 3 termos da soma de Laplace automaticamente.</div>
 
       <div class="step"><strong class="step-label">2. Escreva a fórmula de Laplace pela linha 3</strong>
       \[\det A = a_{31}\Delta_{31}+a_{32}\Delta_{32}+a_{33}\Delta_{33}\]
@@ -98,10 +98,10 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       \[A=\begin{pmatrix}1&\cancel{5}&0\\2&\cancel{4}&-1\\\cancel{0}&\cancel{-2}&\cancel{0}\end{pmatrix}\;\Rightarrow\; A_{32}=\begin{pmatrix}1&0\\2&-1\end{pmatrix}\]
       \[\det A_{32}=1\cdot(-1)-0\cdot2=-1\]</div>
 
-      <div class="step"><strong class="step-label">4. Aplique o sinal do cofator</strong> <span class="badge badge-trap">❗</span>
+      <div class="step"><strong class="step-label">4. Aplique o sinal do cofator</strong> <span class="badge badge-trap">ARMADILHA</span>
       O cofator carrega um sinal \((-1)^{i+j}\) que depende da posição. Aqui \(i=3,j=2\):
       \[\Delta_{32}=(-1)^{3+2}\det A_{32}=(-1)^5\cdot(-1)=(-1)\cdot(-1)=1\]
-      Esse sinal alternado é o erro mais comum da matéria — sempre calcule \((-1)^{i+j}\) explicitamente antes de multiplicar.</div>
+      Esse sinal alternado é o erro mais comum da matéria - sempre calcule \((-1)^{i+j}\) explicitamente antes de multiplicar.</div>
 
       <div class="step"><strong class="step-label">5. Finalize a conta</strong>
       \[\det A = a_{32}\cdot\Delta_{32} = -2\cdot1=-2\]</div>
@@ -111,7 +111,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       \[\Delta_{11}=(-1)^{1+1}\det\begin{pmatrix}4&-1\\-2&0\end{pmatrix}=1\cdot(4\cdot0-(-1)(-2))=1\cdot(0-2)=-2\]
       \[\Delta_{12}=(-1)^{1+2}\det\begin{pmatrix}2&-1\\0&0\end{pmatrix}=-1\cdot(2\cdot0-(-1)\cdot0)=-1\cdot0=0\]
       \[\det A = 1\cdot(-2)+5\cdot0+0\cdot(\ldots) = -2\]
-      Mesmo resultado ✓ — confirma que a conta está certa.</div>
+      Mesmo resultado ✓ - confirma que a conta está certa.</div>
 
       <span class="answer-final">Resposta final: \(\det A=-2\)</span>
     </div>
@@ -119,22 +119,22 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 
   <h2 id="adjunta">Matriz adjunta</h2>
   <div class="theory-box">
-    <p><strong>Matriz de cofatores</strong> \(\overline{A}=[\Delta_{ij}]\). <strong>Adjunta:</strong> \(\operatorname{adj}A=\overline{A}'\) (transposta dos cofatores — não confundir!).</p>
+    <p><strong>Matriz de cofatores</strong> \(\overline{A}=[\Delta_{ij}]\). <strong>Adjunta:</strong> \(\operatorname{adj}A=\overline{A}'\) (transposta dos cofatores - não confundir!).</p>
     <p><strong>Teorema central:</strong>
     \[A^{-1}=\frac{1}{\det A}\operatorname{adj}A, \quad \text{válido se e somente se } \det A\neq0\]</p>
   </div>
-  <div class="alert-warning"><span class="badge badge-trap">❗ armadilha</span> A adjunta é a <strong>transposta</strong> da matriz de cofatores, não a matriz de cofatores em si. Esse é o erro mais comum nessa questão.</div>
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> A adjunta é a <strong>transposta</strong> da matriz de cofatores, não a matriz de cofatores em si. Esse é o erro mais comum nessa questão.</div>
 
   <!-- Exercício 2 -->
   <div class="exercise" id="ex2">
-    <h3>Questão 2 — Adjunta e \(A\cdot\operatorname{adj}A\) <button class="gabarito-btn" onclick="abrirGabarito('modal-ex2')">Ver gabarito</button></h3>
+    <h3>Questão 2 - Adjunta e \(A\cdot\operatorname{adj}A\) <button class="gabarito-btn" onclick="abrirGabarito('modal-ex2')">Ver gabarito</button></h3>
     <div class="enunciado">Para \(A=\begin{pmatrix}1&5&0\\2&4&-1\\0&-2&0\end{pmatrix}\) (mesma da Q1, \(\det A=-2\)), determine \(\operatorname{adj}A\) e calcule \(A\cdot\operatorname{adj}A\).</div>
   </div>
 
   <div class="modal-overlay" id="modal-ex2">
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
-      <h3>Gabarito — Questão 2</h3>
+      <h3>Gabarito - Questão 2</h3>
 
       <div class="step"><strong class="step-label">1. O que é preciso calcular</strong>
       Para achar a adjunta, primeiro calculamos <strong>todos os 9 cofatores</strong> de \(A=\begin{pmatrix}1&5&0\\2&4&-1\\0&-2&0\end{pmatrix}\) (um para cada posição \(a_{ij}\)), montamos a matriz de cofatores \(\overline{A}\), e por fim <strong>transpomos</strong> para obter \(\operatorname{adj}A\).</div>
@@ -158,16 +158,16 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       Cada \(\Delta_{ij}\) vai na mesma posição \((i,j)\) de \(A\):
       \[\overline{A}=\begin{pmatrix}-2&0&-4\\0&0&2\\-5&1&-6\end{pmatrix}\]</div>
 
-      <div class="step"><strong class="step-label">6. Transponha para obter a adjunta</strong> <span class="badge badge-trap">❗</span>
+      <div class="step"><strong class="step-label">6. Transponha para obter a adjunta</strong> <span class="badge badge-trap">ARMADILHA</span>
       A armadilha clássica é <strong>parar aqui</strong> achando que \(\overline{A}\) já é a resposta. A adjunta é a <strong>transposta</strong> da matriz de cofatores (linhas viram colunas):
       \[\operatorname{adj}A=\overline{A}'=\begin{pmatrix}-2&0&-5\\0&0&1\\-4&2&-6\end{pmatrix}\]</div>
 
       <div class="step"><strong class="step-label">7. Confira com o teorema \(A\cdot\operatorname{adj}A=(\det A)I_3\)</strong>
-      Esse teorema é a "prova dos nove" da adjunta: multiplicando \(A\) pela sua adjunta, o resultado tem que ser o determinante de \(A\) vezes a identidade — nunca outra coisa.
+      Esse teorema é a "prova dos nove" da adjunta: multiplicando \(A\) pela sua adjunta, o resultado tem que ser o determinante de \(A\) vezes a identidade - nunca outra coisa.
       \[A\cdot\operatorname{adj}A=\begin{pmatrix}1&5&0\\2&4&-1\\0&-2&0\end{pmatrix}\begin{pmatrix}-2&0&-5\\0&0&1\\-4&2&-6\end{pmatrix}=\begin{pmatrix}-2&0&0\\0&-2&0\\0&0&-2\end{pmatrix}=-2\cdot I_3\]
       Como já sabíamos do exercício anterior que \(\det A=-2\), o resultado bate perfeitamente: \((\det A)\cdot I_3=-2I_3\) ✓.</div>
 
-      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">🔁</span> Esse teorema é a base de \(A^{-1}=\frac{1}{\det A}\operatorname{adj}A\): basta dividir a adjunta pelo determinante para obter a inversa diretamente, sem escalonar.</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Esse teorema é a base de \(A^{-1}=\frac{1}{\det A}\operatorname{adj}A\): basta dividir a adjunta pelo determinante para obter a inversa diretamente, sem escalonar.</div>
 
       <span class="answer-final">Resposta final: \(\operatorname{adj}A=\begin{pmatrix}-2&0&-5\\0&0&1\\-4&2&-6\end{pmatrix}\) e \(A\cdot\operatorname{adj}A=-2I_3\), consistente com \(\det A=-2\).</span>
     </div>
@@ -177,29 +177,29 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
   <div class="theory-box">
     <p>Para \(Ax=b\) com \(A\) <strong>quadrada</strong> e \(\det A\neq0\): \(x_i=\dfrac{\det A_i}{\det A}\), onde \(A_i\) é \(A\) com a coluna \(i\) trocada por \(b\).</p>
   </div>
-  <div class="alert-warning"><span class="badge badge-trap">❗ armadilha</span> Só funciona se o sistema for quadrado (nº equações = nº incógnitas) e \(\det A\neq0\). Troque a coluna certa — errar a coluna é o erro mais comum.</div>
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Só funciona se o sistema for quadrado (nº equações = nº incógnitas) e \(\det A\neq0\). Troque a coluna certa - errar a coluna é o erro mais comum.</div>
 
   <!-- Exercício 3 -->
   <div class="exercise" id="ex3">
-    <h3>Questão 3 — Sistema por Cramer <button class="gabarito-btn" onclick="abrirGabarito('modal-ex3')">Ver gabarito</button></h3>
+    <h3>Questão 3 - Sistema por Cramer <button class="gabarito-btn" onclick="abrirGabarito('modal-ex3')">Ver gabarito</button></h3>
     <div class="enunciado">Resolva pela Regra de Cramer: \(\begin{cases}2x+y-z=3\\x-y+2z=4\\3x+2y+z=10\end{cases}\)</div>
   </div>
 
   <div class="modal-overlay" id="modal-ex3">
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
-      <h3>Gabarito — Questão 3</h3>
+      <h3>Gabarito - Questão 3</h3>
 
       <div class="step"><strong class="step-label">1. Identifique \(A\) e \(b\)</strong>
       O sistema \(\begin{cases}2x+y-z=3\\x-y+2z=4\\3x+2y+z=10\end{cases}\) na forma \(Ax=b\) tem:
       \[A=\begin{pmatrix}2&1&-1\\1&-1&2\\3&2&1\end{pmatrix}, \quad b=\begin{pmatrix}3\\4\\10\end{pmatrix}\]
-      Cramer só se aplica porque \(A\) é quadrada (3 equações, 3 incógnitas) — sempre confira isso primeiro.</div>
+      Cramer só se aplica porque \(A\) é quadrada (3 equações, 3 incógnitas) - sempre confira isso primeiro.</div>
 
       <div class="step"><strong class="step-label">2. Calcule \(\det A\) (Sarrus)</strong>
       Regra de Sarrus: repita as duas primeiras colunas ao lado e some as diagonais "descendo", subtraia as "subindo".
       \[\det A = 2(-1)(1)+1(2)(3)+(-1)(1)(2) - \big[(-1)(-1)(3)+2(2)(2)+1(1)(1)\big]\]
       \[=(-2+6-2)-(3+8+1) = 2-12=-10\]
-      Como \(\det A=-10\neq0\), o sistema é <strong>possível e determinado</strong> — Cramer pode ser usado com segurança.</div>
+      Como \(\det A=-10\neq0\), o sistema é <strong>possível e determinado</strong> - Cramer pode ser usado com segurança.</div>
 
       <div class="step"><strong class="step-label">3. Monte \(A_x\) (substitua a coluna de \(x\) por \(b\))</strong>
       \[A_x=\begin{pmatrix}3&1&-1\\4&-1&2\\10&2&1\end{pmatrix}\]
@@ -221,9 +221,9 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       \[z=\frac{\det A_z}{\det A}=\frac{-19}{-10}=\frac{19}{10}\]</div>
 
       <div class="step"><strong class="step-label">6. Confira substituindo na 1ª equação</strong>
-      \(2x+y-z\) deve dar \(3\): \(2\cdot\frac{17}{10}+\frac{15}{10}-\frac{19}{10}=\frac{34+15-19}{10}=\frac{30}{10}=3\) ✓. Bateu exatamente — a resposta está confirmada. Sempre faça essa conferência final: é o que garante nota cheia mesmo com contas longas.</div>
+      \(2x+y-z\) deve dar \(3\): \(2\cdot\frac{17}{10}+\frac{15}{10}-\frac{19}{10}=\frac{34+15-19}{10}=\frac{30}{10}=3\) ✓. Bateu exatamente - a resposta está confirmada. Sempre faça essa conferência final: é o que garante nota cheia mesmo com contas longas.</div>
 
-      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">🔁</span> Cramer sempre segue o mesmo roteiro: (1) \(\det A\), (2) trocar UMA coluna por \(b\) por vez, (3) dividir. Nunca troque mais de uma coluna na mesma matriz \(A_i\), e sempre confira o resultado substituindo numa equação original.</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Cramer sempre segue o mesmo roteiro: (1) \(\det A\), (2) trocar UMA coluna por \(b\) por vez, (3) dividir. Nunca troque mais de uma coluna na mesma matriz \(A_i\), e sempre confira o resultado substituindo numa equação original.</div>
 
       <span class="answer-final">Resposta final: \(x=\dfrac{17}{10}\), \(y=\dfrac{3}{2}\), \(z=\dfrac{19}{10}\).</span>
     </div>
@@ -231,35 +231,35 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 
   <h2 id="desafio">Desafio final (exercício em aberto no material)</h2>
   <div class="exercise" id="desafio-ex">
-    <h3>Questão desafio — matriz 4×4 <button class="gabarito-btn" onclick="abrirGabarito('modal-desafio')">Ver dica</button></h3>
+    <h3>Questão desafio - matriz 4×4 <button class="gabarito-btn" onclick="abrirGabarito('modal-desafio')">Ver dica</button></h3>
     <div class="enunciado">\(A=\begin{pmatrix}2&-8&6&8\\3&-9&5&10\\-3&0&1&-1\\1&-4&0&6\end{pmatrix}\). (a) \(A\) é inversível? (b) Se for, calcule \(A^{-1}\).</div>
   </div>
 
   <div class="modal-overlay" id="modal-desafio">
     <div class="modal-box">
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
-      <h3>Dica detalhada — Questão desafio</h3>
+      <h3>Dica detalhada - Questão desafio</h3>
 
       <div class="step"><strong class="step-label">Por que não há gabarito pronto</strong>
-      Esse exercício não tem resolução no material original (nem nos slides, nem no caderno) — é proposital: serve para você testar, sob as condições da prova, se realmente absorveu o método dos 3 dias. Abaixo vai um roteiro completo de como atacar o problema.</div>
+      Esse exercício não tem resolução no material original (nem nos slides, nem no caderno) - é proposital: serve para você testar, sob as condições da prova, se realmente absorveu o método dos 3 dias. Abaixo vai um roteiro completo de como atacar o problema.</div>
 
       <div class="step"><strong class="step-label">1. Por que evitar Laplace direto aqui</strong>
-      Em uma matriz \(4\times4\), Laplace exige expandir em 4 determinantes \(3\times3\), e cada um desses em 3 determinantes \(2\times2\) — rápido de errar e demorado. Prefira <strong>Gauss-Jordan</strong>, o mesmo método do Dia 2, que é mecânico e mais seguro sob pressão de tempo.</div>
+      Em uma matriz \(4\times4\), Laplace exige expandir em 4 determinantes \(3\times3\), e cada um desses em 3 determinantes \(2\times2\) - rápido de errar e demorado. Prefira <strong>Gauss-Jordan</strong>, o mesmo método do Dia 2, que é mecânico e mais seguro sob pressão de tempo.</div>
 
       <div class="step"><strong class="step-label">2. Monte a ampliada \([A|I_4]\)</strong>
       \[\left[\begin{smallmatrix}2&-8&6&8&|&1&0&0&0\\3&-9&5&10&|&0&1&0&0\\-3&0&1&-1&|&0&0&1&0\\1&-4&0&6&|&0&0&0&1\end{smallmatrix}\right]\]
-      Dica prática: comece pela linha que já tem o menor pivô "limpo" — aqui a linha 4 tem \(a_{41}=1\), ótimo candidato para \(L_1\leftrightarrow L_4\) e evitar frações logo de cara.</div>
+      Dica prática: comece pela linha que já tem o menor pivô "limpo" - aqui a linha 4 tem \(a_{41}=1\), ótimo candidato para \(L_1\leftrightarrow L_4\) e evitar frações logo de cara.</div>
 
       <div class="step"><strong class="step-label">3. Siga o roteiro do Dia 2</strong>
-      (1) Consiga pivô 1 na coluna 1 (troque linhas se necessário); (2) zere o resto da coluna 1 usando \(L_i\to L_i-kL_1\); (3) repita o processo para a coluna 2, depois 3, depois 4 — sempre usando a linha com pivô já normalizado para zerar as outras; (4) ao final, "suba" zerando acima de cada pivô.</div>
+      (1) Consiga pivô 1 na coluna 1 (troque linhas se necessário); (2) zere o resto da coluna 1 usando \(L_i\to L_i-kL_1\); (3) repita o processo para a coluna 2, depois 3, depois 4 - sempre usando a linha com pivô já normalizado para zerar as outras; (4) ao final, "suba" zerando acima de cada pivô.</div>
 
-      <div class="step"><strong class="step-label">4. Sinal de que \(A\) NÃO é inversível</strong> <span class="badge badge-trap">❗</span>
+      <div class="step"><strong class="step-label">4. Sinal de que \(A\) NÃO é inversível</strong> <span class="badge badge-trap">ARMADILHA</span>
       Se em algum momento do escalonamento uma linha inteira do bloco esquerdo virar \((0,0,0,0)\), pare: isso significa \(\det A=0\) e a matriz não tem inversa. Não adianta insistir tentando "zerar" o que já é zero por dependência linear das linhas.</div>
 
       <div class="step"><strong class="step-label">5. Confira o resultado</strong>
-      Se \(A\) reduzir completamente a \(I_4\), o bloco direito será \(A^{-1}\). Multiplique \(A\cdot A^{-1}\) e confira se dá exatamente \(I_4\) antes de considerar a questão resolvida — essa conferência vale mais do que qualquer atalho na hora da prova.</div>
+      Se \(A\) reduzir completamente a \(I_4\), o bloco direito será \(A^{-1}\). Multiplique \(A\cdot A^{-1}\) e confira se dá exatamente \(I_4\) antes de considerar a questão resolvida - essa conferência vale mais do que qualquer atalho na hora da prova.</div>
 
-      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">🔁</span> O tamanho da matriz (2×2, 3×3 ou 4×4) não muda o método — só o número de passos. Treinar esse exercício é a melhor forma de garantir que você não trava numa questão maior na P1.</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> O tamanho da matriz (2×2, 3×3 ou 4×4) não muda o método - só o número de passos. Treinar esse exercício é a melhor forma de garantir que você não trava numa questão maior na P1.</div>
     </div>
   </div>
 
@@ -276,13 +276,13 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <tr><td>☐</td><td>Tentei a questão desafio 4×4 sem consultar o gabarito antes</td></tr>
   </table>
 
-  <div class="alert-success">✅ Fim do plano de 3 dias. Revise o <a href="index.html#mapa">mapa mental do início</a> na manhã da prova.</div>
+  <div class="alert-success">Fim do plano de 3 dias. Revise o <a href="index.html#mapa">mapa mental do início</a> na manhã da prova.</div>
 
 </main>
 </div>
 
 <footer class="site-footer">
-  Guia de estudos pessoal — Álgebra Linear (MPA06855) — Dia 3 de 3.
+  Guia de estudos pessoal - Álgebra Linear (MPA06855) - Dia 3 de 3.
 </footer>
 <script src="modal.js"></script>
 </body>
