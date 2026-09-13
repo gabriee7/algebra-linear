@@ -18,12 +18,27 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     </a>
     <nav class="top-nav">
       <a href="index.html">Início</a>
-      <a href="dia1.html">Dia 1 · Matrizes</a>
-      <a href="metodo1.html">Passo a passo 1</a>
-      <a href="dia2.html">Dia 2 · Inversíveis</a>
-      <a href="metodo2.html">Passo a passo 2</a>
-      <a href="dia3.html" class="active">Dia 3 · Determinantes</a>
-      <a href="metodo3.html">Passo a passo 3</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Dia 1 · Matrizes</button>
+        <div class="nav-dropdown-menu">
+          <a href="dia1.html">Teoria e exercícios</a>
+          <a href="metodo1.html">Passo a passo</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Dia 2 · Inversíveis</button>
+        <div class="nav-dropdown-menu">
+          <a href="dia2.html">Teoria e exercícios</a>
+          <a href="metodo2.html">Passo a passo</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle active">Dia 3 · Determinantes</button>
+        <div class="nav-dropdown-menu">
+          <a href="dia3.html" class="active">Teoria e exercícios</a>
+          <a href="metodo3.html">Passo a passo</a>
+        </div>
+      </div>
     </nav>
   </div>
 </header>
@@ -436,5 +451,6 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
   Guia de estudos pessoal - Álgebra Linear (MPA06855) - Dia 3 de 3.
 </footer>
 <script src="modal.js"></script>
+<script src="nav.js"></script>
 </body>
 </html>

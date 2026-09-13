@@ -115,6 +115,73 @@ nav.top-nav a:hover, nav.top-nav a.active {
   font-weight: 600;
 }
 
+/* ── Dropdown de navegação (Dia X + submenu) ── */
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, .85);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.nav-dropdown-toggle::after {
+  content: " \25BE";
+  font-size: 0.7em;
+}
+
+.nav-dropdown-toggle:hover, .nav-dropdown-toggle.active {
+  background: rgba(255, 255, 255, .18);
+  color: #fff;
+  font-weight: 600;
+}
+
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .2);
+  min-width: 190px;
+  max-width: 90vw;
+  padding: 0.4rem;
+  z-index: 200;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: 0.3rem;
+}
+
+.nav-dropdown-menu.is-open {
+  display: flex;
+}
+
+.nav-dropdown-menu a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--radius);
+}
+
+.nav-dropdown-menu a:hover, .nav-dropdown-menu a.active {
+  background: var(--info-bg);
+  color: var(--primary);
+  font-weight: 600;
+}
+
 /* ── Hero ── */
 
 .hero {
