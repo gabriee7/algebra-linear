@@ -107,42 +107,42 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
 
   <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> No caso de multiplicação por matriz, o LADO importa: se \(A\) multiplicava \(X\) pela esquerda na equação original, você tem que multiplicar por \(A^{-1}\) também pela esquerda nos dois lados. Fazer pelo lado errado dá um resultado matematicamente diferente, porque matrizes não comutam (\(AB\neq BA\) em geral).</div>
 
-  <h2 id="exemplo">Exemplo guiado completo (com números diferentes do Dia 1)</h2>
+  <h2 id="exemplo">Exemplo guiado completo (mesmo formato da Questão 3, números diferentes)</h2>
   <div class="exercise">
-    <h3>Exemplo: resolva \(X\) em \((XA)^t=B\)</h3>
-    <div class="enunciado">Considere \(A=\begin{pmatrix}2&0\\1&1\end{pmatrix}\) e \(B=\begin{pmatrix}3&4\\1&2\end{pmatrix}\). Note que aqui \(A\) multiplica \(X\) pela DIREITA (é \(XA\), não \(AX\)) - um caso um pouco diferente do que você verá na Questão 3, mas que usa exatamente o mesmo método.</div>
+    <h3>Exemplo: resolva \(X\) em \((AX)^t=B\)</h3>
+    <div class="enunciado">Considere \(A=\begin{pmatrix}1&3\\0&1\end{pmatrix}\) e \(B=\begin{pmatrix}2&5\\1&4\end{pmatrix}\). Esta equação tem exatamente o mesmo formato da Questão 3 do Dia 1: \(A\) multiplica \(X\) pela esquerda, e o resultado é transposto. Siga estes passos e depois repita-os, na mesma ordem, na Questão 3.</div>
 
     <div class="step"><strong class="step-label">1. Identifique a ordem das operações em X</strong>
-    Lendo de dentro para fora: primeiro \(X\) é multiplicado por \(A\) pela direita (formando \(XA\)), depois o resultado é transposto. Ordem de "vestir": multiplicar por \(A\) à direita, depois transpor.</div>
+    Lendo de dentro para fora: primeiro \(X\) é multiplicado por \(A\) pela esquerda (formando \(AX\)), depois o resultado inteiro é transposto. Ordem de "vestir": multiplicar por \(A\) à esquerda, depois transpor.</div>
 
     <div class="step"><strong class="step-label">2. Desfaça a transposição primeiro (é a última "veste")</strong>
-    Transponha os dois lados: \(((XA)^t)^t=B^t \Rightarrow XA=B^t\).
+    Transponha os dois lados: \(((AX)^t)^t=B^t \Rightarrow AX=B^t\).
     Calcule \(B^t\) transpondo \(B\) (troque linhas por colunas):
-    \[B^t=\begin{pmatrix}3&1\\4&2\end{pmatrix}\]
-    Então: \(XA=\begin{pmatrix}3&1\\4&2\end{pmatrix}\)</div>
+    \[B^t=\begin{pmatrix}2&1\\5&4\end{pmatrix}\]
+    Então: \(AX=\begin{pmatrix}2&1\\5&4\end{pmatrix}\)</div>
 
-    <div class="step"><strong class="step-label">3. Agora desfaça a multiplicação por \(A\) (que estava à direita)</strong>
-    Como \(A\) multiplicava \(X\) pela DIREITA, multiplique os dois lados por \(A^{-1}\) também pela DIREITA:
-    \[(XA)A^{-1}=B^tA^{-1} \Rightarrow X(AA^{-1})=B^tA^{-1} \Rightarrow X=B^tA^{-1}\]</div>
+    <div class="step"><strong class="step-label">3. Agora desfaça a multiplicação por \(A\) (que estava à esquerda)</strong>
+    Como \(A\) multiplicava \(X\) pela ESQUERDA, multiplique os dois lados por \(A^{-1}\) também pela ESQUERDA:
+    \[A^{-1}(AX)=A^{-1}B^t \Rightarrow (A^{-1}A)X=A^{-1}B^t \Rightarrow X=A^{-1}B^t\]</div>
 
     <div class="step"><strong class="step-label">4. Calcule \(A^{-1}\)</strong>
-    Para \(A=\begin{pmatrix}2&0\\1&1\end{pmatrix}\), \(\det A=2\cdot1-0\cdot1=2\). Usando o atalho de inversa \(2\times2\) (troca a diagonal principal, inverte o sinal da secundária, divide pelo determinante):
-    \[A^{-1}=\frac{1}{2}\begin{pmatrix}1&0\\-1&2\end{pmatrix}=\begin{pmatrix}1/2&0\\-1/2&1\end{pmatrix}\]</div>
+    Para \(A=\begin{pmatrix}1&3\\0&1\end{pmatrix}\), \(\det A=1\cdot1-3\cdot0=1\). Usando o atalho de inversa \(2\times2\) (troca a diagonal principal, inverte o sinal da secundária, divide pelo determinante):
+    \[A^{-1}=\frac{1}{1}\begin{pmatrix}1&-3\\0&1\end{pmatrix}=\begin{pmatrix}1&-3\\0&1\end{pmatrix}\]</div>
 
-    <div class="step"><strong class="step-label">5. Multiplique \(B^t\) por \(A^{-1}\) (nessa ordem, pela direita)</strong>
-    \[X=B^tA^{-1}=\begin{pmatrix}3&1\\4&2\end{pmatrix}\begin{pmatrix}1/2&0\\-1/2&1\end{pmatrix}\]
-    Linha 1: \(c_{11}=3\cdot\tfrac12+1\cdot(-\tfrac12)=\tfrac32-\tfrac12=1\); \(c_{12}=3\cdot0+1\cdot1=1\)
-    Linha 2: \(c_{21}=4\cdot\tfrac12+2\cdot(-\tfrac12)=2-1=1\); \(c_{22}=4\cdot0+2\cdot1=2\)
-    \[X=\begin{pmatrix}1&1\\1&2\end{pmatrix}\]</div>
+    <div class="step"><strong class="step-label">5. Multiplique \(A^{-1}\) por \(B^t\) (nessa ordem, pela esquerda)</strong>
+    \[X=A^{-1}B^t=\begin{pmatrix}1&-3\\0&1\end{pmatrix}\begin{pmatrix}2&1\\5&4\end{pmatrix}\]
+    Linha 1: \(c_{11}=1\cdot2+(-3)\cdot5=2-15=-13\); \(c_{12}=1\cdot1+(-3)\cdot4=1-12=-11\)
+    Linha 2: \(c_{21}=0\cdot2+1\cdot5=5\); \(c_{22}=0\cdot1+1\cdot4=4\)
+    \[X=\begin{pmatrix}-13&-11\\5&4\end{pmatrix}\]</div>
 
     <div class="step"><strong class="step-label">6. Confira substituindo na equação original</strong>
-    Calcule \(XA=\begin{pmatrix}1&1\\1&2\end{pmatrix}\begin{pmatrix}2&0\\1&1\end{pmatrix}\): linha 1: \(1\cdot2+1\cdot1=3\), \(1\cdot0+1\cdot1=1\) → \((3,1)\); linha 2: \(1\cdot2+2\cdot1=4\), \(1\cdot0+2\cdot1=2\) → \((4,2)\). Logo \(XA=\begin{pmatrix}3&1\\4&2\end{pmatrix}\). Transpondo: \((XA)^t=\begin{pmatrix}3&4\\1&2\end{pmatrix}=B\) ✓ Confirmado!</div>
+    Calcule \(AX=\begin{pmatrix}1&3\\0&1\end{pmatrix}\begin{pmatrix}-13&-11\\5&4\end{pmatrix}\): linha 1: \(1\cdot(-13)+3\cdot5=-13+15=2\), \(1\cdot(-11)+3\cdot4=-11+12=1\) → \((2,1)\); linha 2: \(0\cdot(-13)+1\cdot5=5\), \(0\cdot(-11)+1\cdot4=4\) → \((5,4)\). Logo \(AX=\begin{pmatrix}2&1\\5&4\end{pmatrix}\). Transpondo: \((AX)^t=\begin{pmatrix}2&5\\1&4\end{pmatrix}=B\) ✓ Confirmado!</div>
 
-    <span class="answer-final">Resposta final do exemplo: \(X=\begin{pmatrix}1&1\\1&2\end{pmatrix}\)</span>
+    <span class="answer-final">Resposta final do exemplo: \(X=\begin{pmatrix}-13&-11\\5&4\end{pmatrix}\)</span>
   </div>
 
   <h2 id="agora">Agora tente sozinho</h2>
-  <div class="alert-success">Você acabou de ver o método completo aplicado a \((XA)^t=B\) (A multiplicando pela direita). A Questão 3 do Dia 1 pede \((AX)^t=B\) (A multiplicando pela ESQUERDA) - é o espelho exato do que você acabou de ver, só muda o lado em que você multiplica por \(A^{-1}\) no passo 3. Volte para o <a href="dia1.html#ex3">Dia 1, Questão 3</a> e tente resolver sozinho antes de abrir o gabarito.</div>
+  <div class="alert-success">Você acabou de resolver \((AX)^t=B\) passo a passo. A Questão 3 do Dia 1 pede exatamente a mesma estrutura, só com números diferentes: repita estes 6 passos, na mesma ordem, no <a href="dia1.html#ex3">Dia 1, Questão 3</a>, antes de abrir o gabarito.</div>
 
 </main>
 </div>
