@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passo a passo Dia 1 | Guia P1</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">Guia P1 - Álgebra Linear
+      <small>MPA06855 · Plano de estudo de 3 dias</small>
+    </a>
+    <nav class="top-nav">
+      <a href="index.html">Início</a>
+      <a href="dia1.html">Dia 1 · Matrizes</a>
+      <a href="metodo1.html" class="active">Passo a passo 1</a>
+      <a href="dia2.html">Dia 2 · Inversíveis</a>
+      <a href="metodo2.html">Passo a passo 2</a>
+      <a href="dia3.html">Dia 3 · Determinantes</a>
+      <a href="metodo3.html">Passo a passo 3</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="toc">
+  <details class="toc-details" open>
+  <summary>Nesta página</summary>
+  <ul>
+    <li><a href="#mult">Método: multiplicar matrizes sem travar</a></li>
+    <li><a href="#equacoes">Método: isolar X em equações matriciais</a></li>
+    <li><a href="#exemplo">Exemplo guiado completo</a></li>
+    <li><a href="#agora">Agora tente sozinho</a></li>
+  </ul>
+  </details>
+</aside>
+
+<main>
+  <h1>Passo a passo - Dia 1 (Matrizes)</h1>
+  <p class="subtitle">Esta página ensina o MÉTODO GERAL antes da prática. Leia com calma, acompanhe cada passo com lápis e papel, e só depois volte para os exercícios do Dia 1.</p>
+
+  <div class="alert-info">Esta página existe porque a Questão 3 do Dia 1 (equação matricial com transposta e inversa) costuma travar quem está vendo o assunto pela primeira vez. Ela ensina o raciocínio geral por trás dessa questão antes de você tentar a prática.</div>
+
+  <h2 id="mult">Método: multiplicar matrizes sem travar</h2>
+  <div class="theory-box">
+    <p>Antes de qualquer equação, o alicerce é multiplicar duas matrizes sem erro. O método sempre tem 3 perguntas, nesta ordem:</p>
+  </div>
+
+  <div class="step"><strong class="step-label">Pergunta 1: o produto existe?</strong>
+  Compare o número de <strong>colunas da primeira</strong> matriz com o número de <strong>linhas da segunda</strong>. Se forem diferentes, o produto não existe e você já pode parar.</div>
+
+  <div class="step"><strong class="step-label">Pergunta 2: qual vai ser o tamanho do resultado?</strong>
+  O resultado tem o número de <strong>linhas da primeira</strong> matriz e o número de <strong>colunas da segunda</strong>. Escreva essa ordem antes de calcular qualquer número - isso evita montar uma matriz do tamanho errado.</div>
+
+  <div class="step"><strong class="step-label">Pergunta 3: como calculo cada posição?</strong>
+  Para achar o elemento na linha \(i\), coluna \(j\) do resultado, pegue a <strong>linha \(i\) inteira</strong> da primeira matriz e a <strong>coluna \(j\) inteira</strong> da segunda, multiplique posição por posição e some tudo:
+  \[c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots\]</div>
+
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Nunca multiplique "linha por linha" ou "coluna por coluna" - é sempre linha da primeira com coluna da segunda. Esse é o erro mais comum de quem está aprendendo.</div>
+
+  <h2 id="equacoes">Método: isolar X em equações matriciais</h2>
+  <div class="theory-box">
+    <p>Este é o tipo de questão que mais trava (como a Questão 3 do Dia 1). A boa notícia: existe um roteiro fixo que funciona sempre. A ideia central é a mesma de uma equação numérica comum: <strong>para isolar a incógnita, desfaça as operações na ordem inversa de como foram aplicadas</strong>.</p>
+  </div>
+
+  <div class="eli5">
+    <span class="eli5-label">Explicando bem devagar</span>
+    <p>Pense em vestir um casaco por cima de uma camisa: você primeiro veste a camisa, depois o casaco. Para tirar tudo, você faz o caminho inverso: primeiro tira o casaco, depois a camisa. Numa equação matricial é igual: a última operação "vestida" em X é a primeira que você "tira".</p>
+  </div>
+
+  <div class="step"><strong class="step-label">Passo 1: leia a equação de fora para dentro</strong>
+  Olhe a equação e identifique, na ordem em que "envolvem" X, todas as operações aplicadas a ele. Por exemplo, em \((AX)^t=B\): primeiro \(A\) multiplica \(X\) (por dentro dos parênteses), depois o resultado inteiro é transposto (por fora). Ou seja, a ordem de "vestir" foi: multiplicar por \(A\), depois transpor.</div>
+
+  <div class="step"><strong class="step-label">Passo 2: desfaça na ordem inversa</strong>
+  Como a transposição foi a última operação aplicada, ela é a <strong>primeira</strong> que você desfaz. Só depois você desfaz a multiplicação por \(A\).</div>
+
+  <div class="step"><strong class="step-label">Passo 3: saiba desfazer cada tipo de operação</strong>
+  Use esta tabela como referência fixa:</div>
+
+  <table class="variations">
+    <tr><th>Operação na equação</th><th>Como desfazer</th></tr>
+    <tr><td>Transposição: \(Y^t=Z\)</td><td>Transponha os DOIS lados: \((Y^t)^t=Z^t \Rightarrow Y=Z^t\) (pois transpor duas vezes volta ao original)</td></tr>
+    <tr><td>Multiplicação pela esquerda: \(AY=Z\)</td><td>Multiplique os DOIS lados por \(A^{-1}\) pela ESQUERDA: \(A^{-1}(AY)=A^{-1}Z \Rightarrow Y=A^{-1}Z\)</td></tr>
+    <tr><td>Multiplicação pela direita: \(YA=Z\)</td><td>Multiplique os DOIS lados por \(A^{-1}\) pela DIREITA: \((YA)A^{-1}=ZA^{-1} \Rightarrow Y=ZA^{-1}\)</td></tr>
+    <tr><td>Soma: \(Y+A=Z\)</td><td>Subtraia \(A\) dos dois lados: \(Y=Z-A\)</td></tr>
+    <tr><td>Escalar: \(kY=A\)</td><td>Multiplique os dois lados por \(\tfrac1k\): \(Y=\tfrac1k A\)</td></tr>
+  </table>
+
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> No caso de multiplicação por matriz, o LADO importa: se \(A\) multiplicava \(X\) pela esquerda na equação original, você tem que multiplicar por \(A^{-1}\) também pela esquerda nos dois lados. Fazer pelo lado errado dá um resultado matematicamente diferente, porque matrizes não comutam (\(AB\neq BA\) em geral).</div>
+
+  <h2 id="exemplo">Exemplo guiado completo (com números diferentes do Dia 1)</h2>
+  <div class="exercise">
+    <h3>Exemplo: resolva \(X\) em \((XA)^t=B\)</h3>
+    <div class="enunciado">Considere \(A=\begin{pmatrix}2&0\\1&1\end{pmatrix}\) e \(B=\begin{pmatrix}3&4\\1&2\end{pmatrix}\). Note que aqui \(A\) multiplica \(X\) pela DIREITA (é \(XA\), não \(AX\)) - um caso um pouco diferente do que você verá na Questão 3, mas que usa exatamente o mesmo método.</div>
+
+    <div class="step"><strong class="step-label">1. Identifique a ordem das operações em X</strong>
+    Lendo de dentro para fora: primeiro \(X\) é multiplicado por \(A\) pela direita (formando \(XA\)), depois o resultado é transposto. Ordem de "vestir": multiplicar por \(A\) à direita, depois transpor.</div>
+
+    <div class="step"><strong class="step-label">2. Desfaça a transposição primeiro (é a última "veste")</strong>
+    Transponha os dois lados: \(((XA)^t)^t=B^t \Rightarrow XA=B^t\).
+    Calcule \(B^t\) transpondo \(B\) (troque linhas por colunas):
+    \[B^t=\begin{pmatrix}3&1\\4&2\end{pmatrix}\]
+    Então: \(XA=\begin{pmatrix}3&1\\4&2\end{pmatrix}\)</div>
+
+    <div class="step"><strong class="step-label">3. Agora desfaça a multiplicação por \(A\) (que estava à direita)</strong>
+    Como \(A\) multiplicava \(X\) pela DIREITA, multiplique os dois lados por \(A^{-1}\) também pela DIREITA:
+    \[(XA)A^{-1}=B^tA^{-1} \Rightarrow X(AA^{-1})=B^tA^{-1} \Rightarrow X=B^tA^{-1}\]</div>
+
+    <div class="step"><strong class="step-label">4. Calcule \(A^{-1}\)</strong>
+    Para \(A=\begin{pmatrix}2&0\\1&1\end{pmatrix}\), \(\det A=2\cdot1-0\cdot1=2\). Usando o atalho de inversa \(2\times2\) (troca a diagonal principal, inverte o sinal da secundária, divide pelo determinante):
+    \[A^{-1}=\frac{1}{2}\begin{pmatrix}1&0\\-1&2\end{pmatrix}=\begin{pmatrix}1/2&0\\-1/2&1\end{pmatrix}\]</div>
+
+    <div class="step"><strong class="step-label">5. Multiplique \(B^t\) por \(A^{-1}\) (nessa ordem, pela direita)</strong>
+    \[X=B^tA^{-1}=\begin{pmatrix}3&1\\4&2\end{pmatrix}\begin{pmatrix}1/2&0\\-1/2&1\end{pmatrix}\]
+    Linha 1: \(c_{11}=3\cdot\tfrac12+1\cdot(-\tfrac12)=\tfrac32-\tfrac12=1\); \(c_{12}=3\cdot0+1\cdot1=1\)
+    Linha 2: \(c_{21}=4\cdot\tfrac12+2\cdot(-\tfrac12)=2-1=1\); \(c_{22}=4\cdot0+2\cdot1=2\)
+    \[X=\begin{pmatrix}1&1\\1&2\end{pmatrix}\]</div>
+
+    <div class="step"><strong class="step-label">6. Confira substituindo na equação original</strong>
+    Calcule \(XA=\begin{pmatrix}1&1\\1&2\end{pmatrix}\begin{pmatrix}2&0\\1&1\end{pmatrix}\): linha 1: \(1\cdot2+1\cdot1=3\), \(1\cdot0+1\cdot1=1\) → \((3,1)\); linha 2: \(1\cdot2+2\cdot1=4\), \(1\cdot0+2\cdot1=2\) → \((4,2)\). Logo \(XA=\begin{pmatrix}3&1\\4&2\end{pmatrix}\). Transpondo: \((XA)^t=\begin{pmatrix}3&4\\1&2\end{pmatrix}=B\) ✓ Confirmado!</div>
+
+    <span class="answer-final">Resposta final do exemplo: \(X=\begin{pmatrix}1&1\\1&2\end{pmatrix}\)</span>
+  </div>
+
+  <h2 id="agora">Agora tente sozinho</h2>
+  <div class="alert-success">Você acabou de ver o método completo aplicado a \((XA)^t=B\) (A multiplicando pela direita). A Questão 3 do Dia 1 pede \((AX)^t=B\) (A multiplicando pela ESQUERDA) - é o espelho exato do que você acabou de ver, só muda o lado em que você multiplica por \(A^{-1}\) no passo 3. Volte para o <a href="dia1.html#ex3">Dia 1, Questão 3</a> e tente resolver sozinho antes de abrir o gabarito.</div>
+
+</main>
+</div>
+
+<footer class="site-footer">
+  Guia de estudos pessoal - Álgebra Linear (MPA06855) - Método passo a passo, Dia 1.
+</footer>
+</body>
+</html>

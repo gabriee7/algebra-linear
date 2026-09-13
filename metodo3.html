@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passo a passo Dia 3 | Guia P1</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">Guia P1 - Álgebra Linear
+      <small>MPA06855 · Plano de estudo de 3 dias</small>
+    </a>
+    <nav class="top-nav">
+      <a href="index.html">Início</a>
+      <a href="dia1.html">Dia 1 · Matrizes</a>
+      <a href="metodo1.html">Passo a passo 1</a>
+      <a href="dia2.html">Dia 2 · Inversíveis</a>
+      <a href="metodo2.html">Passo a passo 2</a>
+      <a href="dia3.html">Dia 3 · Determinantes</a>
+      <a href="metodo3.html" class="active">Passo a passo 3</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="toc">
+  <details class="toc-details" open>
+  <summary>Nesta página</summary>
+  <ul>
+    <li><a href="#laplace">Método: Laplace passo a passo</a></li>
+    <li><a href="#adjunta">Método: adjunta e inversa</a></li>
+    <li><a href="#cramer">Método: Regra de Cramer</a></li>
+    <li><a href="#agora">Agora tente sozinho</a></li>
+  </ul>
+  </details>
+</aside>
+
+<main>
+  <h1>Passo a passo - Dia 3 (Determinantes e Adjunta)</h1>
+  <p class="subtitle">Três métodos fixos: Laplace, Adjunta e Cramer. Veja o raciocínio geral de cada um, com um exemplo novo, antes de ir para os exercícios do Dia 3.</p>
+
+  <h2 id="laplace">Método: Laplace passo a passo</h2>
+  <div class="theory-box">
+    <p>Calcular um determinante \(n\times n\) (\(n\geq3\)) sempre segue o mesmo roteiro de 4 etapas.</p>
+  </div>
+
+  <div class="step"><strong class="step-label">Etapa 1: escolha a linha ou coluna com mais zeros</strong>
+  Isso não muda o resultado (o determinante é o mesmo por qualquer linha ou coluna), mas elimina termos da soma antes mesmo de calcular, economizando contas.</div>
+
+  <div class="step"><strong class="step-label">Etapa 2: para cada elemento não-nulo da linha/coluna escolhida, monte o menor complementar</strong>
+  O menor complementar \(A_{ij}\) é a matriz que sobra ao apagar a linha \(i\) e a coluna \(j\) daquele elemento.</div>
+
+  <div class="step"><strong class="step-label">Etapa 3: aplique o sinal do cofator</strong>
+  \[\Delta_{ij}=(-1)^{i+j}\det A_{ij}\]
+  Calcule sempre \((-1)^{i+j}\) explicitamente antes de multiplicar - é o passo onde mais se erra.</div>
+
+  <div class="step"><strong class="step-label">Etapa 4: some tudo</strong>
+  \[\det A=\sum_{j} a_{ij}\Delta_{ij}\]
+  (soma só sobre a linha/coluna escolhida na Etapa 1).</div>
+
+  <div class="exercise">
+    <h3>Exemplo: calcule \(\det A\) para \(A=\begin{pmatrix}1&0&0\\2&3&-1\\4&1&2\end{pmatrix}\)</h3>
+
+    <div class="step"><strong class="step-label">1. Escolha a linha/coluna com mais zeros</strong>
+    A linha 1 é \((1,0,0)\): tem dois zeros! Expandindo por ela, só o termo com \(a_{11}=1\) sobrevive.</div>
+
+    <div class="step"><strong class="step-label">2. Monte o menor complementar \(A_{11}\)</strong>
+    Apague a linha 1 e a coluna 1: sobra \(\begin{pmatrix}3&-1\\1&2\end{pmatrix}\).
+    \[\det A_{11}=3\cdot2-(-1)\cdot1=6+1=7\]</div>
+
+    <div class="step"><strong class="step-label">3. Aplique o sinal</strong>
+    \(\Delta_{11}=(-1)^{1+1}\cdot7=(+1)\cdot7=7\)</div>
+
+    <div class="step"><strong class="step-label">4. Some (só o termo \(a_{11}\) sobrevive)</strong>
+    \[\det A=a_{11}\Delta_{11}=1\cdot7=7\]</div>
+
+    <span class="answer-final">Resposta final do exemplo: \(\det A=7\)</span>
+  </div>
+
+  <h2 id="adjunta">Método: adjunta e inversa</h2>
+  <div class="theory-box">
+    <p>Depois de saber calcular cofatores (Laplace), a adjunta é só mais um passo: calcule TODOS os \(n^2\) cofatores, monte a matriz de cofatores e transponha.</p>
+  </div>
+
+  <div class="step"><strong class="step-label">Passo 1: calcule todos os cofatores \(\Delta_{ij}\), um para cada posição</strong>
+  Use a mesma fórmula \(\Delta_{ij}=(-1)^{i+j}\det A_{ij}\) para cada uma das \(n\times n\) posições da matriz (não só para a linha/coluna escolhida no Laplace).</div>
+
+  <div class="step"><strong class="step-label">Passo 2: monte a matriz de cofatores</strong>
+  Coloque cada \(\Delta_{ij}\) exatamente na posição \((i,j)\), formando \(\overline{A}\).</div>
+
+  <div class="step"><strong class="step-label">Passo 3: transponha para obter a adjunta</strong> <span class="badge badge-trap">ARMADILHA</span>
+  \(\operatorname{adj}A=\overline{A}^t\). Esquecer de transpor é o erro mais comum desta questão - a matriz de cofatores NÃO é a resposta final.</div>
+
+  <div class="step"><strong class="step-label">Passo 4: divida pelo determinante</strong>
+  \[A^{-1}=\frac{1}{\det A}\operatorname{adj}A\]</div>
+
+  <div class="exercise">
+    <h3>Exemplo: continuando a matriz anterior, calcule \(\operatorname{adj}A\) e \(A^{-1}\)</h3>
+    <div class="enunciado">Mesma \(A=\begin{pmatrix}1&0&0\\2&3&-1\\4&1&2\end{pmatrix}\), com \(\det A=7\) já calculado acima.</div>
+
+    <div class="step"><strong class="step-label">1. Calcule os 9 cofatores</strong>
+    \[\Delta_{11}=+\det\begin{pmatrix}3&-1\\1&2\end{pmatrix}=7,\quad \Delta_{12}=-\det\begin{pmatrix}2&-1\\4&2\end{pmatrix}=-(4+4)=-8,\quad \Delta_{13}=+\det\begin{pmatrix}2&3\\4&1\end{pmatrix}=2-12=-10\]
+    \[\Delta_{21}=-\det\begin{pmatrix}0&0\\1&2\end{pmatrix}=0,\quad \Delta_{22}=+\det\begin{pmatrix}1&0\\4&2\end{pmatrix}=2,\quad \Delta_{23}=-\det\begin{pmatrix}1&0\\4&1\end{pmatrix}=-1\]
+    \[\Delta_{31}=+\det\begin{pmatrix}0&0\\3&-1\end{pmatrix}=0,\quad \Delta_{32}=-\det\begin{pmatrix}1&0\\2&-1\end{pmatrix}=-(-1)=1,\quad \Delta_{33}=+\det\begin{pmatrix}1&0\\2&3\end{pmatrix}=3\]</div>
+
+    <div class="step"><strong class="step-label">2. Monte a matriz de cofatores e transponha</strong>
+    \[\overline{A}=\begin{pmatrix}7&-8&-10\\0&2&-1\\0&1&3\end{pmatrix} \;\Rightarrow\; \operatorname{adj}A=\overline{A}^t=\begin{pmatrix}7&0&0\\-8&2&1\\-10&-1&3\end{pmatrix}\]</div>
+
+    <div class="step"><strong class="step-label">3. Confira: \(A\cdot\operatorname{adj}A\) deve dar \(7\cdot I_3\)</strong>
+    Linha 1 de \(A=(1,0,0)\) vezes coluna 1 de \(\operatorname{adj}A\) \((7,-8,-10)\): \(7\); vezes coluna 2 \((0,2,-1)\): \(0\); vezes coluna 3 \((0,1,3)\): \(0\). Linha 1 do produto \(=(7,0,0)\), confere com a linha 1 de \(7I_3\).</div>
+
+    <div class="step"><strong class="step-label">4. Divida pelo determinante</strong>
+    \[A^{-1}=\frac{1}{7}\begin{pmatrix}7&0&0\\-8&2&1\\-10&-1&3\end{pmatrix}=\begin{pmatrix}1&0&0\\-8/7&2/7&1/7\\-10/7&-1/7&3/7\end{pmatrix}\]</div>
+
+    <span class="answer-final">Resposta final do exemplo: \(\operatorname{adj}A=\begin{pmatrix}7&0&0\\-8&2&1\\-10&-1&3\end{pmatrix}\), \(A^{-1}=\begin{pmatrix}1&0&0\\-8/7&2/7&1/7\\-10/7&-1/7&3/7\end{pmatrix}\)</span>
+  </div>
+
+  <h2 id="cramer">Método: Regra de Cramer</h2>
+  <div class="theory-box">
+    <p>Serve para resolver sistemas \(Ax=b\) com \(A\) quadrada e \(\det A\neq0\). O roteiro é sempre: calcule \(\det A\), depois troque UMA coluna de cada vez por \(b\) e divida.</p>
+  </div>
+
+  <div class="step"><strong class="step-label">Passo 1: confira que \(A\) é quadrada e calcule \(\det A\)</strong>
+  Se \(\det A=0\), Cramer não se aplica.</div>
+
+  <div class="step"><strong class="step-label">Passo 2: para cada incógnita \(x_i\), troque a coluna \(i\) de \(A\) pelos termos independentes \(b\)</strong>
+  Chame essa nova matriz de \(A_i\). Troque só UMA coluna por vez - nunca troque duas colunas na mesma matriz.</div>
+
+  <div class="step"><strong class="step-label">Passo 3: divida os determinantes</strong>
+  \[x_i=\frac{\det A_i}{\det A}\]</div>
+
+  <div class="exercise">
+    <h3>Exemplo: resolva \(\begin{cases}x+2y=8\\3x-y=3\end{cases}\)</h3>
+
+    <div class="step"><strong class="step-label">1. Monte \(A\) e calcule \(\det A\)</strong>
+    \[A=\begin{pmatrix}1&2\\3&-1\end{pmatrix}, \quad \det A=1\cdot(-1)-2\cdot3=-1-6=-7\]</div>
+
+    <div class="step"><strong class="step-label">2. Troque a coluna \(x\) por \(b=(8,3)\)</strong>
+    \[A_x=\begin{pmatrix}8&2\\3&-1\end{pmatrix}, \quad \det A_x=8\cdot(-1)-2\cdot3=-8-6=-14\]
+    \[x=\frac{-14}{-7}=2\]</div>
+
+    <div class="step"><strong class="step-label">3. Troque a coluna \(y\) por \(b\)</strong>
+    \[A_y=\begin{pmatrix}1&8\\3&3\end{pmatrix}, \quad \det A_y=1\cdot3-8\cdot3=3-24=-21\]
+    \[y=\frac{-21}{-7}=3\]</div>
+
+    <div class="step"><strong class="step-label">4. Confira nas equações originais</strong>
+    \(x+2y=2+6=8\) ✓; \(3x-y=6-3=3\) ✓.</div>
+
+    <span class="answer-final">Resposta final do exemplo: \(x=2\), \(y=3\)</span>
+  </div>
+
+  <h2 id="agora">Agora tente sozinho</h2>
+  <div class="alert-success">Você acabou de ver os três métodos completos com exemplos novos. Volte para o <a href="dia3.html#ex1">Dia 3</a> e aplique o mesmo raciocínio nas questões, na ordem: Laplace, depois Adjunta, depois Cramer.</div>
+
+</main>
+</div>
+
+<footer class="site-footer">
+  Guia de estudos pessoal - Álgebra Linear (MPA06855) - Método passo a passo, Dia 3.
+</footer>
+</body>
+</html>

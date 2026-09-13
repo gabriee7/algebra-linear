@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passo a passo Dia 2 | Guia P1</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">Guia P1 - Álgebra Linear
+      <small>MPA06855 · Plano de estudo de 3 dias</small>
+    </a>
+    <nav class="top-nav">
+      <a href="index.html">Início</a>
+      <a href="dia1.html">Dia 1 · Matrizes</a>
+      <a href="metodo1.html">Passo a passo 1</a>
+      <a href="dia2.html">Dia 2 · Inversíveis</a>
+      <a href="metodo2.html" class="active">Passo a passo 2</a>
+      <a href="dia3.html">Dia 3 · Determinantes</a>
+      <a href="metodo3.html">Passo a passo 3</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="toc">
+  <details class="toc-details" open>
+  <summary>Nesta página</summary>
+  <ul>
+    <li><a href="#roteiro">O roteiro fixo do Gauss-Jordan</a></li>
+    <li><a href="#exemplo">Exemplo guiado completo (3x3)</a></li>
+    <li><a href="#erros">Erros mais comuns</a></li>
+    <li><a href="#agora">Agora tente sozinho</a></li>
+  </ul>
+  </details>
+</aside>
+
+<main>
+  <h1>Passo a passo - Dia 2 (Matrizes Inversíveis)</h1>
+  <p class="subtitle">O método de Gauss-Jordan é sempre o mesmo roteiro fixo, mudando só o tamanho da matriz. Aprenda o roteiro aqui, com um exemplo novo, antes de ir para os exercícios.</p>
+
+  <div class="alert-info">Se você já entendeu o Gauss-Jordan, pode pular direto para os <a href="dia2.html#ex1">exercícios do Dia 2</a>. Esta página é para quem quer ver o raciocínio geral explicado devagar, com os pontos de atenção destacados em cada etapa.</div>
+
+  <h2 id="roteiro">O roteiro fixo do Gauss-Jordan</h2>
+  <div class="theory-box">
+    <p>Para achar \(A^{-1}\), você monta a matriz ampliada \([A\,|\,I]\) e aplica operações de linha até o bloco esquerdo virar a identidade. O bloco direito, que começou como \(I\), termina sendo \(A^{-1}\). O roteiro sempre segue esta ordem, coluna por coluna, da esquerda para a direita:</p>
+  </div>
+
+  <div class="step"><strong class="step-label">Etapa A: consiga um pivô 1 na coluna atual</strong>
+  Olhe a posição da diagonal na coluna que você está trabalhando. Se já for 1, ótimo. Se for outro número diferente de zero, divida a linha inteira por esse número. Se for 0, troque essa linha com outra abaixo dela que tenha um número diferente de zero na mesma coluna.</div>
+
+  <div class="step"><strong class="step-label">Etapa B: zere todo o resto da coluna</strong>
+  Use a linha do pivô para zerar todas as OUTRAS linhas nessa coluna (tanto abaixo quanto acima), fazendo \(L_i \to L_i - (\text{elemento a zerar})\times L_{\text{pivô}}\).</div>
+
+  <div class="step"><strong class="step-label">Etapa C: repita para a próxima coluna</strong>
+  Passe para a coluna seguinte e repita as etapas A e B. Continue até todas as colunas do bloco esquerdo terem sido processadas.</div>
+
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Muita gente tenta zerar tudo de uma vez, misturando colunas. Sempre termine UMA coluna por completo (pivô 1 e todos os outros valores da coluna zerados) antes de passar para a próxima - isso evita perder o controle da conta.</div>
+
+  <h2 id="exemplo">Exemplo guiado completo (3x3, diferente dos exercícios do Dia 2)</h2>
+  <div class="exercise">
+    <h3>Exemplo: calcule \(A^{-1}\) para \(A=\begin{pmatrix}1&1&1\\2&1&3\\1&-1&1\end{pmatrix}\)</h3>
+
+    <div class="step"><strong class="step-label">1. Monte a matriz ampliada</strong>
+    \[[A|I]=\left[\begin{smallmatrix}1&1&1&|&1&0&0\\2&1&3&|&0&1&0\\1&-1&1&|&0&0&1\end{smallmatrix}\right]\]
+    A coluna 1 já tem pivô 1 na linha 1 - ótimo, vamos usá-la para zerar as demais.</div>
+
+    <div class="step"><strong class="step-label">2. Coluna 1: zere as linhas 2 e 3</strong>
+    \(L_2\to L_2-2L_1\): \((2,1,3\,|\,0,1,0)-2\cdot(1,1,1\,|\,1,0,0)=(0,-1,1\,|\,-2,1,0)\)<br>
+    \(L_3\to L_3-L_1\): \((1,-1,1\,|\,0,0,1)-(1,1,1\,|\,1,0,0)=(0,-2,0\,|\,-1,0,1)\)
+    \[\left[\begin{smallmatrix}1&1&1&|&1&0&0\\0&-1&1&|&-2&1&0\\0&-2&0&|&-1&0&1\end{smallmatrix}\right]\]</div>
+
+    <div class="step"><strong class="step-label">3. Coluna 2: consiga o pivô 1</strong> <span class="badge badge-trap">ARMADILHA</span>
+    O pivô da linha 2 é \(-1\), não \(1\). Multiplique a linha inteira por \(-1\) (não esqueça de aplicar em TODOS os números da linha, inclusive do lado direito):
+    \(L_2\to -L_2\): \((0,1,-1\,|\,2,-1,0)\)</div>
+
+    <div class="step"><strong class="step-label">4. Coluna 2: zere as outras linhas</strong>
+    \(L_1\to L_1-L_2\): \((1,1,1\,|\,1,0,0)-(0,1,-1\,|\,2,-1,0)=(1,0,2\,|\,-1,1,0)\)<br>
+    \(L_3\to L_3+2L_2\): \((0,-2,0\,|\,-1,0,1)+2\cdot(0,1,-1\,|\,2,-1,0)=(0,0,-2\,|\,3,-2,1)\)
+    \[\left[\begin{smallmatrix}1&0&2&|&-1&1&0\\0&1&-1&|&2&-1&0\\0&0&-2&|&3&-2&1\end{smallmatrix}\right]\]</div>
+
+    <div class="step"><strong class="step-label">5. Coluna 3: consiga o pivô 1</strong>
+    \(L_3\to -\tfrac12 L_3\): \((0,0,1\,|\,-3/2,1,-1/2)\)</div>
+
+    <div class="step"><strong class="step-label">6. Coluna 3: zere as outras linhas</strong>
+    \(L_1\to L_1-2L_3\): \((1,0,2\,|\,-1,1,0)-2\cdot(0,0,1\,|\,-3/2,1,-1/2)=(1,0,0\,|\,2,-1,1)\)<br>
+    \(L_2\to L_2+L_3\): \((0,1,-1\,|\,2,-1,0)+(0,0,1\,|\,-3/2,1,-1/2)=(0,1,0\,|\,1/2,0,-1/2)\)
+    \[\left[\begin{smallmatrix}1&0&0&|&2&-1&1\\0&1&0&|&1/2&0&-1/2\\0&0&1&|&-3/2&1&-1/2\end{smallmatrix}\right]\]
+    O bloco esquerdo é \(I_3\) - terminamos!</div>
+
+    <div class="step"><strong class="step-label">7. Confira multiplicando \(A\cdot A^{-1}\)</strong>
+    Linha 1 de \(A=(1,1,1)\) vezes coluna 1 de \(A^{-1}\) \((2,1/2,-3/2)\): \(2+0.5-1.5=1\); vezes coluna 2 \((-1,0,1)\): \(-1+0+1=0\); vezes coluna 3 \((1,-1/2,-1/2)\): \(1-0.5-0.5=0\). Linha 1 do produto = \((1,0,0)\), confere com \(I_3\). (As linhas 2 e 3 seguem o mesmo padrão de conferência.)</div>
+
+    <span class="answer-final">Resposta final do exemplo: \(A^{-1}=\begin{pmatrix}2&-1&1\\1/2&0&-1/2\\-3/2&1&-1/2\end{pmatrix}\)</span>
+  </div>
+
+  <h2 id="erros">Erros mais comuns (revise antes de praticar)</h2>
+  <table class="variations">
+    <tr><th>Erro</th><th>Como evitar</th></tr>
+    <tr><td>Esquecer de aplicar a operação também no bloco direito</td><td>Trate a linha inteira (os dois blocos) como um só objeto - toda operação afeta a linha completa</td></tr>
+    <tr><td>Trocar de coluna antes de terminar a atual</td><td>Só passe para a próxima coluna quando o pivô estiver em 1 e todo o resto da coluna estiver zerado</td></tr>
+    <tr><td>Erro de sinal ao subtrair uma linha negativa</td><td>Escreva a subtração termo a termo antes de simplificar, como nos exemplos acima, em vez de fazer de cabeça</td></tr>
+    <tr><td>Não perceber que a matriz não é inversível</td><td>Se uma linha inteira do bloco esquerdo virar zero, pare: a matriz não tem inversa</td></tr>
+  </table>
+
+  <h2 id="agora">Agora tente sozinho</h2>
+  <div class="alert-success">Você acabou de ver o roteiro completo aplicado numa matriz \(3\times3\) nova. Volte para o <a href="dia2.html#ex1">Dia 2</a> e aplique o mesmo roteiro na Questão 1 (mais simples, \(2\times2\)) antes de avançar para as questões maiores.</div>
+
+</main>
+</div>
+
+<footer class="site-footer">
+  Guia de estudos pessoal - Álgebra Linear (MPA06855) - Método passo a passo, Dia 2.
+</footer>
+</body>
+</html>

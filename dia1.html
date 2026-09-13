@@ -19,8 +19,11 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <nav class="top-nav">
       <a href="index.html">Início</a>
       <a href="dia1.html" class="active">Dia 1 · Matrizes</a>
+      <a href="metodo1.html">Passo a passo 1</a>
       <a href="dia2.html">Dia 2 · Inversíveis</a>
+      <a href="metodo2.html">Passo a passo 2</a>
       <a href="dia3.html">Dia 3 · Determinantes</a>
+      <a href="metodo3.html">Passo a passo 3</a>
     </nav>
   </div>
 </header>
@@ -36,6 +39,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <li><a href="#ex1">Exercício 1</a></li>
     <li><a href="#ex2">Exercício 2</a></li>
     <li><a href="#ex3">Exercício 3</a></li>
+    <li><a href="metodo1.html">Passo a passo (método)</a></li>
     <li><a href="#extras">Exercícios extras</a></li>
   </ul>
   </details>
@@ -175,6 +179,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
   <div class="exercise" id="ex3">
     <h3>Questão 3 - Equação matricial com transposta e inversa <button class="gabarito-btn" onclick="abrirGabarito('modal-ex3')">Ver gabarito</button></h3>
     <div class="enunciado">Considere \(A=\begin{pmatrix}1&2\\0&-1\end{pmatrix}\) e \(B=\begin{pmatrix}3&1\\4&2\end{pmatrix}\). (1) Verifique que \(A=A^{-1}\). (2) Resolva a equação matricial \((AX)^t=B\).</div>
+    <div class="alert-info">Essa questão costuma travar por juntar transposta e inversa na mesma equação. Se você não sabe por onde começar, veja primeiro o <a href="metodo1.html#equacoes">método passo a passo para isolar X em equações matriciais</a> antes de abrir o gabarito.</div>
   </div>
 
   <div class="modal-overlay" id="modal-ex3">
