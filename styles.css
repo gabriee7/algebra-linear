@@ -168,15 +168,16 @@ nav.top-nav a:hover, nav.top-nav a.active {
   display: flex;
 }
 
-.nav-dropdown-menu a {
+nav.top-nav .nav-dropdown-menu a {
   color: var(--text);
   text-decoration: none;
   font-size: 0.85rem;
   padding: 0.55rem 0.7rem;
   border-radius: var(--radius);
+  white-space: normal;
 }
 
-.nav-dropdown-menu a:hover, .nav-dropdown-menu a.active {
+nav.top-nav .nav-dropdown-menu a:hover, nav.top-nav .nav-dropdown-menu a.active {
   background: var(--info-bg);
   color: var(--primary);
   font-weight: 600;
