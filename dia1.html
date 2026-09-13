@@ -36,6 +36,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <li><a href="#ex1">Exercício 1</a></li>
     <li><a href="#ex2">Exercício 2</a></li>
     <li><a href="#ex3">Exercício 3</a></li>
+    <li><a href="#extras">Exercícios extras</a></li>
   </ul>
   </details>
 </aside>
@@ -218,7 +219,145 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     </div>
   </div>
 
-  <div class="alert-success">Fim do Dia 1. Refaça as 3 questões sem olhar o gabarito antes de seguir para o <a href="dia2.html">Dia 2 - Matrizes Inversíveis</a>.</div>
+  <h2 id="extras">Exercícios extras (treino adicional)</h2>
+  <div class="alert-info">Estes 7 exercícios não vêm do material original: foram criados para você treinar mais antes da prova. Mesma regra: tente sozinho antes de abrir o gabarito.</div>
+
+  <div class="exercise" id="ex1e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 1 - Soma de matrizes <button class="gabarito-btn" onclick="abrirGabarito('modal-ex1e')">Ver gabarito</button></h3>
+    <div class="enunciado">Calcule \(A+B\) para \(A=\begin{pmatrix}2&-1\\3&4\end{pmatrix}\) e \(B=\begin{pmatrix}1&5\\-2&0\end{pmatrix}\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex1e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 1</h3>
+      <div class="step"><strong class="step-label">Resolvendo</strong>
+      A soma é elemento a elemento, só possível porque as duas matrizes têm a mesma ordem \(2\times2\):
+      \[A+B=\begin{pmatrix}2+1&-1+5\\3+(-2)&4+0\end{pmatrix}=\begin{pmatrix}3&4\\1&4\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Some cada posição \(a_{ij}+b_{ij}\) direto, sem multiplicar nada. É a operação mais simples da matéria, mas confira sempre a ordem das matrizes antes de somar.</div>
+      <span class="answer-final">Resposta final: \(A+B=\begin{pmatrix}3&4\\1&4\end{pmatrix}\)</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex2e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 2 - Combinação com escalar <button class="gabarito-btn" onclick="abrirGabarito('modal-ex2e')">Ver gabarito</button></h3>
+    <div class="enunciado">Calcule \(3A-2B\) para \(A=\begin{pmatrix}1&2\\0&-1\end{pmatrix}\) e \(B=\begin{pmatrix}2&0\\1&3\end{pmatrix}\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex2e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 2</h3>
+      <div class="step"><strong class="step-label">1. Multiplique cada matriz pelo escalar primeiro</strong>
+      \[3A=\begin{pmatrix}3&6\\0&-3\end{pmatrix}, \qquad 2B=\begin{pmatrix}4&0\\2&6\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">2. Subtraia elemento a elemento</strong>
+      \[3A-2B=\begin{pmatrix}3-4&6-0\\0-2&-3-6\end{pmatrix}=\begin{pmatrix}-1&6\\-2&-9\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">Cuidado</strong> <span class="badge badge-trap">ARMADILHA</span> Multiplique pelo escalar ANTES de subtrair, nunca subtraia \(A-B\) primeiro e multiplique depois por um escalar só - o resultado fica errado.</div>
+      <span class="answer-final">Resposta final: \(3A-2B=\begin{pmatrix}-1&6\\-2&-9\end{pmatrix}\)</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex3e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 3 - Multiplicação 2x3 por 3x2 <button class="gabarito-btn" onclick="abrirGabarito('modal-ex3e')">Ver gabarito</button></h3>
+    <div class="enunciado">Calcule \(AB\) para \(A=\begin{pmatrix}1&0&2\\3&1&-1\end{pmatrix}\) e \(B=\begin{pmatrix}2&1\\0&3\\-1&4\end{pmatrix}\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex3e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 3</h3>
+      <div class="step"><strong class="step-label">1. Confira as ordens</strong>
+      \(A\) é \(2\times3\), \(B\) é \(3\times2\). Colunas de \(A\) (3) = linhas de \(B\) (3), o produto existe e será \(2\times2\).</div>
+      <div class="step"><strong class="step-label">2. Linha 1 de \(AB\)</strong>
+      Linha 1 de \(A\) é \((1,0,2)\):
+      \[c_{11}=1\cdot2+0\cdot0+2\cdot(-1)=2-2=0\]
+      \[c_{12}=1\cdot1+0\cdot3+2\cdot4=1+0+8=9\]</div>
+      <div class="step"><strong class="step-label">3. Linha 2 de \(AB\)</strong>
+      Linha 2 de \(A\) é \((3,1,-1)\):
+      \[c_{21}=3\cdot2+1\cdot0+(-1)\cdot(-1)=6+0+1=7\]
+      \[c_{22}=3\cdot1+1\cdot3+(-1)\cdot4=3+3-4=2\]</div>
+      <span class="answer-final">Resposta final: \(AB=\begin{pmatrix}0&9\\7&2\end{pmatrix}\)</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex4e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 4 - E o \(BA\) da questão anterior? <button class="gabarito-btn" onclick="abrirGabarito('modal-ex4e')">Ver gabarito</button></h3>
+    <div class="enunciado">Usando as mesmas \(A\) e \(B\) do Extra 3, calcule \(BA\) e compare o tamanho do resultado com \(AB\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex4e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 4</h3>
+      <div class="step"><strong class="step-label">1. Confira a ordem do resultado</strong> <span class="badge badge-trap">ARMADILHA</span>
+      Agora \(B\) é \(3\times2\) e \(A\) é \(2\times3\): colunas de \(B\) (2) = linhas de \(A\) (2), então \(BA\) existe, mas terá ordem \(3\times3\) - diferente da ordem \(2\times2\) de \(AB\)! Isso já prova que \(AB\neq BA\) sem nem terminar a conta.</div>
+      <div class="step"><strong class="step-label">2. Calcule linha por linha</strong>
+      Linha 1 de \(B\) é \((2,1)\):
+      \[c_{11}=2\cdot1+1\cdot3=2+3=5,\quad c_{12}=2\cdot0+1\cdot1=1,\quad c_{13}=2\cdot2+1\cdot(-1)=4-1=3\]
+      Linha 2 de \(B\) é \((0,3)\):
+      \[c_{21}=0\cdot1+3\cdot3=9,\quad c_{22}=0\cdot0+3\cdot1=3,\quad c_{23}=0\cdot2+3\cdot(-1)=-3\]
+      Linha 3 de \(B\) é \((-1,4)\):
+      \[c_{31}=-1\cdot1+4\cdot3=-1+12=11,\quad c_{32}=-1\cdot0+4\cdot1=4,\quad c_{33}=-1\cdot2+4\cdot(-1)=-2-4=-6\]</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Quando \(A\) é \(m\times n\) e \(B\) é \(n\times m\) com \(m\neq n\), tanto \(AB\) quanto \(BA\) existem, mas com ordens diferentes - por isso nunca podem ser iguais.</div>
+      <span class="answer-final">Resposta final: \(BA=\begin{pmatrix}5&1&3\\9&3&-3\\11&4&-6\end{pmatrix}\) (ordem \(3\times3\), diferente de \(AB\) que é \(2\times2\)).</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex5e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 5 - Verificando \((AB)'=B'A'\) <button class="gabarito-btn" onclick="abrirGabarito('modal-ex5e')">Ver gabarito</button></h3>
+    <div class="enunciado">Para \(A=\begin{pmatrix}1&2\\3&4\end{pmatrix}\) e \(B=\begin{pmatrix}0&1\\-1&2\end{pmatrix}\), calcule \((AB)'\) e \(B'A'\) separadamente e confirme que são iguais.</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex5e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 5</h3>
+      <div class="step"><strong class="step-label">1. Calcule \(AB\) e depois transponha</strong>
+      \[AB=\begin{pmatrix}1\cdot0+2\cdot(-1)&1\cdot1+2\cdot2\\3\cdot0+4\cdot(-1)&3\cdot1+4\cdot2\end{pmatrix}=\begin{pmatrix}-2&5\\-4&11\end{pmatrix}\]
+      \[(AB)'=\begin{pmatrix}-2&-4\\5&11\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">2. Calcule \(B'A'\) separadamente</strong>
+      Primeiro transponha cada uma: \(B'=\begin{pmatrix}0&-1\\1&2\end{pmatrix}\), \(A'=\begin{pmatrix}1&3\\2&4\end{pmatrix}\). Agora multiplique NESSA ordem, \(B'\) vezes \(A'\):
+      \[B'A'=\begin{pmatrix}0\cdot1+(-1)\cdot2&0\cdot3+(-1)\cdot4\\1\cdot1+2\cdot2&1\cdot3+2\cdot4\end{pmatrix}=\begin{pmatrix}-2&-4\\5&11\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">3. Compare</strong>
+      \((AB)'=\begin{pmatrix}-2&-4\\5&11\end{pmatrix}\) é exatamente igual a \(B'A'=\begin{pmatrix}-2&-4\\5&11\end{pmatrix}\). Confirmado.</div>
+      <div class="step"><strong class="step-label">Cuidado</strong> <span class="badge badge-trap">ARMADILHA</span> Se você tivesse calculado \(A'B'\) (na ordem errada) o resultado seria diferente - sempre inverta a ordem ao transpor um produto.</div>
+      <span class="answer-final">Resposta final: \((AB)'=B'A'=\begin{pmatrix}-2&-4\\5&11\end{pmatrix}\)</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex6e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 6 - Classificando uma matriz <button class="gabarito-btn" onclick="abrirGabarito('modal-ex6e')">Ver gabarito</button></h3>
+    <div class="enunciado">Classifique a matriz \(M=\begin{pmatrix}3&0&0\\0&-2&0\\0&0&5\end{pmatrix}\): ela é diagonal? Triangular superior? Triangular inferior?</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex6e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 6</h3>
+      <div class="step"><strong class="step-label">1. Teste a definição de diagonal</strong>
+      \(M\) é diagonal se \(m_{ij}=0\) para todo \(i\neq j\). Aqui todas as posições fora da diagonal principal são \(0\) (o \(-2\) e o \(5\) estão na diagonal, não contam como "fora"). Logo \(M\) é diagonal.</div>
+      <div class="step"><strong class="step-label">2. Toda diagonal também é triangular</strong>
+      Triangular superior exige \(m_{ij}=0\) para \(i>j\) (abaixo da diagonal) - verdade aqui. Triangular inferior exige \(m_{ij}=0\) para \(i<j\) (acima da diagonal) - também verdade aqui. Como os dois casos são satisfeitos ao mesmo tempo, \(M\) é as duas coisas simultaneamente.</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Toda matriz diagonal é, ao mesmo tempo, triangular superior E triangular inferior. O contrário não vale: nem toda triangular é diagonal.</div>
+      <span class="answer-final">Resposta final: \(M\) é diagonal (e, por consequência, também triangular superior e triangular inferior).</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex7e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 7 - Equação matricial linear <button class="gabarito-btn" onclick="abrirGabarito('modal-ex7e')">Ver gabarito</button></h3>
+    <div class="enunciado">Resolva \(2X+A=B\) para \(X\), sendo \(A=\begin{pmatrix}1&0\\2&-3\end{pmatrix}\) e \(B=\begin{pmatrix}5&4\\0&1\end{pmatrix}\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex7e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 7</h3>
+      <div class="step"><strong class="step-label">1. Isole o termo com \(X\)</strong>
+      Subtraia \(A\) dos dois lados: \(2X=B-A\).
+      \[B-A=\begin{pmatrix}5-1&4-0\\0-2&1-(-3)\end{pmatrix}=\begin{pmatrix}4&4\\-2&4\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">2. Divida por 2 (multiplique por \(\tfrac12\))</strong>
+      \[X=\frac{1}{2}\begin{pmatrix}4&4\\-2&4\end{pmatrix}=\begin{pmatrix}2&2\\-1&2\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">3. Confira substituindo</strong>
+      \(2X+A=\begin{pmatrix}4&4\\-2&4\end{pmatrix}+\begin{pmatrix}1&0\\2&-3\end{pmatrix}=\begin{pmatrix}5&4\\0&1\end{pmatrix}=B\) ✓</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Equações matriciais lineares (sem produto de matrizes envolvendo \(X\)) se resolvem exatamente como equações numéricas: isole o termo, depois "divida" multiplicando pelo inverso do escalar.</div>
+      <span class="answer-final">Resposta final: \(X=\begin{pmatrix}2&2\\-1&2\end{pmatrix}\)</span>
+    </div>
+  </div>
+
+  <div class="alert-success">Fim do Dia 1. Refaça as 3 questões principais e ao menos 2 extras sem olhar o gabarito antes de seguir para o <a href="dia2.html">Dia 2 - Matrizes Inversíveis</a>.</div>
 
 </main>
 </div>

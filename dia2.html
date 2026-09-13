@@ -36,6 +36,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <li><a href="#ex3">Exercício 3 (3×3)</a></li>
     <li><a href="#ex4">Exercício 4 (verificação)</a></li>
     <li><a href="#hill">Aplicação: Cifra de Hill</a></li>
+    <li><a href="#extras">Exercícios extras</a></li>
   </ul>
   </details>
 </aside>
@@ -300,7 +301,159 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     </div>
   </div>
 
-  <div class="alert-success">Fim do Dia 2. Cronometre-se refazendo a Questão 2 (3×3) do zero antes de ir para o <a href="dia3.html">Dia 3 - Determinantes</a>.</div>
+  <h2 id="extras">Exercícios extras (treino adicional)</h2>
+  <div class="alert-info">Estes 7 exercícios não vêm do material original: foram criados para você treinar mais antes da prova. Mesma regra: tente sozinho antes de abrir o gabarito.</div>
+
+  <div class="exercise" id="ex1e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 1 - Inversa 2x2 direto <button class="gabarito-btn" onclick="abrirGabarito('modal-ex1e')">Ver gabarito</button></h3>
+    <div class="enunciado">Calcule a inversa de \(A=\begin{pmatrix}3&4\\2&3\end{pmatrix}\) por Gauss-Jordan.</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex1e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 1</h3>
+      <div class="step"><strong class="step-label">1. Monte a ampliada e zere a coluna 1</strong>
+      \[[A|I]=\left[\begin{smallmatrix}3&4&|&1&0\\2&3&|&0&1\end{smallmatrix}\right]\]
+      Para evitar frações cedo, use \(L_1\to L_1-L_2\) (já que \(3-2=1\), gera um pivô 1 sem dividir):
+      \[\left[\begin{smallmatrix}1&1&|&1&-1\\2&3&|&0&1\end{smallmatrix}\right]\]</div>
+      <div class="step"><strong class="step-label">2. Zere abaixo do pivô</strong>
+      \(L_2\to L_2-2L_1\): \((2,3\,|\,0,1)-2\cdot(1,1\,|\,1,-1)=(0,1\,|\,-2,3)\)
+      \[\left[\begin{smallmatrix}1&1&|&1&-1\\0&1&|&-2&3\end{smallmatrix}\right]\]</div>
+      <div class="step"><strong class="step-label">3. Zere acima do pivô da coluna 2</strong>
+      \(L_1\to L_1-L_2\): \((1,1\,|\,1,-1)-(0,1\,|\,-2,3)=(1,0\,|\,3,-4)\)
+      \[\left[\begin{smallmatrix}1&0&|&3&-4\\0&1&|&-2&3\end{smallmatrix}\right]\]</div>
+      <div class="step"><strong class="step-label">Conferindo</strong> \(A\cdot A^{-1}\): linha 1 \([3,4]\) vezes coluna 1 \([3,-2]\) = \(9-8=1\); coluna 2 \([-4,3]\) = \(-12+12=0\). Linha 2 \([2,3]\) vezes coluna 1 = \(6-6=0\); coluna 2 = \(-8+9=1\). Confirma \(I_2\).</div>
+      <span class="answer-final">Resposta final: \(A^{-1}=\begin{pmatrix}3&-4\\-2&3\end{pmatrix}\)</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex2e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 2 - Inversa de matriz quase triangular <button class="gabarito-btn" onclick="abrirGabarito('modal-ex2e')">Ver gabarito</button></h3>
+    <div class="enunciado">Calcule a inversa de \(A=\begin{pmatrix}1&2&3\\0&1&4\\0&0&1\end{pmatrix}\).</div>
+    <div class="step"><strong class="step-label">Dica</strong> Como já é triangular superior com pivôs 1, você só precisa zerar acima da diagonal, começando pela última coluna.</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex2e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 2</h3>
+      <div class="step"><strong class="step-label">1. Monte a ampliada</strong>
+      \[[A|I]=\left[\begin{smallmatrix}1&2&3&|&1&0&0\\0&1&4&|&0&1&0\\0&0&1&|&0&0&1\end{smallmatrix}\right]\]
+      Todos os pivôs já são 1 e o bloco esquerdo já é triangular: só falta zerar acima da diagonal.</div>
+      <div class="step"><strong class="step-label">2. Zere a coluna 3 usando a linha 3</strong>
+      \(L_1\to L_1-3L_3\): \((1,2,3\,|\,1,0,0)-3\cdot(0,0,1\,|\,0,0,1)=(1,2,0\,|\,1,0,-3)\)<br>
+      \(L_2\to L_2-4L_3\): \((0,1,4\,|\,0,1,0)-4\cdot(0,0,1\,|\,0,0,1)=(0,1,0\,|\,0,1,-4)\)
+      \[\left[\begin{smallmatrix}1&2&0&|&1&0&-3\\0&1&0&|&0&1&-4\\0&0&1&|&0&0&1\end{smallmatrix}\right]\]</div>
+      <div class="step"><strong class="step-label">3. Zere a coluna 2 usando a linha 2</strong>
+      \(L_1\to L_1-2L_2\): \((1,2,0\,|\,1,0,-3)-2\cdot(0,1,0\,|\,0,1,-4)=(1,0,0\,|\,1,-2,5)\)
+      \[\left[\begin{smallmatrix}1&0&0&|&1&-2&5\\0&1&0&|&0&1&-4\\0&0&1&|&0&0&1\end{smallmatrix}\right]\]</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Matrizes triangulares com pivôs 1 são as mais rápidas de inverter: nunca é preciso trocar linhas nem dividir, só "subir" zerando de trás para frente.</div>
+      <span class="answer-final">Resposta final: \(A^{-1}=\begin{pmatrix}1&-2&5\\0&1&-4\\0&0&1\end{pmatrix}\)</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex3e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 3 - Identificando uma matriz NÃO inversível <button class="gabarito-btn" onclick="abrirGabarito('modal-ex3e')">Ver gabarito</button></h3>
+    <div class="enunciado">Verifique se \(A=\begin{pmatrix}1&2\\2&4\end{pmatrix}\) é inversível.</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex3e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 3</h3>
+      <div class="step"><strong class="step-label">1. Monte a ampliada e tente escalonar</strong>
+      \[[A|I]=\left[\begin{smallmatrix}1&2&|&1&0\\2&4&|&0&1\end{smallmatrix}\right]\]
+      \(L_2\to L_2-2L_1\): \((2,4\,|\,0,1)-2\cdot(1,2\,|\,1,0)=(0,0\,|\,-2,1)\)
+      \[\left[\begin{smallmatrix}1&2&|&1&0\\0&0&|&-2&1\end{smallmatrix}\right]\]</div>
+      <div class="step"><strong class="step-label">2. Interprete o resultado</strong> <span class="badge badge-trap">ARMADILHA</span>
+      A linha 2 do bloco esquerdo virou \((0,0)\): uma linha inteira nula. Isso significa que é impossível continuar reduzindo o bloco esquerdo até \(I_2\) - não existe pivô para a coluna 2 nessa linha. Pare aqui: a matriz não é inversível.</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Repare que a linha 2 de \(A\) já era o dobro da linha 1 (\(2=2\cdot1\), \(4=2\cdot2\)): quando uma linha é múltipla de outra, a matriz nunca é inversível, e isso aparece no escalonamento como uma linha nula.</div>
+      <span class="answer-final">Resposta final: \(A\) não é inversível (linha nula aparece durante o escalonamento).</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex4e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 4 - Inversa de matriz triangular inferior 3x3 <button class="gabarito-btn" onclick="abrirGabarito('modal-ex4e')">Ver gabarito</button></h3>
+    <div class="enunciado">Calcule a inversa de \(A=\begin{pmatrix}2&0&0\\1&3&0\\4&-1&1\end{pmatrix}\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex4e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 4</h3>
+      <div class="step"><strong class="step-label">1. Normalize o pivô da coluna 1</strong>
+      \(a_{11}=2\); \(L_1\to \tfrac12 L_1\): \((1,0,0\,|\,1/2,0,0)\)</div>
+      <div class="step"><strong class="step-label">2. Zere abaixo do pivô da coluna 1</strong>
+      \(L_2\to L_2-L_1\): \((1,3,0\,|\,0,1,0)-(1,0,0\,|\,1/2,0,0)=(0,3,0\,|\,-1/2,1,0)\)<br>
+      \(L_3\to L_3-4L_1\): \((4,-1,1\,|\,0,0,1)-4\cdot(1,0,0\,|\,1/2,0,0)=(0,-1,1\,|\,-2,0,1)\)</div>
+      <div class="step"><strong class="step-label">3. Normalize o pivô da coluna 2 e zere abaixo</strong>
+      \(L_2\to \tfrac13 L_2\): \((0,1,0\,|\,-1/6,1/3,0)\)<br>
+      \(L_3\to L_3+L_2\): \((0,-1,1\,|\,-2,0,1)+(0,1,0\,|\,-1/6,1/3,0)=(0,0,1\,|\,-13/6,1/3,1)\)</div>
+      <div class="step"><strong class="step-label">4. Coluna 3 já está pronta</strong>
+      O pivô da linha 3 já é 1 e não há nada acima dele nas colunas 1 e 2 para zerar nessa coluna (as posições \(a_{13}\) e \(a_{23}\) do bloco esquerdo já são 0, pois \(A\) era triangular inferior). O escalonamento termina aqui.</div>
+      <span class="answer-final">Resposta final: \(A^{-1}=\begin{pmatrix}1/2&0&0\\-1/6&1/3&0\\-13/6&1/3&1\end{pmatrix}\)</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex5e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 5 - Verificação rápida por multiplicação <button class="gabarito-btn" onclick="abrirGabarito('modal-ex5e')">Ver gabarito</button></h3>
+    <div class="enunciado">Mostre que \(B=\begin{pmatrix}1/7&2/7\\3/7&-1/7\end{pmatrix}\) é a inversa de \(A=\begin{pmatrix}1&2\\3&-1\end{pmatrix}\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex5e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 5</h3>
+      <div class="step"><strong class="step-label">Estratégia</strong> <span class="badge badge-pattern">PADRÃO</span> A inversa já foi dada: basta multiplicar \(A\cdot B\) e checar se dá \(I_2\), sem escalonar nada.</div>
+      <div class="step"><strong class="step-label">Calculando \(A\cdot B\)</strong>
+      Linha 1 de \(A\) é \((1,2)\):
+      \[c_{11}=1\cdot\tfrac17+2\cdot\tfrac37=\tfrac17+\tfrac67=\tfrac77=1\]
+      \[c_{12}=1\cdot\tfrac27+2\cdot(-\tfrac17)=\tfrac27-\tfrac27=0\]
+      Linha 2 de \(A\) é \((3,-1)\):
+      \[c_{21}=3\cdot\tfrac17+(-1)\cdot\tfrac37=\tfrac37-\tfrac37=0\]
+      \[c_{22}=3\cdot\tfrac27+(-1)\cdot(-\tfrac17)=\tfrac67+\tfrac17=\tfrac77=1\]</div>
+      <span class="answer-final">Resposta final: \(A\cdot B=\begin{pmatrix}1&0\\0&1\end{pmatrix}=I_2\), confirmando que \(B=A^{-1}\).</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex6e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 6 - Usando a inversa para resolver um sistema <button class="gabarito-btn" onclick="abrirGabarito('modal-ex6e')">Ver gabarito</button></h3>
+    <div class="enunciado">Resolva o sistema \(\begin{cases}2x+y=5\\x+y=3\end{cases}\) calculando \(A^{-1}\) e depois \(x=A^{-1}b\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex6e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 6</h3>
+      <div class="step"><strong class="step-label">1. Escreva o sistema como \(Ax=b\)</strong>
+      \[A=\begin{pmatrix}2&1\\1&1\end{pmatrix}, \quad b=\begin{pmatrix}5\\3\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">2. Calcule \(A^{-1}\) por Gauss-Jordan</strong>
+      \(L_1\leftrightarrow L_2\): \(\left[\begin{smallmatrix}1&1&|&0&1\\2&1&|&1&0\end{smallmatrix}\right]\)<br>
+      \(L_2\to L_2-2L_1\): \((2,1\,|\,1,0)-2\cdot(1,1\,|\,0,1)=(0,-1\,|\,1,-2)\)<br>
+      \(L_2\to -L_2\): \((0,1\,|\,-1,2)\)<br>
+      \(L_1\to L_1-L_2\): \((1,1\,|\,0,1)-(0,1\,|\,-1,2)=(1,0\,|\,1,-1)\)
+      \[A^{-1}=\begin{pmatrix}1&-1\\-1&2\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">3. Calcule \(x=A^{-1}b\)</strong>
+      \[x=\begin{pmatrix}1&-1\\-1&2\end{pmatrix}\begin{pmatrix}5\\3\end{pmatrix}=\begin{pmatrix}1\cdot5+(-1)\cdot3\\-1\cdot5+2\cdot3\end{pmatrix}=\begin{pmatrix}2\\1\end{pmatrix}\]
+      Logo \(x=2\), \(y=1\).</div>
+      <div class="step"><strong class="step-label">4. Confira nas equações originais</strong>
+      \(2(2)+1=5\) ✓; \(2+1=3\) ✓.</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Uma vez calculada \(A^{-1}\), qualquer sistema \(Ax=b\) com a mesma matriz de coeficientes se resolve só multiplicando \(A^{-1}\) pelo novo \(b\) - sem escalonar de novo.</div>
+      <span class="answer-final">Resposta final: \(x=2\), \(y=1\)</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex7e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 7 - Reconhecimento rápido (sem contas) <button class="gabarito-btn" onclick="abrirGabarito('modal-ex7e')">Ver gabarito</button></h3>
+    <div class="enunciado">Sem escalonar, explique por que \(C=\begin{pmatrix}1&2&3\\0&0&0\\4&5&6\end{pmatrix}\) não pode ser inversível.</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex7e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 7</h3>
+      <div class="step"><strong class="step-label">Raciocínio direto</strong>
+      A linha 2 de \(C\) já é \((0,0,0)\), uma linha inteiramente nula, antes mesmo de começar qualquer operação. Operações elementares nunca "criam" um pivô numa linha que já é toda zero (multiplicar uma linha nula por qualquer escalar continua dando zero, e somar um múltiplo de outra linha a ela só reintroduz números de outra linha, nunca fabrica um pivô isolado na linha 2). Logo, é impossível reduzir \(C\) até a identidade.</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Sempre que uma linha (ou coluna) inteira de zeros aparece na matriz original, ela já não é inversível - não é nem preciso montar a matriz ampliada. Reconhecer isso de cara economiza tempo de prova.</div>
+      <span class="answer-final">Resposta final: \(C\) não é inversível, pois já tem uma linha inteiramente nula.</span>
+    </div>
+  </div>
+
+  <div class="alert-success">Fim do Dia 2. Cronometre-se refazendo a Questão 2 (3×3) e ao menos 2 extras do zero antes de ir para o <a href="dia3.html">Dia 3 - Determinantes</a>.</div>
 
 </main>
 </div>

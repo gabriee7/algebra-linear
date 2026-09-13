@@ -37,6 +37,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <li><a href="#cramer">Regra de Cramer</a></li>
     <li><a href="#ex3">Exercício 3 (Cramer)</a></li>
     <li><a href="#desafio">Desafio final (4×4)</a></li>
+    <li><a href="#extras">Exercícios extras</a></li>
     <li><a href="#checklist">Checklist pré-prova</a></li>
   </ul>
   </details>
@@ -260,6 +261,152 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       Se \(A\) reduzir completamente a \(I_4\), o bloco direito será \(A^{-1}\). Multiplique \(A\cdot A^{-1}\) e confira se dá exatamente \(I_4\) antes de considerar a questão resolvida - essa conferência vale mais do que qualquer atalho na hora da prova.</div>
 
       <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> O tamanho da matriz (2×2, 3×3 ou 4×4) não muda o método - só o número de passos. Treinar esse exercício é a melhor forma de garantir que você não trava numa questão maior na P1.</div>
+    </div>
+  </div>
+
+  <h2 id="extras">Exercícios extras (treino adicional)</h2>
+  <div class="alert-info">Estes 7 exercícios não vêm do material original: foram criados para você treinar mais antes da prova. Mesma regra: tente sozinho antes de abrir o gabarito.</div>
+
+  <div class="exercise" id="ex1e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 1 - Determinante 2x2 direto <button class="gabarito-btn" onclick="abrirGabarito('modal-ex1e')">Ver gabarito</button></h3>
+    <div class="enunciado">Calcule \(\det A\) para \(A=\begin{pmatrix}5&3\\2&4\end{pmatrix}\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex1e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 1</h3>
+      <div class="step"><strong class="step-label">Resolvendo</strong>
+      Para ordem 2, \(\det A=ad-bc\) com \(a=5,b=3,c=2,d=4\):
+      \[\det A=5\cdot4-3\cdot2=20-6=14\]</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Multiplique a diagonal principal, subtraia o produto da diagonal secundária. É o caso mais simples de Laplace, sem precisar de cofatores.</div>
+      <span class="answer-final">Resposta final: \(\det A=14\)</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex2e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 2 - Laplace escolhendo a coluna certa <button class="gabarito-btn" onclick="abrirGabarito('modal-ex2e')">Ver gabarito</button></h3>
+    <div class="enunciado">Calcule \(\det A\) para \(A=\begin{pmatrix}2&0&1\\3&1&0\\-1&0&4\end{pmatrix}\).</div>
+    <div class="step"><strong class="step-label">Dica</strong> Observe a coluna 2: só tem um número diferente de zero.</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex2e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 2</h3>
+      <div class="step"><strong class="step-label">1. Escolha a coluna 2 (tem dois zeros)</strong>
+      A coluna 2 é \((0,1,0)\). Só o termo \(a_{22}=1\) sobrevive na soma de Laplace:
+      \[\det A = a_{22}\Delta_{22}\]</div>
+      <div class="step"><strong class="step-label">2. Calcule o cofator \(\Delta_{22}\)</strong>
+      Remova a linha 2 e a coluna 2 de \(A\): sobra \(\begin{pmatrix}2&1\\-1&4\end{pmatrix}\).
+      \[\det\begin{pmatrix}2&1\\-1&4\end{pmatrix}=2\cdot4-1\cdot(-1)=8+1=9\]
+      Sinal: \((-1)^{2+2}=+1\), logo \(\Delta_{22}=9\).</div>
+      <div class="step"><strong class="step-label">3. Finalize</strong>
+      \[\det A=1\cdot9=9\]</div>
+      <div class="step"><strong class="step-label">Conferindo por outra linha</strong>
+      Pela linha 1 \((2,0,1)\): \(\Delta_{11}=\det\begin{pmatrix}1&0\\0&4\end{pmatrix}=4\); \(\Delta_{13}=\det\begin{pmatrix}3&1\\-1&0\end{pmatrix}=3\cdot0-1\cdot(-1)=1\) (sinal \(+\)). \(\det A=2\cdot4+0+1\cdot1=8+1=9\) ✓.</div>
+      <span class="answer-final">Resposta final: \(\det A=9\)</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex3e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 3 - Propriedade \(\det(kA)\) <button class="gabarito-btn" onclick="abrirGabarito('modal-ex3e')">Ver gabarito</button></h3>
+    <div class="enunciado">Sabendo que \(A\) é uma matriz \(3\times3\) com \(\det A=5\), calcule \(\det(2A)\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex3e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 3</h3>
+      <div class="step"><strong class="step-label">1. Relembre a propriedade de multiplicar uma linha por escalar</strong>
+      Multiplicar UMA linha de uma matriz por \(k\) multiplica o determinante por \(k\). Multiplicar a matriz TODA por \(k\) equivale a multiplicar cada uma das \(n\) linhas por \(k\), uma de cada vez.</div>
+      <div class="step"><strong class="step-label">2. Aplique \(n\) vezes (uma por linha)</strong>
+      Como \(A\) é \(3\times3\) (3 linhas), multiplicar a matriz inteira por 2 multiplica o determinante por \(2\) três vezes seguidas:
+      \[\det(2A)=2^3\cdot\det A=8\cdot5=40\]</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Para uma matriz \(n\times n\): \(\det(kA)=k^n\det A\). Cuidado para não esquecer o expoente \(n\) - é o erro mais comum nessa propriedade.</div>
+      <span class="answer-final">Resposta final: \(\det(2A)=40\)</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex4e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 4 - Adjunta 2x2 e inversa <button class="gabarito-btn" onclick="abrirGabarito('modal-ex4e')">Ver gabarito</button></h3>
+    <div class="enunciado">Para \(A=\begin{pmatrix}2&3\\1&4\end{pmatrix}\), calcule \(\operatorname{adj}A\) e depois \(A^{-1}\) usando \(A^{-1}=\frac{1}{\det A}\operatorname{adj}A\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex4e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 4</h3>
+      <div class="step"><strong class="step-label">1. Calcule o determinante</strong>
+      \[\det A=2\cdot4-3\cdot1=8-3=5\]</div>
+      <div class="step"><strong class="step-label">2. Monte a adjunta (atalho para ordem 2)</strong>
+      Para matrizes \(2\times2\), a adjunta troca os elementos da diagonal principal e inverte o sinal dos elementos da diagonal secundária:
+      \[\operatorname{adj}A=\begin{pmatrix}4&-3\\-1&2\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">3. Divida pelo determinante</strong>
+      \[A^{-1}=\frac{1}{5}\begin{pmatrix}4&-3\\-1&2\end{pmatrix}=\begin{pmatrix}4/5&-3/5\\-1/5&2/5\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">Conferindo</strong>
+      \(A\cdot A^{-1}\): linha 1 \([2,3]\) vezes coluna 1 \([4/5,-1/5]\) = \(8/5-3/5=1\); coluna 2 \([-3/5,2/5]\) = \(-6/5+6/5=0\). Linha 2 \([1,4]\) vezes coluna 1 = \(4/5-4/5=0\); coluna 2 = \(-3/5+8/5=1\). Confirma \(I_2\).</div>
+      <span class="answer-final">Resposta final: \(A^{-1}=\begin{pmatrix}4/5&-3/5\\-1/5&2/5\end{pmatrix}\)</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex5e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 5 - Adjunta 3x3 completa <button class="gabarito-btn" onclick="abrirGabarito('modal-ex5e')">Ver gabarito</button></h3>
+    <div class="enunciado">Para \(A=\begin{pmatrix}1&0&2\\0&3&1\\4&0&1\end{pmatrix}\), calcule todos os cofatores, monte \(\operatorname{adj}A\) e confirme com \(A\cdot\operatorname{adj}A=(\det A)I_3\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex5e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 5</h3>
+      <div class="step"><strong class="step-label">1. Calcule os 9 cofatores</strong>
+      \[\Delta_{11}=+\det\begin{pmatrix}3&1\\0&1\end{pmatrix}=3,\quad \Delta_{12}=-\det\begin{pmatrix}0&1\\4&1\end{pmatrix}=-(-4)=4,\quad \Delta_{13}=+\det\begin{pmatrix}0&3\\4&0\end{pmatrix}=-12\]
+      \[\Delta_{21}=-\det\begin{pmatrix}0&2\\0&1\end{pmatrix}=0,\quad \Delta_{22}=+\det\begin{pmatrix}1&2\\4&1\end{pmatrix}=1-8=-7,\quad \Delta_{23}=-\det\begin{pmatrix}1&0\\4&0\end{pmatrix}=0\]
+      \[\Delta_{31}=+\det\begin{pmatrix}0&2\\3&1\end{pmatrix}=-6,\quad \Delta_{32}=-\det\begin{pmatrix}1&2\\0&1\end{pmatrix}=-1,\quad \Delta_{33}=+\det\begin{pmatrix}1&0\\0&3\end{pmatrix}=3\]</div>
+      <div class="step"><strong class="step-label">2. Monte a matriz de cofatores e transponha</strong>
+      \[\overline{A}=\begin{pmatrix}3&4&-12\\0&-7&0\\-6&-1&3\end{pmatrix} \;\Rightarrow\; \operatorname{adj}A=\overline{A}'=\begin{pmatrix}3&0&-6\\4&-7&-1\\-12&0&3\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">3. Calcule \(\det A\) usando um dos cofatores já prontos (coluna 2, que tem dois zeros)</strong>
+      \[\det A=a_{22}\Delta_{22}=3\cdot(-7)=-21\]</div>
+      <div class="step"><strong class="step-label">4. Confira: \(A\cdot\operatorname{adj}A\) deve dar \(-21\cdot I_3\)</strong>
+      Linha 1 de \(A=(1,0,2)\) vezes coluna 1 de \(\operatorname{adj}A\) \((3,4,-12)\): \(1\cdot3+0\cdot4+2\cdot(-12)=3-24=-21\). Vezes coluna 2 \((0,-7,0)\): \(0\). Vezes coluna 3 \((-6,-1,3)\): \(-6+6=0\). Linha 1 do produto = \((-21,0,0)\), que é a linha 1 de \(-21I_3\) - confere. (As demais linhas seguem o mesmo padrão.)</div>
+      <span class="answer-final">Resposta final: \(\operatorname{adj}A=\begin{pmatrix}3&0&-6\\4&-7&-1\\-12&0&3\end{pmatrix}\), com \(\det A=-21\) e \(A\cdot\operatorname{adj}A=-21I_3\).</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex6e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 6 - Cramer com sistema 2x2 <button class="gabarito-btn" onclick="abrirGabarito('modal-ex6e')">Ver gabarito</button></h3>
+    <div class="enunciado">Resolva pela Regra de Cramer: \(\begin{cases}3x+2y=7\\x-y=1\end{cases}\)</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex6e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 6</h3>
+      <div class="step"><strong class="step-label">1. Monte \(A\) e calcule \(\det A\)</strong>
+      \[A=\begin{pmatrix}3&2\\1&-1\end{pmatrix}, \quad \det A=3\cdot(-1)-2\cdot1=-3-2=-5\]</div>
+      <div class="step"><strong class="step-label">2. Troque a coluna \(x\) por \(b=(7,1)\)</strong>
+      \[A_x=\begin{pmatrix}7&2\\1&-1\end{pmatrix}, \quad \det A_x=7\cdot(-1)-2\cdot1=-7-2=-9\]
+      \[x=\frac{\det A_x}{\det A}=\frac{-9}{-5}=\frac{9}{5}\]</div>
+      <div class="step"><strong class="step-label">3. Troque a coluna \(y\) por \(b\)</strong>
+      \[A_y=\begin{pmatrix}3&7\\1&1\end{pmatrix}, \quad \det A_y=3\cdot1-7\cdot1=3-7=-4\]
+      \[y=\frac{\det A_y}{\det A}=\frac{-4}{-5}=\frac{4}{5}\]</div>
+      <div class="step"><strong class="step-label">4. Confira</strong>
+      \(3\cdot\tfrac95+2\cdot\tfrac45=\tfrac{27}{5}+\tfrac{8}{5}=\tfrac{35}{5}=7\) ✓; \(\tfrac95-\tfrac45=\tfrac55=1\) ✓.</div>
+      <span class="answer-final">Resposta final: \(x=\dfrac{9}{5}\), \(y=\dfrac{4}{5}\)</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex7e">
+    <h3><span class="badge badge-gray">EXTRA</span> Extra 7 - Determinante zero sem contas <button class="gabarito-btn" onclick="abrirGabarito('modal-ex7e')">Ver gabarito</button></h3>
+    <div class="enunciado">Sem calcular cofatores, explique por que \(\det\begin{pmatrix}1&2&3\\2&4&6\\0&1&-1\end{pmatrix}=0\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex7e">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Extra 7</h3>
+      <div class="step"><strong class="step-label">1. Observe a relação entre as linhas</strong>
+      A linha 2 é exatamente o dobro da linha 1: \((2,4,6)=2\cdot(1,2,3)\).</div>
+      <div class="step"><strong class="step-label">2. Use a propriedade do fator comum</strong>
+      Se uma linha é \(k\) vezes outra, é possível "tirar" esse fator \(k\) da linha 2 (propriedade: multiplicar uma linha por escalar multiplica o determinante por esse escalar, e aqui fazemos o processo inverso, fatorando):
+      \[\det\begin{pmatrix}1&2&3\\2&4&6\\0&1&-1\end{pmatrix}=2\cdot\det\begin{pmatrix}1&2&3\\1&2&3\\0&1&-1\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">3. Aplique a propriedade de linhas iguais</strong>
+      A matriz resultante tem a linha 1 e a linha 2 idênticas: \((1,2,3)\) aparece duas vezes. Sempre que duas linhas são iguais, o determinante é \(0\) (trocar essas duas linhas deveria inverter o sinal do determinante, mas como são iguais a matriz não muda - a única forma de \(\det=-\det\) é \(\det=0\)).</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Sempre que uma linha (ou coluna) é múltipla de outra, o determinante é automaticamente \(0\) - reconhecer esse padrão evita fazer Laplace ou Sarrus à toa.</div>
+      <span class="answer-final">Resposta final: \(\det=0\), pois a linha 2 é múltipla da linha 1 (linhas linearmente dependentes).</span>
     </div>
   </div>
 
