@@ -113,37 +113,54 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
     <div class="enunciado">Considere \(A=\begin{pmatrix}1&3\\0&1\end{pmatrix}\) e \(B=\begin{pmatrix}2&5\\1&4\end{pmatrix}\). Esta equação tem exatamente o mesmo formato da Questão 3 do Dia 1: \(A\) multiplica \(X\) pela esquerda, e o resultado é transposto. Siga estes passos e depois repita-os, na mesma ordem, na Questão 3.</div>
 
     <div class="step"><strong class="step-label">1. Identifique a ordem das operações em X</strong>
-    Lendo de dentro para fora: primeiro \(X\) é multiplicado por \(A\) pela esquerda (formando \(AX\)), depois o resultado inteiro é transposto. Ordem de "vestir": multiplicar por \(A\) à esquerda, depois transpor.</div>
+    Lendo de dentro para fora: primeiro \(X\) é multiplicado por \(A\) pela esquerda (formando \(AX\)), depois o resultado inteiro é transposto.<br><br>
+    Ordem de "vestir": multiplicar por \(A\) à esquerda, depois transpor.</div>
 
     <div class="step"><strong class="step-label">2. Desfaça a transposição primeiro (é a última "veste")</strong>
-    Transponha os dois lados: \(((AX)^t)^t=B^t \Rightarrow AX=B^t\).
+    Transponha os dois lados:<br>
+    \[((AX)^t)^t=B^t \;\Rightarrow\; AX=B^t\]
     Calcule \(B^t\) transpondo \(B\) (troque linhas por colunas):
     \[B^t=\begin{pmatrix}2&1\\5&4\end{pmatrix}\]
-    Então: \(AX=\begin{pmatrix}2&1\\5&4\end{pmatrix}\)</div>
+    Então:
+    \[AX=\begin{pmatrix}2&1\\5&4\end{pmatrix}\]</div>
 
     <div class="step"><strong class="step-label">3. Agora desfaça a multiplicação por \(A\) (que estava à esquerda)</strong>
     Como \(A\) multiplicava \(X\) pela ESQUERDA, multiplique os dois lados por \(A^{-1}\) também pela ESQUERDA:
-    \[A^{-1}(AX)=A^{-1}B^t \Rightarrow (A^{-1}A)X=A^{-1}B^t \Rightarrow X=A^{-1}B^t\]</div>
+    \[A^{-1}(AX)=A^{-1}B^t \;\Rightarrow\; (A^{-1}A)X=A^{-1}B^t \;\Rightarrow\; X=A^{-1}B^t\]</div>
 
     <div class="step"><strong class="step-label">4. Calcule \(A^{-1}\)</strong>
-    Para calcular a inversa, escreva \(A\) ao lado da identidade, \([A\,|\,I]\), e aplique operações de linha até o lado esquerdo virar \(I\). O que sobrar do lado direito é \(A^{-1}\) (você vai estudar esse método com mais detalhe no Dia 2 - aqui está a ideia básica aplicada a este \(A\) específico):
+    Para calcular a inversa, escreva \(A\) ao lado da identidade, \([A\,|\,I]\), e aplique operações de linha até o lado esquerdo virar \(I\). O que sobrar do lado direito é \(A^{-1}\) (você vai estudar esse método com mais detalhe no Dia 2; aqui está a ideia básica aplicada a este \(A\) específico).<br><br>
     \[[A\,|\,I]=\left[\begin{smallmatrix}1&3&|&1&0\\0&1&|&0&1\end{smallmatrix}\right]\]
     A coluna 1 já está pronta (\(1\) em cima, \(0\) embaixo). Falta zerar o \(3\) que está acima do pivô da coluna 2. Faça \(L_1\to L_1-3L_2\):
     \[(1,3\,|\,1,0)-3\cdot(0,1\,|\,0,1)=(1,0\,|\,1,-3)\]
     \[\left[\begin{smallmatrix}1&0&|&1&-3\\0&1&|&0&1\end{smallmatrix}\right]\]
-    O lado esquerdo já é \(I\), então \(A^{-1}=\begin{pmatrix}1&-3\\0&1\end{pmatrix}\).</div>
+    O lado esquerdo já é \(I\), então:
+    \[A^{-1}=\begin{pmatrix}1&-3\\0&1\end{pmatrix}\]</div>
 
     <div class="step"><strong class="step-label">Confira o resultado</strong>
-    \(A\cdot A^{-1}=\begin{pmatrix}1&3\\0&1\end{pmatrix}\begin{pmatrix}1&-3\\0&1\end{pmatrix}=\begin{pmatrix}1\cdot1+3\cdot0&1\cdot(-3)+3\cdot1\\0\cdot1+1\cdot0&0\cdot(-3)+1\cdot1\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}\) ✓</div>
+    \[A\cdot A^{-1}=\begin{pmatrix}1&3\\0&1\end{pmatrix}\begin{pmatrix}1&-3\\0&1\end{pmatrix}=\begin{pmatrix}1\cdot1+3\cdot0&1\cdot(-3)+3\cdot1\\0\cdot1+1\cdot0&0\cdot(-3)+1\cdot1\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}\;✓\]</div>
 
     <div class="step"><strong class="step-label">5. Multiplique \(A^{-1}\) por \(B^t\) (nessa ordem, pela esquerda)</strong>
     \[X=A^{-1}B^t=\begin{pmatrix}1&-3\\0&1\end{pmatrix}\begin{pmatrix}2&1\\5&4\end{pmatrix}\]
-    Linha 1: \(c_{11}=1\cdot2+(-3)\cdot5=2-15=-13\); \(c_{12}=1\cdot1+(-3)\cdot4=1-12=-11\)
-    Linha 2: \(c_{21}=0\cdot2+1\cdot5=5\); \(c_{22}=0\cdot1+1\cdot4=4\)
+    Linha 1:<br>
+    \[c_{11}=1\cdot2+(-3)\cdot5=2-15=-13\]
+    \[c_{12}=1\cdot1+(-3)\cdot4=1-12=-11\]
+    Linha 2:<br>
+    \[c_{21}=0\cdot2+1\cdot5=5\]
+    \[c_{22}=0\cdot1+1\cdot4=4\]
+    Logo:
     \[X=\begin{pmatrix}-13&-11\\5&4\end{pmatrix}\]</div>
 
     <div class="step"><strong class="step-label">6. Confira substituindo na equação original</strong>
-    Calcule \(AX=\begin{pmatrix}1&3\\0&1\end{pmatrix}\begin{pmatrix}-13&-11\\5&4\end{pmatrix}\): linha 1: \(1\cdot(-13)+3\cdot5=-13+15=2\), \(1\cdot(-11)+3\cdot4=-11+12=1\) → \((2,1)\); linha 2: \(0\cdot(-13)+1\cdot5=5\), \(0\cdot(-11)+1\cdot4=4\) → \((5,4)\). Logo \(AX=\begin{pmatrix}2&1\\5&4\end{pmatrix}\). Transpondo: \((AX)^t=\begin{pmatrix}2&5\\1&4\end{pmatrix}=B\) ✓ Confirmado!</div>
+    Calcule \(AX\):
+    \[AX=\begin{pmatrix}1&3\\0&1\end{pmatrix}\begin{pmatrix}-13&-11\\5&4\end{pmatrix}\]
+    Linha 1: \(1\cdot(-13)+3\cdot5=-13+15=2\); \(1\cdot(-11)+3\cdot4=-11+12=1\) → \((2,1)\)<br>
+    Linha 2: \(0\cdot(-13)+1\cdot5=5\); \(0\cdot(-11)+1\cdot4=4\) → \((5,4)\)<br><br>
+    Logo:
+    \[AX=\begin{pmatrix}2&1\\5&4\end{pmatrix}\]
+    Transpondo:
+    \[(AX)^t=\begin{pmatrix}2&5\\1&4\end{pmatrix}=B\;✓\]
+    Confirmado!</div>
 
     <span class="answer-final">Resposta final do exemplo: \(X=\begin{pmatrix}-13&-11\\5&4\end{pmatrix}\)</span>
   </div>
