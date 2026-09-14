@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Questões inéditas | Guia P1</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">Guia P1 - Álgebra Linear
+      <small>MPA06855 · Plano de estudo de 3 dias</small>
+    </a>
+    <nav class="top-nav">
+      <a href="index.html">Início</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Dia 1 · Matrizes</button>
+        <div class="nav-dropdown-menu">
+          <a href="dia1.html">Teoria e exercícios</a>
+          <a href="metodo1.html">Passo a passo</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Dia 2 · Inversíveis</button>
+        <div class="nav-dropdown-menu">
+          <a href="dia2.html">Teoria e exercícios</a>
+          <a href="metodo2.html">Passo a passo</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Dia 3 · Determinantes</button>
+        <div class="nav-dropdown-menu">
+          <a href="dia3.html">Teoria e exercícios</a>
+          <a href="metodo3.html">Passo a passo</a>
+        </div>
+      </div>
+      <a href="boldrini.html">Livro Boldrini</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle active">Prova Anterior</button>
+        <div class="nav-dropdown-menu">
+          <a href="prova-anterior.html">Gabarito 2026.1</a>
+          <a href="questoes-ineditas.html" class="active">Questões inéditas</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="toc">
+  <details class="toc-details" open>
+  <summary>Nesta página</summary>
+  <ul>
+    <li><a href="#padrao">Como o professor cobra</a></li>
+    <li><a href="#q1">Questão inédita 1</a></li>
+    <li><a href="#q2">Questão inédita 2</a></li>
+    <li><a href="#q3">Questão inédita 3</a></li>
+    <li><a href="#q4">Questão inédita 4</a></li>
+  </ul>
+  </details>
+</aside>
+
+<main>
+  <h1>Questões inéditas (mesmo estilo da prova)</h1>
+  <p class="subtitle">4 questões novas, criadas a partir da análise da estrutura da P1 2026.1 (Prof. Willer Costa). Mesmo formato, mesmos tipos de pergunta, números diferentes - para você treinar sem ter decorado a resposta.</p>
+
+  <h2 id="padrao">Como o professor cobra na prova</h2>
+  <div class="theory-box">
+    <p>Analisando a prova de 2026.1, dá para identificar um padrão claro de 4 questões, todas com peso parecido (a prova de 2026.1 tinha 2,5 pontos por questão):</p>
+  </div>
+  <table class="variations">
+    <tr><th>Questão</th><th>O que cobra</th></tr>
+    <tr><td>1</td><td>Definição rápida e conceitual (ex.: matriz simétrica/transposta) - baixo esforço de conta, mas exige saber a definição de cor</td></tr>
+    <tr><td>2</td><td>Problema contextualizado (texto corrido) que precisa ser <strong>traduzido</strong> para um sistema linear \(3\times3\) e depois resolvido</td></tr>
+    <tr><td>3</td><td>Questão "combo": uma única matriz \(A\) é reaproveitada em 3 subitens - determinante, depois inversa, depois resolver uma equação matricial \(AX=B\) usando a inversa já calculada</td></tr>
+    <tr><td>4</td><td>Sistema linear com parâmetro \(k\), pedindo a classificação nos 3 casos possíveis (única, infinitas, nenhuma)</td></tr>
+  </table>
+
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Na Questão 3, se você errar o determinante ou a inversa no item (a) ou (b), o erro <strong>arrasta</strong> para o item (c), porque ele reaproveita sua própria resposta anterior. Sempre confira cada subitem (multiplicando \(A\cdot A^{-1}\), por exemplo) antes de seguir para o próximo.</div>
+
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Na Questão 4, o professor pede as 3 classificações, mas isso <strong>não garante</strong> que as 3 realmente existam para aquele sistema específico. Na prova de 2026.1, por exemplo, não existia nenhum valor de \(k\) que desse infinitas soluções - o caso crítico era sempre impossível. Nunca assuma o resultado: sempre verifique o caso \(\det=0\) escalonando de verdade.</div>
+
+  <div class="alert-info">Pontos de atenção gerais: (1) a Questão 2 exige modelar o problema antes de resolver - a tradução do texto para equações já é parte da nota; (2) o professor prefere que \(AX=B\) seja resolvido via \(X=A^{-1}B\) (não só por escalonamento direto), já que ele pede explicitamente a inversa no item anterior; (3) as 4 questões têm peso parecido - não gaste tempo demais na Questão 1 (mais fácil) e deixe pouco tempo para a 3 e a 4 (mais longas).</div>
+
+  <h2 id="questoes">Questões inéditas</h2>
+
+  <div class="exercise" id="q1">
+    <h3>Questão inédita 1 <span class="badge badge-gray">estilo: definição</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-q1')">Ver gabarito</button></h3>
+    <div class="enunciado">Determine o(s) valor(es) de \(x\) para que a matriz \(A=\begin{pmatrix}4&x^2\\3x-2&0\end{pmatrix}\) seja igual a sua transposta.</div>
+  </div>
+  <div class="modal-overlay" id="modal-q1">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Questão inédita 1</h3>
+      <div class="step"><strong class="step-label">1. Escreva \(A^t\) e compare</strong>
+      \[A^t=\begin{pmatrix}4&3x-2\\x^2&0\end{pmatrix}\]
+      A diagonal já bate; fora dela, precisamos de \(x^2=3x-2\).</div>
+      <div class="step"><strong class="step-label">2. Resolva a equação do segundo grau</strong>
+      \[x^2-3x+2=0 \;\Rightarrow\; (x-1)(x-2)=0 \;\Rightarrow\; x=1 \text{ ou } x=2\]</div>
+      <div class="step"><strong class="step-label">Cuidado</strong> <span class="badge badge-trap">ARMADILHA</span> Diferente da prova real (onde a equação era um quadrado perfeito com raiz dupla), aqui existem <strong>duas</strong> soluções distintas. Sempre resolva a equação até o fim - não pare no primeiro valor que "parece certo".</div>
+      <span class="answer-final">Resposta: \(x=1\) ou \(x=2\)</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="q2">
+    <h3>Questão inédita 2 <span class="badge badge-gray">estilo: problema aplicado</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-q2')">Ver gabarito</button></h3>
+    <div class="enunciado">Uma cantina vende três tipos de kits de lanche: X, Y e Z. Em três dias diferentes, registrou-se: 1 kit X + 1 kit Y + 2 kit Z = 29 reais; 2 kit X + 3 kit Y + 1 kit Z = 34 reais; 1 kit X + 2 kit Y + 3 kit Z = 41 reais. Determine o preço de cada kit.</div>
+  </div>
+  <div class="modal-overlay" id="modal-q2">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Questão inédita 2</h3>
+      <div class="step"><strong class="step-label">1. Monte o sistema</strong>
+      \[\begin{cases}x+y+2z=29\\2x+3y+z=34\\x+2y+3z=41\end{cases}\]</div>
+      <div class="step"><strong class="step-label">2. Elimine \(x\) usando as equações (1) e (3)</strong>
+      \((3)-(1)\): \((x-x)+(2y-y)+(3z-2z)=41-29 \Rightarrow y+z=12\)</div>
+      <div class="step"><strong class="step-label">3. Elimine \(x\) usando (1) e (2)</strong>
+      \(2\times(1)\): \(2x+2y+4z=58\). Subtraindo (2): \((2x-2x)+(2y-3y)+(4z-z)=58-34 \Rightarrow -y+3z=24\)</div>
+      <div class="step"><strong class="step-label">4. Resolva o sistema \(2\times2\) resultante</strong>
+      \[\begin{cases}y+z=12\\-y+3z=24\end{cases}\]
+      Somando as duas: \(4z=36 \Rightarrow z=9\). Substituindo: \(y=12-9=3\).</div>
+      <div class="step"><strong class="step-label">5. Volte para achar \(x\)</strong>
+      Da equação (1): \(x=29-y-2z=29-3-18=8\)</div>
+      <div class="step"><strong class="step-label">Confira nas 3 equações originais</strong>
+      (1): \(8+3+18=29\) ✓ (2): \(16+9+9=34\) ✓ (3): \(8+6+27=41\) ✓</div>
+      <span class="answer-final">Resposta: kit X = R\$8,00; kit Y = R\$3,00; kit Z = R\$9,00</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="q3">
+    <h3>Questão inédita 3 <span class="badge badge-gray">estilo: combo det + inversa + AX=B</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-q3')">Ver gabarito</button></h3>
+    <div class="enunciado">Considere \(A=\begin{pmatrix}1&0&2\\2&1&0\\0&1&1\end{pmatrix}\). a) Calcule \(\det A\). b) Determine \(A^{-1}\). c) Resolva a equação matricial \(AX=B\), onde \(B=\begin{pmatrix}-1\\4\\1\end{pmatrix}\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-q3">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Questão inédita 3</h3>
+      <div class="step"><strong class="step-label">a) Calcule \(\det A\) (Laplace pela linha 1, que já tem um zero)</strong>
+      \[\Delta_{11}=+\det\begin{pmatrix}1&0\\1&1\end{pmatrix}=1, \quad \Delta_{13}=+\det\begin{pmatrix}2&1\\0&1\end{pmatrix}=2\]
+      \[\det A=1\cdot1+0\cdot(\ldots)+2\cdot2=1+4=5\]</div>
+      <div class="step"><strong class="step-label">b) Calcule todos os cofatores</strong>
+      \[\Delta_{11}=1,\;\Delta_{12}=-2,\;\Delta_{13}=2,\;\Delta_{21}=2,\;\Delta_{22}=1,\;\Delta_{23}=-1,\;\Delta_{31}=-2,\;\Delta_{32}=4,\;\Delta_{33}=1\]
+      Matriz de cofatores e adjunta (transposta):
+      \[\overline{A}=\begin{pmatrix}1&-2&2\\2&1&-1\\-2&4&1\end{pmatrix} \;\Rightarrow\; \operatorname{adj}A=\begin{pmatrix}1&2&-2\\-2&1&4\\2&-1&1\end{pmatrix}\]
+      \[A^{-1}=\frac15\begin{pmatrix}1&2&-2\\-2&1&4\\2&-1&1\end{pmatrix}\]</div>
+      <div class="step"><strong class="step-label">Confira: \(A\cdot\operatorname{adj}A\) linha 1</strong>
+      \((1,0,2)\cdot(1,-2,2)=1+0+4=5\); \((1,0,2)\cdot(2,1,-1)=2+0-2=0\); \((1,0,2)\cdot(-2,4,1)=-2+0+2=0\). Linha 1 = \((5,0,0)\) ✓</div>
+      <div class="step"><strong class="step-label">c) Resolva \(AX=B\) com \(X=A^{-1}B\)</strong>
+      \[X=\frac15\begin{pmatrix}1&2&-2\\-2&1&4\\2&-1&1\end{pmatrix}\begin{pmatrix}-1\\4\\1\end{pmatrix}\]
+      \[x=\tfrac15\big(1(-1)+2(4)-2(1)\big)=\tfrac15(-1+8-2)=\tfrac55=1\]
+      \[y=\tfrac15\big(-2(-1)+1(4)+4(1)\big)=\tfrac15(2+4+4)=\tfrac{10}5=2\]
+      \[z=\tfrac15\big(2(-1)-1(4)+1(1)\big)=\tfrac15(-2-4+1)=\tfrac{-5}5=-1\]</div>
+      <div class="step"><strong class="step-label">Confira substituindo em \(AX=B\)</strong>
+      Linha 1: \(1(1)+0(2)+2(-1)=1-2=-1\) ✓; linha 2: \(2(1)+1(2)+0(-1)=4\) ✓; linha 3: \(0(1)+1(2)+1(-1)=1\) ✓</div>
+      <span class="answer-final">Resposta: \(\det A=5\); \(A^{-1}=\frac15\begin{pmatrix}1&2&-2\\-2&1&4\\2&-1&1\end{pmatrix}\); \(X=\begin{pmatrix}1\\2\\-1\end{pmatrix}\)</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="q4">
+    <h3>Questão inédita 4 <span class="badge badge-gray">estilo: sistema com parâmetro</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-q4')">Ver gabarito</button></h3>
+    <div class="enunciado">Considere o sistema linear dependente do parâmetro \(k\): \(\begin{cases}x+y+z=1\\x+2y+3z=4\\2x+3y+kz=5\end{cases}\). Determine os valores de \(k\) para os quais o sistema: a) possui solução única; b) possui infinitas soluções; c) não possui solução.</div>
+  </div>
+  <div class="modal-overlay" id="modal-q4">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Questão inédita 4</h3>
+      <div class="step"><strong class="step-label">1. Calcule o determinante da matriz de coeficientes</strong>
+      \[M=\begin{pmatrix}1&1&1\\1&2&3\\2&3&k\end{pmatrix}\]
+      \[\det M=1(2k-9)-1(k-6)+1(3-4)=(2k-9)-(k-6)+(-1)=k-4\]</div>
+      <div class="step"><strong class="step-label">2. Encontre o valor crítico</strong>
+      \[\det M=0 \;\Rightarrow\; k=4\]
+      Para \(k\neq4\), o sistema tem <strong>solução única</strong>.</div>
+      <div class="step"><strong class="step-label">3. Investigue \(k=4\): verifique se a 3ª equação é combinação das outras duas</strong>
+      Some as equações (1) e (2): \((x+x)+(y+2y)+(z+3z)=1+4 \Rightarrow 2x+3y+4z=5\). Compare com a equação (3) em \(k=4\): \(2x+3y+4z=5\) - são <strong>exatamente iguais</strong>! Ou seja, a terceira equação não traz informação nova: o sistema tem só 2 equações independentes para 3 incógnitas.</div>
+      <div class="step"><strong class="step-label">4. Descreva a solução geral em \(k=4\)</strong>
+      Usando (1) e (2): subtraindo, \(y+2z=3 \Rightarrow y=3-2z\). Substituindo em (1): \(x=1-y-z=1-(3-2z)-z=z-2\). Fazendo \(z=t\) livre:
+      \[x=t-2,\quad y=3-2t,\quad z=t, \quad t\in\mathbb{R}\]</div>
+      <div class="step"><strong class="step-label">Cuidado</strong> <span class="badge badge-trap">ARMADILHA</span> Aqui, ao contrário da prova real, o caso crítico (\(\det M=0\)) dá <strong>infinitas soluções</strong>, não impossibilidade. Não existe um padrão fixo - o que decide é se a equação "extra" gerada no escalonamento é uma contradição (\(0=\text{número}\neq0\), impossível) ou uma identidade (\(0=0\), indeterminado). Sempre calcule para descobrir qual dos dois casos ocorre.</div>
+      <span class="answer-final">Resposta: a) \(k\neq4\) (solução única); b) \(k=4\) (infinitas soluções, \(x=t-2,\,y=3-2t,\,z=t\)); c) não existe valor de \(k\) que torne o sistema impossível</span>
+    </div>
+  </div>
+
+  <div class="alert-success">Fim das questões inéditas. Refaça a Questão 3 e a Questão 4 (as mais longas) sem consultar o gabarito, cronometrando o tempo, antes da prova.</div>
+
+</main>
+</div>
+
+<footer class="site-footer">
+  Guia de estudos pessoal - Álgebra Linear (MPA06855) - Questões inéditas no estilo da P1 2026.1.
+</footer>
+<script src="modal.js"></script>
+<script src="nav.js"></script>
+</body>
+</html>
