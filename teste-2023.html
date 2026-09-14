@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabarito Teste 15/09/2023 | Guia P1</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">Guia P1 - Álgebra Linear
+      <small>MPA06855 · Plano de estudo de 3 dias</small>
+    </a>
+    <nav class="top-nav">
+      <a href="index.html">Início</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Dia 1 · Matrizes</button>
+        <div class="nav-dropdown-menu">
+          <a href="dia1.html">Teoria e exercícios</a>
+          <a href="metodo1.html">Passo a passo</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Dia 2 · Inversíveis</button>
+        <div class="nav-dropdown-menu">
+          <a href="dia2.html">Teoria e exercícios</a>
+          <a href="metodo2.html">Passo a passo</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">Dia 3 · Determinantes</button>
+        <div class="nav-dropdown-menu">
+          <a href="dia3.html">Teoria e exercícios</a>
+          <a href="metodo3.html">Passo a passo</a>
+        </div>
+      </div>
+      <a href="boldrini.html">Livro Boldrini</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle active">Provas Antigas</button>
+        <div class="nav-dropdown-menu">
+          <a href="prova-anterior.html">Gabarito P1 2026.1</a>
+          <a href="questoes-ineditas.html">Questões inéditas</a>
+          <a href="teste-2023.html" class="active">Teste 15/09/2023</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="layout" style="grid-template-columns: 1fr;">
+<main style="max-width:900px;">
+  <h1>Gabarito - 1º Teste de Álgebra Linear (15/09/2023)</h1>
+  <p class="subtitle">Teste curto com uma única questão sobre matriz inversa 4x4 - excelente treino de Gauss-Jordan em uma matriz maior que as do Dia 2.</p>
+
+  <div class="alert-info">Este teste tem só uma questão, mas ela vale a prova inteira: verificar que uma matriz \(4\times4\) é inversível e depois calcular sua inversa completa por Gauss-Jordan.</div>
+
+  <div class="exercise" id="q1">
+    <h3>Questão 1 <button class="gabarito-btn" onclick="abrirGabarito('modal-q1')">Ver gabarito</button></h3>
+    <div class="enunciado">Considere a matriz \(A=\begin{pmatrix}-2&-1&0&2\\3&1&-2&-2\\-4&-1&2&3\\3&1&-1&-2\end{pmatrix}\). a) Verifique que \(A\) é uma matriz inversível. b) Determine \(A^{-1}\).</div>
+  </div>
+
+  <div class="modal-overlay" id="modal-q1">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Questão 1</h3>
+
+      <div class="step"><strong class="step-label">a) Como verificar invertibilidade aqui</strong>
+      O teorema usado no Dia 2 diz: \(A\) é inversível se, e somente se, ela pode ser reduzida à identidade por operações elementares. Ou seja, a prova de que \(A\) é inversível e o cálculo de \(A^{-1}\) são o MESMO processo: se o Gauss-Jordan abaixo terminar com \(I_4\) do lado esquerdo (sem nenhuma linha zerada no meio do caminho), isso já demonstra que \(A\) é inversível. Vamos direto ao escalonamento.</div>
+
+      <div class="step"><strong class="step-label">1. Monte a matriz ampliada \([A|I_4]\)</strong>
+      \[\left[\begin{smallmatrix}-2&-1&0&2&|&1&0&0&0\\3&1&-2&-2&|&0&1&0&0\\-4&-1&2&3&|&0&0&1&0\\3&1&-1&-2&|&0&0&0&1\end{smallmatrix}\right]\]</div>
+
+      <div class="step"><strong class="step-label">2. Coluna 1: normalize o pivô da linha 1</strong>
+      \(L_1\to -\tfrac12 L_1\): \((-2,-1,0,2\,|\,1,0,0,0)\to(1,\tfrac12,0,-1\,|\,-\tfrac12,0,0,0)\)</div>
+
+      <div class="step"><strong class="step-label">3. Coluna 1: zere as linhas 2, 3 e 4</strong>
+      \(L_2\to L_2-3L_1\): \((3,1,-2,-2\,|\,0,1,0,0)-3\cdot(1,\tfrac12,0,-1\,|\,-\tfrac12,0,0,0)=(0,-\tfrac12,-2,1\,|\,\tfrac32,1,0,0)\)<br>
+      \(L_3\to L_3+4L_1\): \((-4,-1,2,3\,|\,0,0,1,0)+4\cdot(1,\tfrac12,0,-1\,|\,-\tfrac12,0,0,0)=(0,1,2,-1\,|\,-2,0,1,0)\)<br>
+      \(L_4\to L_4-3L_1\): \((3,1,-1,-2\,|\,0,0,0,1)-3\cdot(1,\tfrac12,0,-1\,|\,-\tfrac12,0,0,0)=(0,-\tfrac12,-1,1\,|\,\tfrac32,0,0,1)\)</div>
+
+      <div class="step"><strong class="step-label">4. Coluna 2: já existe pivô 1 na linha 3 - troque \(L_2\) e \(L_3\)</strong>
+      \[\left[\begin{smallmatrix}1&1/2&0&-1&|&-1/2&0&0&0\\0&1&2&-1&|&-2&0&1&0\\0&-1/2&-2&1&|&3/2&1&0&0\\0&-1/2&-1&1&|&3/2&0&0&1\end{smallmatrix}\right]\]</div>
+
+      <div class="step"><strong class="step-label">5. Coluna 2: zere as demais linhas usando a nova linha 2</strong>
+      \(L_1\to L_1-\tfrac12L_2\): \((1,\tfrac12,0,-1\,|\,-\tfrac12,0,0,0)-\tfrac12(0,1,2,-1\,|\,-2,0,1,0)=(1,0,-1,-\tfrac12\,|\,\tfrac12,0,-\tfrac12,0)\)<br>
+      \(L_3\to L_3+\tfrac12L_2\): \((0,-\tfrac12,-2,1\,|\,\tfrac32,1,0,0)+\tfrac12(0,1,2,-1\,|\,-2,0,1,0)=(0,0,-1,\tfrac12\,|\,\tfrac12,1,\tfrac12,0)\)<br>
+      \(L_4\to L_4+\tfrac12L_2\): \((0,-\tfrac12,-1,1\,|\,\tfrac32,0,0,1)+\tfrac12(0,1,2,-1\,|\,-2,0,1,0)=(0,0,0,\tfrac12\,|\,\tfrac12,0,\tfrac12,1)\)</div>
+
+      <div class="step"><strong class="step-label">6. Coluna 3: normalize o pivô da linha 3</strong>
+      \(L_3\to -L_3\): \((0,0,-1,\tfrac12\,|\,\tfrac12,1,\tfrac12,0)\to(0,0,1,-\tfrac12\,|\,-\tfrac12,-1,-\tfrac12,0)\)</div>
+
+      <div class="step"><strong class="step-label">7. Coluna 3: zere as demais linhas (linha 4 já tem zero nessa coluna)</strong>
+      \(L_1\to L_1+L_3\): \((1,0,-1,-\tfrac12\,|\,\tfrac12,0,-\tfrac12,0)+(0,0,1,-\tfrac12\,|\,-\tfrac12,-1,-\tfrac12,0)=(1,0,0,-1\,|\,0,-1,-1,0)\)<br>
+      \(L_2\to L_2-2L_3\): \((0,1,2,-1\,|\,-2,0,1,0)-2(0,0,1,-\tfrac12\,|\,-\tfrac12,-1,-\tfrac12,0)=(0,1,0,0\,|\,-1,2,2,0)\)</div>
+
+      <div class="step"><strong class="step-label">8. Coluna 4: normalize o pivô da linha 4</strong>
+      \(L_4\to 2L_4\): \((0,0,0,\tfrac12\,|\,\tfrac12,0,\tfrac12,1)\to(0,0,0,1\,|\,1,0,1,2)\)</div>
+
+      <div class="step"><strong class="step-label">9. Coluna 4: zere as demais linhas</strong>
+      \(L_1\to L_1+L_4\): \((1,0,0,-1\,|\,0,-1,-1,0)+(0,0,0,1\,|\,1,0,1,2)=(1,0,0,0\,|\,1,-1,0,2)\)<br>
+      \(L_3\to L_3+\tfrac12L_4\): \((0,0,1,-\tfrac12\,|\,-\tfrac12,-1,-\tfrac12,0)+\tfrac12(0,0,0,1\,|\,1,0,1,2)=(0,0,1,0\,|\,0,-1,0,1)\)<br>
+      (\(L_2\) já tem zero na coluna 4, não precisa mudar)</div>
+
+      <div class="step"><strong class="step-label">10. Resultado final</strong>
+      \[\left[\begin{smallmatrix}1&0&0&0&|&1&-1&0&2\\0&1&0&0&|&-1&2&2&0\\0&0&1&0&|&0&-1&0&1\\0&0&0&1&|&1&0&1&2\end{smallmatrix}\right]\]
+      O bloco esquerdo virou \(I_4\) sem nenhuma linha zerada em nenhum momento - isso já <strong>prova o item (a)</strong>: \(A\) é inversível.</div>
+
+      <div class="step"><strong class="step-label">Confira multiplicando: linha 1 de \(A\cdot A^{-1}\)</strong>
+      Linha 1 de \(A=(-2,-1,0,2)\) vezes coluna 1 de \(A^{-1}\) \((1,-1,0,1)\): \(-2+1+0+2=1\); vezes coluna 2 \((-1,2,-1,0)\): \(2-2+0+0=0\); vezes coluna 3 \((0,2,0,1)\): \(0-2+0+2=0\); vezes coluna 4 \((2,0,1,2)\): \(-4+0+0+4=0\). Linha 1 do produto \(=(1,0,0,0)\) ✓ (as demais linhas seguem o mesmo padrão de conferência).</div>
+
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> O tamanho \(4\times4\) não muda o método - só o número de colunas a processar. Trabalhe sempre uma coluna por completo (pivô 1 + zerar o resto) antes de passar para a próxima, exatamente como no Dia 2.</div>
+
+      <span class="answer-final">Resposta: a) \(A\) é inversível (reduz-se a \(I_4\)); b) \(A^{-1}=\begin{pmatrix}1&-1&0&2\\-1&2&2&0\\0&-1&0&1\\1&0&1&2\end{pmatrix}\)</span>
+    </div>
+  </div>
+
+  <div class="alert-success">Fim do gabarito deste teste. É um ótimo treino extra de Gauss-Jordan em matriz \(4\times4\) antes da P1.</div>
+
+</main>
+</div>
+
+<footer class="site-footer">
+  Guia de estudos pessoal - Álgebra Linear (MPA06855) - Gabarito do 1º Teste de Álgebra Linear, 15/09/2023.
+</footer>
+<script src="modal.js"></script>
+<script src="nav.js"></script>
+</body>
+</html>
