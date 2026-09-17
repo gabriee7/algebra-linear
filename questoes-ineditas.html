@@ -57,7 +57,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
   <details class="toc-details" open>
   <summary>Nesta página</summary>
   <ul>
-    <li><a href="#padrao">Como o professor cobra</a></li>
+    <li><a href="#padrao">O que a prova disponível mostra</a></li>
     <li><a href="#q1">Questão inédita 1</a></li>
     <li><a href="#q2">Questão inédita 2</a></li>
     <li><a href="#q3">Questão inédita 3</a></li>
@@ -70,23 +70,21 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
   <h1>Questões inéditas (mesmo estilo da prova)</h1>
   <p class="subtitle">4 questões novas, criadas a partir da análise da estrutura da P1 2026.1 (Prof. Willer Costa). Mesmo formato, mesmos tipos de pergunta, números diferentes - para você treinar sem ter decorado a resposta.</p>
 
-  <h2 id="padrao">Como o professor cobra na prova</h2>
-  <div class="theory-box">
-    <p>Analisando a prova de 2026.1, dá para identificar um padrão claro de 4 questões, todas com peso parecido (a prova de 2026.1 tinha 2,5 pontos por questão):</p>
-  </div>
+  <h2 id="padrao">O que a única prova disponível mostra</h2>
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Só existe UMA prova real disponível para análise (P1 2026.1). Tudo nesta seção descreve exclusivamente essa prova - não é um "padrão comprovado" do professor, só uma amostra de tamanho 1. Trate como referência de formato possível, não como garantia do que vai cair na sua prova.</div>
   <table class="variations">
-    <tr><th>Questão</th><th>O que cobra</th></tr>
-    <tr><td>1</td><td>Definição rápida e conceitual (ex.: matriz simétrica/transposta) - baixo esforço de conta, mas exige saber a definição de cor</td></tr>
-    <tr><td>2</td><td>Problema contextualizado (texto corrido) que precisa ser <strong>traduzido</strong> para um sistema linear \(3\times3\) e depois resolvido</td></tr>
-    <tr><td>3</td><td>Questão "combo": uma única matriz \(A\) é reaproveitada em 3 subitens - determinante, depois inversa, depois resolver uma equação matricial \(AX=B\) usando a inversa já calculada</td></tr>
+    <tr><th>Questão (na prova 2026.1)</th><th>O que cobrou</th></tr>
+    <tr><td>1</td><td>Definição rápida e conceitual (matriz simétrica/transposta) - baixo esforço de conta, mas exige saber a definição de cor</td></tr>
+    <tr><td>2</td><td>Problema contextualizado (texto corrido) que precisava ser <strong>traduzido</strong> para um sistema linear \(3\times3\) e depois resolvido</td></tr>
+    <tr><td>3</td><td>Questão "combo": uma única matriz \(A\) reaproveitada em 3 subitens - determinante, depois inversa, depois resolver uma equação matricial \(AX=B\)</td></tr>
     <tr><td>4</td><td>Sistema linear com parâmetro \(k\), pedindo a classificação nos 3 casos possíveis (única, infinitas, nenhuma)</td></tr>
   </table>
 
-  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Na Questão 3, se você errar o determinante ou a inversa no item (a) ou (b), o erro <strong>arrasta</strong> para o item (c), porque ele reaproveita sua própria resposta anterior. Sempre confira cada subitem (multiplicando \(A\cdot A^{-1}\), por exemplo) antes de seguir para o próximo.</div>
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Numa questão "combo" como a Questão 3 desta prova, se você errar o determinante ou a inversa no item (a) ou (b), o erro <strong>arrasta</strong> para o item (c), porque ele reaproveita sua própria resposta anterior. Sempre confira cada subitem (multiplicando \(A\cdot A^{-1}\), por exemplo) antes de seguir para o próximo - isso vale para qualquer prova com esse formato, não só a de 2026.1.</div>
 
-  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Na Questão 4, o professor pede as 3 classificações, mas isso <strong>não garante</strong> que as 3 realmente existam para aquele sistema específico. Na prova de 2026.1, por exemplo, não existia nenhum valor de \(k\) que desse infinitas soluções - o caso crítico era sempre impossível. Nunca assuma o resultado: sempre verifique o caso \(\det=0\) escalonando de verdade.</div>
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Numa questão de sistema com parâmetro como a Questão 4, pedir as 3 classificações <strong>não garante</strong> que as 3 realmente existam para aquele sistema específico. Na prova de 2026.1, por exemplo, não existia nenhum valor de \(k\) que desse infinitas soluções - o caso crítico era sempre impossível. Nunca assuma o resultado antes de calcular: sempre verifique o caso \(\det=0\) escalonando de verdade, matéria por matéria.</div>
 
-  <div class="alert-info">Pontos de atenção gerais: (1) a Questão 2 exige modelar o problema antes de resolver - a tradução do texto para equações já é parte da nota; (2) o professor prefere que \(AX=B\) seja resolvido via \(X=A^{-1}B\) (não só por escalonamento direto), já que ele pede explicitamente a inversa no item anterior; (3) as 4 questões têm peso parecido - não gaste tempo demais na Questão 1 (mais fácil) e deixe pouco tempo para a 3 e a 4 (mais longas).</div>
+  <div class="alert-info">Pontos de atenção que valem independente da banca: (1) um problema contextualizado (como a Questão 2) exige modelar o texto em equações antes de resolver - a tradução já é parte da nota; (2) quando um exercício pede determinante, depois inversa, depois \(AX=B\) na sequência, faz sentido reaproveitar a inversa já calculada (\(X=A^{-1}B\)) em vez de escalonar tudo de novo; (3) administre o tempo pela dificuldade de cada questão, não pela ordem em que aparecem.</div>
 
   <h2 id="questoes">Questões inéditas</h2>
 
