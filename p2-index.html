@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia P2 | Álgebra Linear</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">Guia Álgebra Linear
+      <small>MPA06855 · Plano de estudo de 3 dias</small>
+    </a>
+    <nav class="top-nav">
+      <a href="index.html">Início</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">P1</button>
+        <div class="nav-dropdown-menu nav-dropdown-menu-wide">
+          <span class="nav-group-label">Dia 1 - Matrizes</span>
+          <a href="dia1.html">Teoria e exercícios</a>
+          <a href="metodo1.html">Passo a passo</a>
+          <span class="nav-group-label">Dia 2 - Inversíveis</span>
+          <a href="dia2.html">Teoria e exercícios</a>
+          <a href="metodo2.html">Passo a passo</a>
+          <span class="nav-group-label">Dia 3 - Determinantes</span>
+          <a href="dia3.html">Teoria e exercícios</a>
+          <a href="metodo3.html">Passo a passo</a>
+          <span class="nav-group-label">Material extra</span>
+          <a href="boldrini.html">Livro Boldrini</a>
+          <span class="nav-group-label">Provas antigas</span>
+          <a href="prova-anterior.html">Gabarito P1 2026.1</a>
+          <a href="questoes-ineditas.html">Questões inéditas</a>
+          <a href="teste-2023.html">Teste 15/09/2023</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle active">P2</button>
+        <div class="nav-dropdown-menu">
+          <a href="p2-index.html" class="active">Visão geral</a>
+          <a href="p2-dia1.html">Dia 1 - Espaço Vetorial</a>
+          <a href="p2-dia2.html">Dia 2 - Combinação Linear</a>
+          <a href="p2-dia3.html">Dia 3 - Base e Mudança de Base</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>P2 - Espaço Vetorial</h1>
+  <p class="hero-subtitle">3 dias, 2h por dia, seguindo o Capítulo 4 do livro-base (Boldrini, Costa, Figueiredo, Wetzler): Espaço Vetorial e Subespaço, Combinação Linear e Dependência Linear, Base e Mudança de Base.</p>
+  <div class="hero-actions">
+    <a class="btn-outline" href="p2-dia1.html">Começar pelo Dia 1</a>
+  </div>
+  <div class="hero-cards">
+    <a class="hero-card" href="p2-dia1.html"><h3>Dia 1 - Espaço Vetorial</h3><p>Definição de espaço vetorial e subespaço, exemplos e contraexemplos.</p></a>
+    <a class="hero-card" href="p2-dia2.html"><h3>Dia 2 - Combinação Linear</h3><p>Subespaço gerado, dependência e independência linear.</p></a>
+    <a class="hero-card" href="p2-dia3.html"><h3>Dia 3 - Base e Dimensão</h3><p>Base, dimensão, coordenadas e matriz de mudança de base.</p></a>
+  </div>
+</section>
+
+<div class="layout" style="grid-template-columns: 1fr;">
+<main style="max-width:1100px;">
+
+  <h2 id="como-usar">Como usar este guia</h2>
+  <div class="theory-box">
+    <p><span class="badge badge-prereq">PRÉ-REQUISITO</span> Este guia segue diretamente o Capítulo 4 do livro-base "Álgebra Linear" (Boldrini, Costa, Figueiredo, Wetzler), já que não há slides do professor disponíveis para este conteúdo. Todos os exercícios são reais do livro (seção 4.8), com enunciado e resposta oficial conferidos contra o PDF.</p>
+  </div>
+  <div class="alert-warning">Regra de ouro: tente cada exercício sozinho antes de clicar em "Ver gabarito" (abre em janela popup).</div>
+
+  <h2 id="cronograma">Cronograma - 3 dias x 2h</h2>
+
+  <div class="plan-day">
+    <h3>Dia 1 - Espaço Vetorial e Subespaço <span class="badge badge-green">2h</span></h3>
+    <div class="plan-block"><span class="plan-time">0:00-0:50</span> Definição de espaço vetorial (as 8 propriedades), principais exemplos (\(R^n\), \(M(m,n)\), polinômios). Fazer Exercício 1.</div>
+    <div class="plan-block"><span class="plan-time">0:50-1:40</span> Definição de subespaço vetorial (2 condições), exemplos e contraexemplos, interseção e soma de subespaços. Fazer Exercícios 2, 3 e 25.</div>
+    <div class="plan-block"><span class="plan-time">1:40-2:00</span> Revisão: refazer o teste de subespaço em um conjunto novo, de cabeça.</div>
+  </div>
+
+  <div class="plan-day">
+    <h3>Dia 2 - Combinação Linear e Dependência Linear <span class="badge badge-green">2h</span></h3>
+    <div class="plan-block"><span class="plan-time">0:00-0:50</span> Combinação linear, subespaço gerado \([v_1,...,v_n]\). Fazer Exercício 6.</div>
+    <div class="plan-block"><span class="plan-time">0:50-1:40</span> Dependência e independência linear (definição e teorema equivalente). Praticar com os exemplos do livro.</div>
+    <div class="plan-block"><span class="plan-time">1:40-2:00</span> Revisão: decidir de cabeça se 2-3 conjuntos pequenos são LI ou LD.</div>
+  </div>
+
+  <div class="plan-day">
+    <h3>Dia 3 - Base, Dimensão e Mudança de Base <span class="badge badge-green">2h</span></h3>
+    <div class="plan-block"><span class="plan-time">0:00-0:40</span> Base e dimensão de um espaço vetorial. Fazer Exercícios 9 e 21.</div>
+    <div class="plan-block"><span class="plan-time">0:40-1:20</span> Extrair base de um conjunto gerador via escalonamento; coordenadas de um vetor. Fazer Exercícios 11, 17 e 18.</div>
+    <div class="plan-block"><span class="plan-time">1:20-2:00</span> Matriz de mudança de base. Fazer Exercício 33 e revisão geral dos 3 dias.</div>
+  </div>
+
+  <h2 id="mapa">O que este capítulo cobre (mapa mental rápido)</h2>
+  <table class="variations">
+    <tr><th>Tópico</th><th>Definição-chave</th><th>Onde mais erra</th></tr>
+    <tr><td>Espaço vetorial</td><td>conjunto V com soma e escalar satisfazendo 8 propriedades</td><td>Esquecer de verificar TODAS as 8 propriedades, não só a soma</td></tr>
+    <tr><td>Subespaço vetorial</td><td>\(W\subset V\) fechado na soma e no produto por escalar</td><td>Achar que \(0\in W\) já garante ser subespaço (não garante - é só necessário, não suficiente)</td></tr>
+    <tr><td>Combinação linear</td><td>\(v=a_1v_1+\cdots+a_nv_n\)</td><td>Montar o sistema errado ao testar se um vetor pertence a \([v_1,\ldots,v_n]\)</td></tr>
+    <tr><td>Dependência linear</td><td>\(a_1v_1+\cdots+a_nv_n=0\) com algum \(a_i\neq0\)</td><td>Confundir "existe solução não trivial" com "só existe a solução trivial"</td></tr>
+    <tr><td>Base e dimensão</td><td>conjunto LI que gera \(V\); dimensão = número de vetores da base</td><td>Esquecer de checar as DUAS condições (LI e gerador), não só uma</td></tr>
+    <tr><td>Mudança de base</td><td>\([v]_\beta=[I]_{\beta'\beta}[v]_{\beta'}\)</td><td>Trocar a ordem das bases nos índices da matriz de mudança</td></tr>
+  </table>
+
+</main>
+</div>
+
+<footer class="site-footer">
+  Guia de estudos pessoal - Álgebra Linear (MPA06855) - P2, Capítulo 4 (Espaço Vetorial) do livro-base Boldrini.
+</footer>
+</body>
+</html>

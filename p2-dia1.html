@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dia 1 · Espaço Vetorial | Guia P2</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">Guia Álgebra Linear
+      <small>MPA06855 · Plano de estudo de 3 dias</small>
+    </a>
+    <nav class="top-nav">
+      <a href="index.html">Início</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">P1</button>
+        <div class="nav-dropdown-menu nav-dropdown-menu-wide">
+          <span class="nav-group-label">Dia 1 - Matrizes</span>
+          <a href="dia1.html">Teoria e exercícios</a>
+          <a href="metodo1.html">Passo a passo</a>
+          <span class="nav-group-label">Dia 2 - Inversíveis</span>
+          <a href="dia2.html">Teoria e exercícios</a>
+          <a href="metodo2.html">Passo a passo</a>
+          <span class="nav-group-label">Dia 3 - Determinantes</span>
+          <a href="dia3.html">Teoria e exercícios</a>
+          <a href="metodo3.html">Passo a passo</a>
+          <span class="nav-group-label">Material extra</span>
+          <a href="boldrini.html">Livro Boldrini</a>
+          <span class="nav-group-label">Provas antigas</span>
+          <a href="prova-anterior.html">Gabarito P1 2026.1</a>
+          <a href="questoes-ineditas.html">Questões inéditas</a>
+          <a href="teste-2023.html">Teste 15/09/2023</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle active">P2</button>
+        <div class="nav-dropdown-menu">
+          <a href="p2-index.html">Visão geral</a>
+          <a href="p2-dia1.html" class="active">Dia 1 - Espaço Vetorial</a>
+          <a href="p2-dia2.html">Dia 2 - Combinação Linear</a>
+          <a href="p2-dia3.html">Dia 3 - Base e Mudança de Base</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="toc">
+  <details class="toc-details" open>
+  <summary>Nesta página</summary>
+  <ul>
+    <li><a href="#espaco">Espaço vetorial</a></li>
+    <li><a href="#ex1">Exercício 1</a></li>
+    <li><a href="#subespaco">Subespaço vetorial</a></li>
+    <li><a href="#metodo">Como testar se é subespaço</a></li>
+    <li><a href="#ex2">Exercício 2</a></li>
+    <li><a href="#ex3">Exercício 3</a></li>
+    <li><a href="#soma">Interseção e soma de subespaços</a></li>
+    <li><a href="#ex25">Exercício 25</a></li>
+  </ul>
+  </details>
+</aside>
+
+<main>
+  <h1>Dia 1 - Espaço Vetorial e Subespaço</h1>
+  <p class="subtitle">Bloco de 2h. Fonte: Boldrini, Capítulo 4, seções 4.1 a 4.3 (pág. 97-111).</p>
+
+  <h2 id="espaco">Espaço vetorial</h2>
+  <div class="theory-box">
+    <p><span class="badge badge-prereq">PRÉ-REQUISITO</span> Um <strong>espaço vetorial real</strong> é um conjunto \(V\), não vazio, com duas operações (soma \(V\times V\to V\) e multiplicação por escalar \(\mathbb{R}\times V\to V\)) tais que, para quaisquer \(u,v,w\in V\) e \(a,b\in\mathbb{R}\), valem as 8 propriedades abaixo.</p>
+  </div>
+
+  <table class="variations">
+    <tr><th>Propriedade</th><th>Enunciado</th></tr>
+    <tr><td>i</td><td>\((u+v)+w=u+(v+w)\)</td></tr>
+    <tr><td>ii</td><td>\(u+v=v+u\)</td></tr>
+    <tr><td>iii</td><td>Existe \(0\in V\) tal que \(u+0=u\)</td></tr>
+    <tr><td>iv</td><td>Existe \(-u\in V\) tal que \(u+(-u)=0\)</td></tr>
+    <tr><td>v</td><td>\(a(u+v)=au+av\)</td></tr>
+    <tr><td>vi</td><td>\((a+b)v=av+bv\)</td></tr>
+    <tr><td>vii</td><td>\((ab)v=a(bv)\)</td></tr>
+    <tr><td>viii</td><td>\(1u=u\)</td></tr>
+  </table>
+
+  <div class="eli5">
+    <span class="eli5-label">Explicando bem devagar</span>
+    <p>"Vetor" aqui não é só uma seta no plano: é qualquer objeto que pode ser somado e multiplicado por número seguindo essas 8 regras. Uma matriz pode ser vetor, um polinômio pode ser vetor - o que importa é que as operações se comportem "direitinho".</p>
+  </div>
+
+  <div class="example-box">
+    Principais exemplos de espaço vetorial: \(\mathbb{R}^n=\{(x_1,\ldots,x_n); x_i\in\mathbb{R}\}\); \(M(m,n)\), o conjunto das matrizes reais \(m\times n\); \(P_n\), o conjunto dos polinômios de grau \(\leq n\).
+  </div>
+
+  <div class="exercise" id="ex1">
+    <h3>Exercício 1 <span class="badge badge-gray">Boldrini, pág. 129</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-ex1')">Ver gabarito</button></h3>
+    <div class="enunciado">a) Seja \(V=\mathbb{R}^n\). Qual é o vetor nulo de \(V\) e quem é \(-(x_1,\ldots,x_n)\)? b) Seja \(W=M(2,2)\). Descreva o vetor nulo e o vetor oposto de \(\begin{pmatrix}a&b\\c&d\end{pmatrix}\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex1">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Exercício 1</h3>
+      <div class="step"><strong class="step-label">a) Vetor nulo e oposto em \(\mathbb{R}^n\)</strong>
+      As operações em \(\mathbb{R}^n\) são feitas coordenada a coordenada. O vetor nulo é o elemento neutro da soma: \(0=(0,0,\ldots,0)\), pois \((x_1,\ldots,x_n)+(0,\ldots,0)=(x_1,\ldots,x_n)\).
+      O oposto troca o sinal de cada coordenada: \(-(x_1,\ldots,x_n)=(-x_1,\ldots,-x_n)\), pois somando os dois dá o vetor nulo.</div>
+      <div class="step"><strong class="step-label">b) Vetor nulo e oposto em \(M(2,2)\)</strong>
+      Mesma lógica, mas em cada entrada da matriz: vetor nulo \(=\begin{pmatrix}0&0\\0&0\end{pmatrix}\); oposto de \(\begin{pmatrix}a&b\\c&d\end{pmatrix}\) é \(\begin{pmatrix}-a&-b\\-c&-d\end{pmatrix}\).</div>
+      <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Em qualquer espaço vetorial "de coordenadas" (\(\mathbb{R}^n\), matrizes, polinômios), o vetor nulo é sempre "tudo zero" e o oposto é sempre "troca o sinal de cada coordenada" - a operação nunca muda de espaço para espaço, só a forma de escrever o vetor muda.</div>
+      <span class="answer-final">Resposta: a) \(0=(0,\ldots,0)\), \(-(x_1,\ldots,x_n)=(-x_1,\ldots,-x_n)\); b) \(0=\begin{pmatrix}0&0\\0&0\end{pmatrix}\), oposto \(=\begin{pmatrix}-a&-b\\-c&-d\end{pmatrix}\)</span>
+    </div>
+  </div>
+
+  <h2 id="subespaco">Subespaço vetorial</h2>
+  <div class="theory-box">
+    <p><span class="badge badge-prereq">PRÉ-REQUISITO</span> Dado um espaço vetorial \(V\), um subconjunto \(W\), não vazio, é um <strong>subespaço vetorial</strong> de \(V\) se: <strong>(i)</strong> para quaisquer \(u,v\in W\), \(u+v\in W\); <strong>(ii)</strong> para qualquer \(a\in\mathbb{R}\), \(u\in W\), \(au\in W\).</p>
+  </div>
+
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Todo subespaço precisa conter o vetor nulo (fazendo \(a=0\) na condição ii). Isso é uma condição <strong>necessária</strong>, mas não <strong>suficiente</strong>: existem conjuntos que contêm o vetor nulo e mesmo assim não são subespaço (ex.: a parábola \(W=\{(x,x^2)\}\) em \(\mathbb{R}^2\) contém \((0,0)\) mas não é fechada na soma).</div>
+
+  <h2 id="metodo">Como testar se é subespaço (método fixo)</h2>
+  <div class="step"><strong class="step-label">Passo 1</strong> Confira que o vetor nulo satisfaz as condições que definem \(W\). Se não satisfizer, \(W\) já não é subespaço - pare aqui.</div>
+  <div class="step"><strong class="step-label">Passo 2</strong> Tome dois vetores genéricos \(u,v\in W\) (escritos com as condições de \(W\) já impostas) e verifique se \(u+v\) ainda satisfaz essas condições.</div>
+  <div class="step"><strong class="step-label">Passo 3</strong> Tome um vetor genérico \(u\in W\) e um escalar \(a\), e verifique se \(au\) ainda satisfaz as condições de \(W\).</div>
+  <div class="alert-info">Se as duas verificações (soma e escalar) passarem, \(W\) é subespaço. Se qualquer uma falhar (mesmo só um contraexemplo numérico), \(W\) não é subespaço.</div>
+
+  <div class="exercise" id="ex2">
+    <h3>Exercício 2 <span class="badge badge-gray">Boldrini, pág. 129</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-ex2')">Ver gabarito</button></h3>
+    <div class="enunciado">Mostre que os seguintes subconjuntos de \(\mathbb{R}^4\) são subespaços: a) \(W=\{(x,y,z,t)\in\mathbb{R}^4 \mid x+y=0 \text{ e } z-t=0\}\); b) \(U=\{(x,y,z,t)\in\mathbb{R}^4 \mid 2x+y-t=0 \text{ e } z=0\}\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex2">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Exercício 2</h3>
+      <div class="step"><strong class="step-label">a) Fechamento na soma</strong>
+      Sejam \(v_1=(x_1,y_1,z_1,t_1)\in W\) e \(v_2=(x_2,y_2,z_2,t_2)\in W\), ou seja, \(x_1+y_1=0\), \(z_1-t_1=0\), \(x_2+y_2=0\), \(z_2-t_2=0\).
+      \[v_1+v_2=(x_1+x_2,\,y_1+y_2,\,z_1+z_2,\,t_1+t_2)\]
+      Testando as condições de \(W\) no vetor soma:
+      \[(x_1+x_2)+(y_1+y_2)=(x_1+y_1)+(x_2+y_2)=0+0=0\]
+      \[(z_1+z_2)-(t_1+t_2)=(z_1-t_1)+(z_2-t_2)=0+0=0\]
+      Logo \(v_1+v_2\in W\).</div>
+      <div class="step"><strong class="step-label">a) Fechamento no escalar</strong>
+      Seja \(v=(x,y,z,t)\in W\) e \(\lambda\in\mathbb{R}\). Então \(\lambda v=(\lambda x,\lambda y,\lambda z,\lambda t)\).
+      \[\lambda x+\lambda y=\lambda(x+y)=\lambda\cdot0=0, \qquad \lambda z-\lambda t=\lambda(z-t)=\lambda\cdot0=0\]
+      Logo \(\lambda v\in W\). Portanto \(W\) é subespaço.</div>
+      <div class="step"><strong class="step-label">b) Mesmo mecanismo para \(U\)</strong>
+      Sejam \(v_1=(x_1,y_1,0,t_1)\), \(v_2=(x_2,y_2,0,t_2)\) com \(2x_1+y_1-t_1=0\) e \(2x_2+y_2-t_2=0\).
+      \[v_1+v_2=(x_1+x_2,y_1+y_2,0,t_1+t_2)\]
+      \[2(x_1+x_2)+(y_1+y_2)-(t_1+t_2)=(2x_1+y_1-t_1)+(2x_2+y_2-t_2)=0+0=0\]
+      e a terceira coordenada continua \(0+0=0\). Para o escalar: \(\lambda v_1=(\lambda x_1,\lambda y_1,0,\lambda t_1)\), e \(2\lambda x_1+\lambda y_1-\lambda t_1=\lambda(2x_1+y_1-t_1)=0\). Portanto \(U\) é subespaço.</div>
+      <span class="answer-final">Resposta: \(W\) e \(U\) são subespaços de \(\mathbb{R}^4\) (ambos fechados na soma e no produto por escalar).</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex3">
+    <h3>Exercício 3 <span class="badge badge-gray">Boldrini, pág. 129</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-ex3')">Ver gabarito</button></h3>
+    <div class="enunciado">Responda se os subconjuntos abaixo são subespaços de \(M(2,2)\). Em caso afirmativo, exiba geradores. a) \(V=\left\{\begin{pmatrix}a&b\\c&d\end{pmatrix}; a,b,c,d\in\mathbb{R}, b=c\right\}\). b) \(W=\left\{\begin{pmatrix}a&b\\c&d\end{pmatrix}; a,b,c,d\in\mathbb{R}, b=c+1\right\}\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex3">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Exercício 3</h3>
+      <div class="step"><strong class="step-label">a) Teste rápido: o vetor nulo está em \(V\)?</strong>
+      \(\begin{pmatrix}0&0\\0&0\end{pmatrix}\) tem \(b=c=0\), satisfaz \(b=c\). Passa no primeiro teste. Agora a soma: se \(b_1=c_1\) e \(b_2=c_2\), então \(b_1+b_2=c_1+c_2\), então a soma continua com \(b=c\). E o escalar: se \(b=c\), então \(\lambda b=\lambda c\). Logo \(V\) é subespaço.</div>
+      <div class="step"><strong class="step-label">a) Geradores de \(V\)</strong>
+      A forma geral de um vetor de \(V\) é \(\begin{pmatrix}a&b\\b&d\end{pmatrix}\) (já que \(c=b\)). Podemos escrever:
+      \[\begin{pmatrix}a&b\\b&d\end{pmatrix}=a\begin{pmatrix}1&0\\0&0\end{pmatrix}+b\begin{pmatrix}0&1\\1&0\end{pmatrix}+d\begin{pmatrix}0&0\\0&1\end{pmatrix}\]
+      Logo \(V=\left[\begin{pmatrix}1&0\\0&0\end{pmatrix},\begin{pmatrix}0&1\\1&0\end{pmatrix},\begin{pmatrix}0&0\\0&1\end{pmatrix}\right]\).</div>
+      <div class="step"><strong class="step-label">b) Teste rápido: o vetor nulo está em \(W\)?</strong> <span class="badge badge-trap">ARMADILHA</span>
+      \(\begin{pmatrix}0&0\\0&0\end{pmatrix}\) teria que satisfazer \(b=c+1\), ou seja, \(0=0+1\), o que é falso. Como o vetor nulo NÃO está em \(W\), já podemos concluir de cara que \(W\) não é subespaço - nem precisa testar soma e escalar.</div>
+      <span class="answer-final">Resposta: \(V\) é subespaço, gerado por \(\left\{\begin{pmatrix}1&0\\0&0\end{pmatrix},\begin{pmatrix}0&1\\1&0\end{pmatrix},\begin{pmatrix}0&0\\0&1\end{pmatrix}\right\}\); \(W\) não é subespaço (não contém o vetor nulo).</span>
+    </div>
+  </div>
+
+  <h2 id="soma">Interseção e soma de subespaços</h2>
+  <div class="theory-box">
+    <p>Se \(W_1\) e \(W_2\) são subespaços de \(V\), então \(W_1\cap W_2\) <strong>sempre</strong> é subespaço de \(V\). Já a <strong>reunião</strong> \(W_1\cup W_2\) em geral <strong>não</strong> é subespaço. A soma \(W_1+W_2=\{v\in V; v=w_1+w_2, w_1\in W_1, w_2\in W_2\}\) sempre é subespaço, e vale:
+    \[\dim(W_1+W_2)=\dim W_1+\dim W_2-\dim(W_1\cap W_2)\]</p>
+  </div>
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Quando \(W_1\cap W_2=\{0\}\), a soma é chamada <strong>soma direta</strong> (\(W_1\oplus W_2\)). Não confunda: \(W_1+W_2\) sempre existe e é subespaço, mas só é soma DIRETA quando a interseção é trivial.</div>
+
+  <div class="exercise" id="ex25">
+    <h3>Exercício 25 <span class="badge badge-gray">Boldrini, pág. 130</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-ex25')">Ver gabarito</button></h3>
+    <div class="enunciado">Sejam \(W_1=\{(x,y,z,t)\in\mathbb{R}^4 \mid x+y=0 \text{ e } z-t=0\}\) e \(W_2=\{(x,y,z,t)\in\mathbb{R}^4 \mid x-y-z+t=0\}\) subespaços de \(\mathbb{R}^4\). a) Determine \(W_1\cap W_2\). b) Exiba uma base para \(W_1\cap W_2\). c) Determine \(W_1+W_2\). d) \(W_1+W_2\) é soma direta? e) \(W_1+W_2=\mathbb{R}^4\)?</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex25">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Exercício 25</h3>
+      <div class="step"><strong class="step-label">1. Ache uma base para \(W_1\)</strong>
+      \(W_1\) é o mesmo \(W\) do Exercício 2: \(x+y=0\), \(z-t=0\). Livre em \(y=s\) (então \(x=-s\)) e em \(t=r\) (então \(z=r\)): vetor \(=s(-1,1,0,0)+r(0,0,1,1)\). Base de \(W_1\): \(\{(-1,1,0,0),(0,0,1,1)\}\), \(\dim W_1=2\).</div>
+      <div class="step"><strong class="step-label">2. Ache uma base para \(W_2\)</strong>
+      \(x-y-z+t=0\) é uma única equação em 4 variáveis: 3 graus de liberdade. Livre em \(y=a,z=b,t=c\), então \(x=a+b-c\). Base de \(W_2\): \(\{(1,1,0,0),(1,0,1,0),(-1,0,0,1)\}\), \(\dim W_2=3\).</div>
+      <div class="step"><strong class="step-label">a) Ache \(W_1\cap W_2\)</strong>
+      Um vetor genérico de \(W_1\) é \((-s,s,r,r)\). Substituindo na equação de \(W_2\): \((-s)-(s)-(r)+(r)=-2s=0 \Rightarrow s=0\). Sobra só \(r\) livre: vetor \((0,0,r,r)=r(0,0,1,1)\).</div>
+      <div class="step"><strong class="step-label">b) Base de \(W_1\cap W_2\)</strong>
+      \(W_1\cap W_2=[(0,0,1,1)]\), base \(\{(0,0,1,1)\}\), \(\dim(W_1\cap W_2)=1\).</div>
+      <div class="step"><strong class="step-label">c) Determine \(W_1+W_2\)</strong>
+      \(W_1+W_2\) é gerado pelos 5 vetores das duas bases juntas (\(2+3=5\)), mas em \(\mathbb{R}^4\) no máximo 4 podem ser LI. Usando a fórmula:
+      \[\dim(W_1+W_2)=\dim W_1+\dim W_2-\dim(W_1\cap W_2)=2+3-1=4\]
+      Como \(\dim(W_1+W_2)=4=\dim\mathbb{R}^4\), conclui-se \(W_1+W_2=\mathbb{R}^4\) diretamente (não precisa escalonar para confirmar).</div>
+      <div class="step"><strong class="step-label">d) É soma direta?</strong>
+      Não, pois \(W_1\cap W_2=[(0,0,1,1)]\neq\{0\}\).</div>
+      <div class="step"><strong class="step-label">e) \(W_1+W_2=\mathbb{R}^4\)?</strong>
+      Sim, como já mostrado no item (c).</div>
+      <span class="answer-final">Resposta: \(W_1\cap W_2=[(0,0,1,1)]\) (dim 1); \(W_1+W_2=\mathbb{R}^4\) (dim 4); não é soma direta.</span>
+    </div>
+  </div>
+
+  <div class="alert-success">Fim do Dia 1. Refaça o teste de subespaço em um conjunto novo antes de seguir para o <a href="p2-dia2.html">Dia 2 - Combinação Linear</a>.</div>
+
+</main>
+</div>
+
+<footer class="site-footer">
+  Guia de estudos pessoal - Álgebra Linear (MPA06855) - P2, Dia 1 de 3.
+</footer>
+<script src="modal.js"></script>
+</body>
+</html>

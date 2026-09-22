@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dia 3 · Base e Mudança de Base | Guia P2</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">Guia Álgebra Linear
+      <small>MPA06855 · Plano de estudo de 3 dias</small>
+    </a>
+    <nav class="top-nav">
+      <a href="index.html">Início</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">P1</button>
+        <div class="nav-dropdown-menu nav-dropdown-menu-wide">
+          <span class="nav-group-label">Dia 1 - Matrizes</span>
+          <a href="dia1.html">Teoria e exercícios</a>
+          <a href="metodo1.html">Passo a passo</a>
+          <span class="nav-group-label">Dia 2 - Inversíveis</span>
+          <a href="dia2.html">Teoria e exercícios</a>
+          <a href="metodo2.html">Passo a passo</a>
+          <span class="nav-group-label">Dia 3 - Determinantes</span>
+          <a href="dia3.html">Teoria e exercícios</a>
+          <a href="metodo3.html">Passo a passo</a>
+          <span class="nav-group-label">Material extra</span>
+          <a href="boldrini.html">Livro Boldrini</a>
+          <span class="nav-group-label">Provas antigas</span>
+          <a href="prova-anterior.html">Gabarito P1 2026.1</a>
+          <a href="questoes-ineditas.html">Questões inéditas</a>
+          <a href="teste-2023.html">Teste 15/09/2023</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle active">P2</button>
+        <div class="nav-dropdown-menu">
+          <a href="p2-index.html">Visão geral</a>
+          <a href="p2-dia1.html">Dia 1 - Espaço Vetorial</a>
+          <a href="p2-dia2.html">Dia 2 - Combinação Linear</a>
+          <a href="p2-dia3.html" class="active">Dia 3 - Base e Mudança de Base</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="toc">
+  <details class="toc-details" open>
+  <summary>Nesta página</summary>
+  <ul>
+    <li><a href="#base">Base e dimensão</a></li>
+    <li><a href="#ex9">Exercício 9</a></li>
+    <li><a href="#ex21">Exercício 21</a></li>
+    <li><a href="#extrair">Extrair base via escalonamento</a></li>
+    <li><a href="#ex17">Exercício 17</a></li>
+    <li><a href="#ex18">Exercício 18</a></li>
+    <li><a href="#coordenadas">Coordenadas em relação a uma base</a></li>
+    <li><a href="#ex11">Exercício 11</a></li>
+    <li><a href="#mudanca">Matriz de mudança de base</a></li>
+    <li><a href="#ex33">Exercício 33</a></li>
+  </ul>
+  </details>
+</aside>
+
+<main>
+  <h1>Dia 3 - Base, Dimensão e Mudança de Base</h1>
+  <p class="subtitle">Bloco de 2h. Fonte: Boldrini, Capítulo 4, seções 4.6 e 4.7 (pág. 116-128).</p>
+
+  <h2 id="base">Base e dimensão</h2>
+  <div class="theory-box">
+    <p><span class="badge badge-prereq">PRÉ-REQUISITO</span> Um conjunto \(\{v_1,\ldots,v_n\}\) é uma <strong>base</strong> de \(V\) se: <strong>(i)</strong> é LI; <strong>(ii)</strong> \([v_1,\ldots,v_n]=V\) (gera todo \(V\)). Todas as bases de um mesmo espaço têm o mesmo número de elementos, chamado <strong>dimensão</strong> de \(V\) (\(\dim V\)).</p>
+  </div>
+
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Uma base precisa cumprir as DUAS condições ao mesmo tempo. Um conjunto pode ser LI e não ser base (não gera tudo), ou pode gerar tudo e não ser base (é LD). Sempre confira as duas.</div>
+
+  <div class="theory-box">
+    <p><strong>Teorema-chave:</strong> se \(\dim V=n\), qualquer conjunto com mais de \(n\) vetores é automaticamente LD, e qualquer conjunto de exatamente \(n\) vetores LI já é uma base (não precisa checar se gera \(V\) separadamente).</p>
+  </div>
+
+  <div class="exercise" id="ex9">
+    <h3>Exercício 9 <span class="badge badge-gray">Boldrini, pág. 130</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-ex9')">Ver gabarito</button></h3>
+    <div class="enunciado">Mostre que \(\left\{\begin{pmatrix}1&0\\0&0\end{pmatrix},\begin{pmatrix}0&1\\0&0\end{pmatrix},\begin{pmatrix}0&0\\1&0\end{pmatrix},\begin{pmatrix}0&0\\0&1\end{pmatrix}\right\}\) é base de \(M(2,2)\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex9">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Exercício 9</h3>
+      <div class="step"><strong class="step-label">1. Gera \(M(2,2)\)?</strong>
+      Qualquer matriz \(\begin{pmatrix}a&b\\c&d\end{pmatrix}\) se escreve como
+      \[\begin{pmatrix}a&b\\c&d\end{pmatrix}=a\begin{pmatrix}1&0\\0&0\end{pmatrix}+b\begin{pmatrix}0&1\\0&0\end{pmatrix}+c\begin{pmatrix}0&0\\1&0\end{pmatrix}+d\begin{pmatrix}0&0\\0&1\end{pmatrix}\]
+      Logo o conjunto gera \(M(2,2)\) inteiro.</div>
+      <div class="step"><strong class="step-label">2. É LI?</strong>
+      \[a\begin{pmatrix}1&0\\0&0\end{pmatrix}+b\begin{pmatrix}0&1\\0&0\end{pmatrix}+c\begin{pmatrix}0&0\\1&0\end{pmatrix}+d\begin{pmatrix}0&0\\0&1\end{pmatrix}=\begin{pmatrix}a&b\\c&d\end{pmatrix}=\begin{pmatrix}0&0\\0&0\end{pmatrix}\]
+      Isso força \(a=b=c=d=0\), a única solução é a trivial. LI confirmado.</div>
+      <span class="answer-final">Resposta: satisfaz as duas condições, é base. Logo \(\dim M(2,2)=4\).</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex21">
+    <h3>Exercício 21 <span class="badge badge-gray">Boldrini, pág. 130</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-ex21')">Ver gabarito</button></h3>
+    <div class="enunciado">Considere o sistema \(2x_1+4x_2-6x_3=a\), \(x_1-x_2+4x_3=b\), \(6x_2-14x_3=c\). Seja \(W\) o conjunto-solução. a) Que condições sobre \(a,b,c\) tornam \(W\) subespaço de \(\mathbb{R}^3\)? b) Encontre uma base para \(W\) nessas condições. c) Que relação existe entre \(\dim W\) e o grau de liberdade do sistema?</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex21">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Exercício 21</h3>
+      <div class="step"><strong class="step-label">a) Condição sobre \(a,b,c\)</strong>
+      O conjunto-solução de um sistema linear só é subespaço quando o sistema é <strong>homogêneo</strong> (Dia 1, Exemplo 5 de subespaço). Portanto: \(a=b=c=0\).</div>
+      <div class="step"><strong class="step-label">b) Resolva o sistema homogêneo</strong>
+      \[\begin{cases}x_1+2x_2-3x_3=0\\x_1-x_2+4x_3=0\\3x_2-7x_3=0\end{cases}\]
+      (a 1ª e a 3ª equações já foram simplificadas dividindo por 2). Da 3ª: \(x_2=\tfrac73x_3\). Substituindo na 2ª: \(x_1=x_2-4x_3=\tfrac73x_3-4x_3=-\tfrac53x_3\).</div>
+      <div class="step"><strong class="step-label">Confira na 1ª equação</strong>
+      \[-\tfrac53x_3+2\cdot\tfrac73x_3-3x_3=\tfrac{-5+14-9}{3}x_3=0\;✓\]
+      Sistema com 1 grau de liberdade em \(x_3\). Fazendo \(x_3=3\) (para evitar frações): \(x_1=-5,\,x_2=7,\,x_3=3\).</div>
+      <div class="step"><strong class="step-label">c) Relação dimensão e grau de liberdade</strong>
+      \(\dim W\) é exatamente o grau de liberdade do sistema (aqui, 1). Isso vale para qualquer sistema homogêneo: cada variável livre gera um vetor da base.</div>
+      <span class="answer-final">Resposta: a) \(a=b=c=0\); b) base \(\{(-5,7,3)\}\), \(\dim W=1\); c) \(\dim W=\) grau de liberdade.</span>
+    </div>
+  </div>
+
+  <h2 id="extrair">Extrair base de um conjunto gerador via escalonamento</h2>
+  <div class="theory-box">
+    <p>Colocando os vetores geradores como linhas de uma matriz e escalonando (operações elementares de linha), o subespaço gerado NÃO muda (cada operação é reversível). As linhas não-nulas da forma escada final são LI e ainda geram o mesmo subespaço - ou seja, formam uma base.</p>
+  </div>
+
+  <div class="exercise" id="ex17">
+    <h3>Exercício 17 <span class="badge badge-gray">Boldrini, pág. 130</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-ex17')">Ver gabarito</button></h3>
+    <div class="enunciado">a) Dada uma matriz \(A\) de ordem \(m\times n\), considere as \(m\) linhas como vetores de \(\mathbb{R}^n\) e o subespaço \(V\) por elas gerado. Seja \(B\) a forma escada reduzida de \(A\), e \(W\) o subespaço gerado pelas linhas de \(B\). Justifique que \(V=W\). b) Mostre que as linhas não-nulas de uma matriz-linha reduzida à forma escada são LI.</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex17">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Exercício 17</h3>
+      <div class="step"><strong class="step-label">a) Por que \(V=W\)</strong>
+      Cada operação elementar de linha (trocar duas linhas, multiplicar uma linha por escalar não-nulo, somar múltiplo de uma linha a outra) é <strong>reversível</strong>: se a nova linha é combinação linear das antigas, a linha antiga também pode ser recuperada como combinação linear das novas (basta desfazer a operação). Como cada linha nova é combinação das antigas e vice-versa, o subespaço gerado não muda em nenhuma etapa do escalonamento. Logo \(V=W\).</div>
+      <div class="step"><strong class="step-label">b) Por que as linhas não-nulas são LI</strong>
+      Na forma escada, cada linha não-nula tem um "pivô" (primeiro elemento não-nulo) numa coluna estritamente à direita do pivô da linha anterior. Isso significa que o pivô de uma linha é sempre zero em todas as outras linhas - nenhuma linha pode ser escrita como combinação linear das demais, pois não haveria como "produzir" aquele pivô específico. Logo são LI.</div>
+      <span class="answer-final">Resposta: escalonar não muda o subespaço gerado (V=W), e as linhas não-nulas da forma escada são sempre LI - juntas, essas duas propriedades garantem que a forma escada dá uma base do subespaço gerado.</span>
+    </div>
+  </div>
+
+  <div class="exercise" id="ex18">
+    <h3>Exercício 18 <span class="badge badge-gray">Boldrini, pág. 130</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-ex18')">Ver gabarito</button></h3>
+    <div class="enunciado">Considere o subespaço de \(\mathbb{R}^4\) gerado por \(v_1=(1,-1,0,0)\), \(v_2=(0,0,1,1)\), \(v_3=(-2,2,1,1)\), \(v_4=(1,0,0,0)\). a) O vetor \((2,-3,2,2)\) pertence a \([v_1,v_2,v_3,v_4]\)? b) Exiba uma base para \([v_1,v_2,v_3,v_4]\). Qual é a dimensão? c) \([v_1,v_2,v_3,v_4]=\mathbb{R}^4\)?</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex18">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Exercício 18</h3>
+      <div class="step"><strong class="step-label">a) Monte o sistema</strong>
+      \(x v_1+yv_2+zv_3+tv_4=(2,-3,2,2)\):
+      \[\begin{cases}x-2z+t=2\\-x+2z=-3\\y+z=2\end{cases}\]
+      (a 4ª coordenada repete a 3ª equação). Da 2ª: \(x=2z+3\). Substituindo na 1ª: \((2z+3)-2z+t=2 \Rightarrow t=-1\). Da 3ª: \(y=2-z\) (com \(z\) livre) - sistema possível e indeterminado.</div>
+      <div class="step"><strong class="step-label">a) Conclusão</strong>
+      Como o sistema é consistente (mesmo com infinitas soluções, por exemplo \(z=0 \Rightarrow x=3,y=2,t=-1\)), o vetor \((2,-3,2,2)\) pertence a \([v_1,v_2,v_3,v_4]\).</div>
+      <div class="step"><strong class="step-label">b) Escalone as linhas \(v_1,v_2,v_3,v_4\)</strong>
+      \[\begin{pmatrix}1&-1&0&0\\0&0&1&1\\-2&2&1&1\\1&0&0&0\end{pmatrix}\]
+      \(L_3\to L_3+2L_1\): \((-2,2,1,1)+2(1,-1,0,0)=(0,0,1,1)\), igual à linha 2! Então \(L_3\to L_3-L_2\) zera essa linha completamente.
+      \(L_4\to L_4-L_1\): \((1,0,0,0)-(1,-1,0,0)=(0,1,0,0)\).</div>
+      <div class="step"><strong class="step-label">Termine o escalonamento</strong>
+      \(L_1\to L_1+L_4^{novo}\): \((1,-1,0,0)+(0,1,0,0)=(1,0,0,0)\). Reorganizando as linhas não-nulas:
+      \[(1,0,0,0),\quad(0,1,0,0),\quad(0,0,1,1)\]
+      3 linhas não-nulas (uma virou zero), com pivôs em colunas 1, 2 e 3.</div>
+      <div class="step"><strong class="step-label">b) Conclusão: base e dimensão</strong>
+      Base de \([v_1,v_2,v_3,v_4]\): \(\{(1,0,0,0),(0,1,0,0),(0,0,1,1)\}\), \(\dim=3\).</div>
+      <div class="step"><strong class="step-label">c) É igual a \(\mathbb{R}^4\)?</strong>
+      Não, pois \(\dim[v_1,v_2,v_3,v_4]=3\) e \(\dim\mathbb{R}^4=4\); um subespaço só pode ser igual ao espaço todo se tiver a mesma dimensão.</div>
+      <span class="answer-final">Resposta: a) sim, pertence; b) base \(\{(1,0,0,0),(0,1,0,0),(0,0,1,1)\}\), dimensão 3; c) não é igual a \(\mathbb{R}^4\).</span>
+    </div>
+  </div>
+
+  <h2 id="coordenadas">Coordenadas em relação a uma base</h2>
+  <div class="theory-box">
+    <p>Fixada uma base ordenada \(\beta=\{v_1,\ldots,v_n\}\) de \(V\), todo vetor \(v\in V\) se escreve de maneira <strong>única</strong> como \(v=a_1v_1+\cdots+a_nv_n\). Os números \(a_1,\ldots,a_n\) são as <strong>coordenadas de \(v\) em relação a \(\beta\)</strong>, denotadas \([v]_\beta\).</p>
+  </div>
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> A ORDEM dos vetores na base importa! Trocar a ordem dos vetores de \(\beta\) troca a ordem das coordenadas em \([v]_\beta\).</div>
+
+  <div class="exercise" id="ex11">
+    <h3>Exercício 11 <span class="badge badge-gray">Boldrini, pág. 130</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-ex11')">Ver gabarito</button></h3>
+    <div class="enunciado">Quais são as coordenadas de \(x=(1,0,0)\) em relação à base \(\beta=\{(1,1,1),(-1,1,0),(1,0,-1)\}\)?</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex11">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Exercício 11</h3>
+      <div class="step"><strong class="step-label">1. Monte a equação</strong>
+      \[(1,0,0)=a(1,1,1)+b(-1,1,0)+c(1,0,-1)\]
+      \[\begin{cases}a-b+c=1\\a+b=0\\a-c=0\end{cases}\]</div>
+      <div class="step"><strong class="step-label">2. Resolva</strong>
+      Da 2ª equação: \(b=-a\). Da 3ª: \(c=a\). Substituindo na 1ª:
+      \[a-(-a)+a=3a=1 \;\Rightarrow\; a=\tfrac13\]
+      Logo \(b=-\tfrac13\), \(c=\tfrac13\).</div>
+      <div class="step"><strong class="step-label">Confira</strong>
+      \[\tfrac13(1,1,1)-\tfrac13(-1,1,0)+\tfrac13(1,0,-1)=\left(\tfrac13+\tfrac13+\tfrac13,\;\tfrac13-\tfrac13+0,\;\tfrac13-0-\tfrac13\right)=(1,0,0)\;✓\]</div>
+      <span class="answer-final">Resposta: \([x]_\beta=\begin{pmatrix}1/3\\-1/3\\1/3\end{pmatrix}\)</span>
+    </div>
+  </div>
+
+  <h2 id="mudanca">Matriz de mudança de base</h2>
+  <div class="theory-box">
+    <p>Sejam \(\beta=\{u_1,\ldots,u_n\}\) e \(\beta'=\{w_1,\ldots,w_n\}\) bases de \(V\). A <strong>matriz de mudança de base</strong> \([I]_{\beta'\beta}\) tem, na coluna \(i\), as coordenadas de \(w_i\) em relação a \(\beta\). Vale:
+    \[[v]_\beta=[I]_{\beta'\beta}\,[v]_{\beta'}\]
+    Além disso, \(([I]_{\beta'\beta})^{-1}=[I]_{\beta\beta'}\) - as matrizes de mudança de base são sempre inversíveis e inversas uma da outra.</p>
+  </div>
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Quando uma das bases é a canônica, montar a matriz de mudança PARA a canônica é fácil (as colunas são os próprios vetores da outra base). Já a matriz da canônica PARA a outra base é a inversa dessa.</div>
+
+  <div class="exercise" id="ex33">
+    <h3>Exercício 33 <span class="badge badge-gray">Boldrini, pág. 131</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-ex33')">Ver gabarito</button></h3>
+    <div class="enunciado">Seja \(V\) o espaço das matrizes \(2\times2\) triangulares superiores. Sejam \(\beta=\left\{\begin{pmatrix}1&0\\0&0\end{pmatrix},\begin{pmatrix}0&1\\0&0\end{pmatrix},\begin{pmatrix}0&0\\0&1\end{pmatrix}\right\}\) e \(\beta_1=\left\{\begin{pmatrix}1&0\\0&0\end{pmatrix},\begin{pmatrix}1&1\\0&0\end{pmatrix},\begin{pmatrix}1&1\\0&1\end{pmatrix}\right\}\) bases de \(V\). Ache \([I]_{\beta\beta_1}\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex33">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Exercício 33</h3>
+      <div class="step"><strong class="step-label">Escreva cada vetor de \(\beta_1\) em coordenadas de \(\beta\)</strong>
+      \[\begin{pmatrix}1&0\\0&0\end{pmatrix}=1\begin{pmatrix}1&0\\0&0\end{pmatrix}+0\begin{pmatrix}0&1\\0&0\end{pmatrix}+0\begin{pmatrix}0&0\\0&1\end{pmatrix} \;\Rightarrow\; \text{coluna }(1,0,0)\]
+      \[\begin{pmatrix}1&1\\0&0\end{pmatrix}=1\begin{pmatrix}1&0\\0&0\end{pmatrix}+1\begin{pmatrix}0&1\\0&0\end{pmatrix}+0\begin{pmatrix}0&0\\0&1\end{pmatrix} \;\Rightarrow\; \text{coluna }(1,1,0)\]
+      \[\begin{pmatrix}1&1\\0&1\end{pmatrix}=1\begin{pmatrix}1&0\\0&0\end{pmatrix}+1\begin{pmatrix}0&1\\0&0\end{pmatrix}+1\begin{pmatrix}0&0\\0&1\end{pmatrix} \;\Rightarrow\; \text{coluna }(1,1,1)\]</div>
+      <div class="step"><strong class="step-label">Monte a matriz (cada resultado vira uma coluna)</strong>
+      \[[I]_{\beta\beta_1}=\begin{pmatrix}1&1&1\\0&1&1\\0&0&1\end{pmatrix}\]</div>
+      <span class="answer-final">Resposta: \([I]_{\beta\beta_1}=\begin{pmatrix}1&1&1\\0&1&1\\0&0&1\end{pmatrix}\)</span>
+    </div>
+  </div>
+
+  <div class="alert-success">Fim do Dia 3 e do Capítulo 4. Revise as 3 armadilhas marcadas nesta página antes de qualquer prova sobre Espaço Vetorial.</div>
+
+</main>
+</div>
+
+<footer class="site-footer">
+  Guia de estudos pessoal - Álgebra Linear (MPA06855) - P2, Dia 3 de 3.
+</footer>
+<script src="modal.js"></script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dia 2 · Combinação Linear | Guia P2</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">Guia Álgebra Linear
+      <small>MPA06855 · Plano de estudo de 3 dias</small>
+    </a>
+    <nav class="top-nav">
+      <a href="index.html">Início</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">P1</button>
+        <div class="nav-dropdown-menu nav-dropdown-menu-wide">
+          <span class="nav-group-label">Dia 1 - Matrizes</span>
+          <a href="dia1.html">Teoria e exercícios</a>
+          <a href="metodo1.html">Passo a passo</a>
+          <span class="nav-group-label">Dia 2 - Inversíveis</span>
+          <a href="dia2.html">Teoria e exercícios</a>
+          <a href="metodo2.html">Passo a passo</a>
+          <span class="nav-group-label">Dia 3 - Determinantes</span>
+          <a href="dia3.html">Teoria e exercícios</a>
+          <a href="metodo3.html">Passo a passo</a>
+          <span class="nav-group-label">Material extra</span>
+          <a href="boldrini.html">Livro Boldrini</a>
+          <span class="nav-group-label">Provas antigas</span>
+          <a href="prova-anterior.html">Gabarito P1 2026.1</a>
+          <a href="questoes-ineditas.html">Questões inéditas</a>
+          <a href="teste-2023.html">Teste 15/09/2023</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle active">P2</button>
+        <div class="nav-dropdown-menu">
+          <a href="p2-index.html">Visão geral</a>
+          <a href="p2-dia1.html">Dia 1 - Espaço Vetorial</a>
+          <a href="p2-dia2.html" class="active">Dia 2 - Combinação Linear</a>
+          <a href="p2-dia3.html">Dia 3 - Base e Mudança de Base</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="toc">
+  <details class="toc-details" open>
+  <summary>Nesta página</summary>
+  <ul>
+    <li><a href="#combinacao">Combinação linear e subespaço gerado</a></li>
+    <li><a href="#ex6">Exercício 6</a></li>
+    <li><a href="#dependencia">Dependência e independência linear</a></li>
+    <li><a href="#metodo">Como testar LI ou LD</a></li>
+    <li><a href="#exemplos-li">Exemplos resolvidos (LI/LD)</a></li>
+  </ul>
+  </details>
+</aside>
+
+<main>
+  <h1>Dia 2 - Combinação Linear e Dependência Linear</h1>
+  <p class="subtitle">Bloco de 2h. Fonte: Boldrini, Capítulo 4, seções 4.4 e 4.5 (pág. 112-115).</p>
+
+  <h2 id="combinacao">Combinação linear e subespaço gerado</h2>
+  <div class="theory-box">
+    <p><span class="badge badge-prereq">PRÉ-REQUISITO</span> Sejam \(V\) espaço vetorial, \(v_1,\ldots,v_n\in V\) e \(a_1,\ldots,a_n\in\mathbb{R}\). O vetor \(v=a_1v_1+\cdots+a_nv_n\) é uma <strong>combinação linear</strong> de \(v_1,\ldots,v_n\). O conjunto de TODAS as combinações lineares possíveis é o <strong>subespaço gerado</strong>, denotado \(W=[v_1,\ldots,v_n]\).</p>
+  </div>
+
+  <div class="eli5">
+    <span class="eli5-label">Explicando bem devagar</span>
+    <p>Pense em \([v_1,\ldots,v_n]\) como "tudo que dá para construir" usando só esses vetores, esticando (multiplicando por escalar) e somando. Perguntar "\(v\) pertence a \([v_1,\ldots,v_n]\)?" é perguntar "dá para construir \(v\) só com peças \(v_1,\ldots,v_n\)?".</p>
+  </div>
+
+  <div class="alert-info">Testar se um vetor \(v\) pertence a \([v_1,\ldots,v_n]\) é sempre a mesma tarefa: montar o sistema linear \(a_1v_1+\cdots+a_nv_n=v\) (uma equação por coordenada) e verificar se ele tem solução. Se tiver (mesmo com infinitas soluções), \(v\) pertence ao subespaço gerado.</div>
+
+  <div class="exercise" id="ex6">
+    <h3>Exercício 6 <span class="badge badge-gray">Boldrini, pág. 130</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-ex6')">Ver gabarito</button></h3>
+    <div class="enunciado">Considere o subespaço de \(\mathbb{R}^4\): \(S=[(1,1,-2,4),(1,1,-1,2),(1,4,-4,8)]\). a) O vetor \((2/3,1,-1,2)\) pertence a \(S\)? b) O vetor \((0,0,1,1)\) pertence a \(S\)?</div>
+  </div>
+  <div class="modal-overlay" id="modal-ex6">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Exercício 6</h3>
+      <div class="step"><strong class="step-label">a) Monte o sistema</strong>
+      Buscamos \(x,y,z\) tais que \(x(1,1,-2,4)+y(1,1,-1,2)+z(1,4,-4,8)=(2/3,1,-1,2)\):
+      \[\begin{cases}x+y+z=2/3\\x+y+4z=1\\-2x-y-4z=-1\\4x+2y+8z=2\end{cases}\]</div>
+      <div class="step"><strong class="step-label">Resolva por eliminação</strong>
+      \((2)-(1)\): \(3z=1-2/3=1/3 \Rightarrow z=1/9\).
+      De (1): \(x+y=2/3-1/9=5/9\).
+      Em (3): \(-2x-y-4(1/9)=-1 \Rightarrow 2x+y=1-4/9=5/9\).
+      Subtraindo de \(x+y=5/9\): \(x=0\), logo \(y=5/9\).</div>
+      <div class="step"><strong class="step-label">Confira na equação (4)</strong>
+      \[4(0)+2(5/9)+8(1/9)=10/9+8/9=18/9=2\;✓\]
+      As 4 equações são consistentes com \(x=0,\,y=5/9,\,z=1/9\).</div>
+      <div class="step"><strong class="step-label">b) Repita para \((0,0,1,1)\)</strong>
+      \[\begin{cases}x+y+z=0\\x+y+4z=0\\-2x-y-4z=1\\4x+2y+8z=1\end{cases}\]
+      \((2)-(1)\): \(3z=0 \Rightarrow z=0\). De (1): \(y=-x\). Em (3): \(-2x-(-x)-0=-x=1 \Rightarrow x=-1,\,y=1\).</div>
+      <div class="step"><strong class="step-label">Confira na equação (4)</strong> <span class="badge badge-trap">ARMADILHA</span>
+      \[4(-1)+2(1)+8(0)=-4+2=-2 \neq 1\]
+      Contradição! O sistema é inconsistente, não existe solução. Mesmo tendo resolvido 3 das 4 equações "bonitinho", é essencial conferir TODAS - às vezes a inconsistência só aparece na última equação.</div>
+      <span class="answer-final">Resposta: a) sim, \((2/3,1,-1,2)\in S\) (com \(x=0,y=5/9,z=1/9\)); b) não, \((0,0,1,1)\notin S\) (sistema impossível).</span>
+    </div>
+  </div>
+
+  <h2 id="dependencia">Dependência e independência linear</h2>
+  <div class="theory-box">
+    <p><span class="badge badge-prereq">PRÉ-REQUISITO</span> \(\{v_1,\ldots,v_n\}\) é <strong>linearmente independente (LI)</strong> se a equação \(a_1v_1+\cdots+a_nv_n=0\) só tem a solução trivial \(a_1=\cdots=a_n=0\). Se existir alguma solução com algum \(a_i\neq0\), o conjunto é <strong>linearmente dependente (LD)</strong>.</p>
+  </div>
+  <div class="alert-info"><strong>Teorema:</strong> \(\{v_1,\ldots,v_n\}\) é LD se, e somente se, um deles é combinação linear dos outros. Equivalente: é LI se, e somente se, NENHUM deles é combinação linear dos outros.</div>
+
+  <h2 id="metodo">Como testar LI ou LD (método fixo)</h2>
+  <div class="step"><strong class="step-label">Passo 1</strong> Escreva a equação \(a_1v_1+\cdots+a_nv_n=0\), uma equação por coordenada.</div>
+  <div class="step"><strong class="step-label">Passo 2</strong> Resolva o sistema homogêneo resultante para \(a_1,\ldots,a_n\).</div>
+  <div class="step"><strong class="step-label">Passo 3</strong> Se a ÚNICA solução for \(a_1=\cdots=a_n=0\), o conjunto é LI. Se existir alguma solução com algum \(a_i\neq0\) (sistema indeterminado), o conjunto é LD.</div>
+
+  <h2 id="exemplos-li">Exemplos resolvidos (direto do livro)</h2>
+
+  <div class="exercise">
+    <h3>Exemplo A - conjunto LI</h3>
+    <div class="enunciado">Verifique se \(e_1=(1,0)\) e \(e_2=(0,1)\) são LI em \(\mathbb{R}^2\).</div>
+    <div class="step"><strong class="step-label">Resolvendo</strong>
+    \[a_1e_1+a_2e_2=0 \;\Rightarrow\; a_1(1,0)+a_2(0,1)=(0,0) \;\Rightarrow\; (a_1,a_2)=(0,0)\]
+    A única solução é \(a_1=a_2=0\).</div>
+    <span class="answer-final">Resposta: \(e_1,e_2\) são LI.</span>
+  </div>
+
+  <div class="exercise">
+    <h3>Exemplo B - conjunto LD</h3>
+    <div class="enunciado">Verifique se \(\{(1,-1),(1,0),(1,1)\}\) é LI ou LD em \(\mathbb{R}^2\).</div>
+    <div class="step"><strong class="step-label">Resolvendo</strong>
+    Como são 3 vetores em \(\mathbb{R}^2\) (dimensão 2), já sabemos que não podem ser LI (veja o Dia 3: no máximo 2 vetores LI em \(\mathbb{R}^2\)). De fato:
+    \[\tfrac12(1,-1)-1(1,0)+\tfrac12(1,1)=(\tfrac12-1+\tfrac12,\,-\tfrac12+0+\tfrac12)=(0,0)\]
+    com coeficientes \((\tfrac12,-1,\tfrac12)\), nem todos nulos.</div>
+    <div class="step"><strong class="step-label">Padrão geral</strong> <span class="badge badge-pattern">PADRÃO</span> Sempre que o número de vetores for maior que a dimensão do espaço, o conjunto já é automaticamente LD - nem precisa resolver o sistema para saber disso (veja o teorema no Dia 3).</div>
+    <span class="answer-final">Resposta: LD.</span>
+  </div>
+
+  <div class="alert-success">Fim do Dia 2. Antes de seguir, tente decidir de cabeça se \(\{(1,2),(2,4)\}\) é LI ou LD (dica: um é múltiplo do outro). Depois vá para o <a href="p2-dia3.html">Dia 3 - Base e Mudança de Base</a>.</div>
+
+</main>
+</div>
+
+<footer class="site-footer">
+  Guia de estudos pessoal - Álgebra Linear (MPA06855) - P2, Dia 2 de 3.
+</footer>
+<script src="modal.js"></script>
+</body>
+</html>
