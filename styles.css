@@ -168,6 +168,29 @@ nav.top-nav a:hover, nav.top-nav a.active {
   display: flex;
 }
 
+.nav-dropdown-menu-wide {
+  min-width: 240px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+nav.top-nav .nav-group-label {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--text-muted);
+  padding: 0.5rem 0.7rem 0.15rem;
+  border-top: 1px solid var(--border);
+  margin-top: 0.25rem;
+}
+
+nav.top-nav .nav-dropdown-menu-wide > .nav-group-label:first-child {
+  border-top: none;
+  margin-top: 0;
+}
+
 nav.top-nav .nav-dropdown-menu a {
   color: var(--text);
   text-decoration: none;
