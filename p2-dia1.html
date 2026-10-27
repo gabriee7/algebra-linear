@@ -146,14 +146,14 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       \[(z_1+z_2)-(t_1+t_2)=(z_1-t_1)+(z_2-t_2)=0+0=0\]
       Logo \(v_1+v_2\in W\).</div>
       <div class="step"><strong class="step-label">a) Fechamento no escalar</strong>
-      Seja \(v=(x,y,z,t)\in W\) e \(\lambda\in\mathbb{R}\). Então \(\lambda v=(\lambda x,\lambda y,\lambda z,\lambda t)\).
-      \[\lambda x+\lambda y=\lambda(x+y)=\lambda\cdot0=0, \qquad \lambda z-\lambda t=\lambda(z-t)=\lambda\cdot0=0\]
-      Logo \(\lambda v\in W\). Portanto \(W\) é subespaço.</div>
+      Seja \(v=(x,y,z,t)\in W\) e \(\alpha\in\mathbb{R}\). Então \(\alpha v=(\alpha x,\alpha y,\alpha z,\alpha t)\).
+      \[\alpha x+\alpha y=\alpha(x+y)=\alpha\cdot0=0, \qquad \alpha z-\alpha t=\alpha(z-t)=\alpha\cdot0=0\]
+      Logo \(\alpha v\in W\). Portanto \(W\) é subespaço.</div>
       <div class="step"><strong class="step-label">b) Mesmo mecanismo para \(U\)</strong>
       Sejam \(v_1=(x_1,y_1,0,t_1)\), \(v_2=(x_2,y_2,0,t_2)\) com \(2x_1+y_1-t_1=0\) e \(2x_2+y_2-t_2=0\).
       \[v_1+v_2=(x_1+x_2,y_1+y_2,0,t_1+t_2)\]
       \[2(x_1+x_2)+(y_1+y_2)-(t_1+t_2)=(2x_1+y_1-t_1)+(2x_2+y_2-t_2)=0+0=0\]
-      e a terceira coordenada continua \(0+0=0\). Para o escalar: \(\lambda v_1=(\lambda x_1,\lambda y_1,0,\lambda t_1)\), e \(2\lambda x_1+\lambda y_1-\lambda t_1=\lambda(2x_1+y_1-t_1)=0\). Portanto \(U\) é subespaço.</div>
+      e a terceira coordenada continua \(0+0=0\). Para o escalar: \(\alpha v_1=(\alpha x_1,\alpha y_1,0,\alpha t_1)\), e \(2\alpha x_1+\alpha y_1-\alpha t_1=\alpha(2x_1+y_1-t_1)=0\). Portanto \(U\) é subespaço.</div>
       <span class="answer-final">Resposta: \(W\) e \(U\) são subespaços de \(\mathbb{R}^4\) (ambos fechados na soma e no produto por escalar).</span>
     </div>
   </div>
@@ -167,7 +167,7 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
       <h3>Gabarito - Exercício 3</h3>
       <div class="step"><strong class="step-label">a) Teste rápido: o vetor nulo está em \(V\)?</strong>
-      \(\begin{pmatrix}0&0\\0&0\end{pmatrix}\) tem \(b=c=0\), satisfaz \(b=c\). Passa no primeiro teste. Agora a soma: se \(b_1=c_1\) e \(b_2=c_2\), então \(b_1+b_2=c_1+c_2\), então a soma continua com \(b=c\). E o escalar: se \(b=c\), então \(\lambda b=\lambda c\). Logo \(V\) é subespaço.</div>
+      \(\begin{pmatrix}0&0\\0&0\end{pmatrix}\) tem \(b=c=0\), satisfaz \(b=c\). Passa no primeiro teste. Agora a soma: se \(b_1=c_1\) e \(b_2=c_2\), então \(b_1+b_2=c_1+c_2\), então a soma continua com \(b=c\). E o escalar: se \(b=c\), então \(\alpha b=\alpha c\). Logo \(V\) é subespaço.</div>
       <div class="step"><strong class="step-label">a) Geradores de \(V\)</strong>
       A forma geral de um vetor de \(V\) é \(\begin{pmatrix}a&b\\b&d\end{pmatrix}\) (já que \(c=b\)). Podemos escrever:
       \[\begin{pmatrix}a&b\\b&d\end{pmatrix}=a\begin{pmatrix}1&0\\0&0\end{pmatrix}+b\begin{pmatrix}0&1\\1&0\end{pmatrix}+d\begin{pmatrix}0&0\\0&1\end{pmatrix}\]

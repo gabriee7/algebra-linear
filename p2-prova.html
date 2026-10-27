@@ -57,8 +57,11 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
   <details class="toc-details" open>
   <summary>Nesta página</summary>
   <ul>
+    <li><a href="#vocabulario">Vocabulário da prova</a></li>
     <li><a href="#q1">Questão 1</a></li>
+    <li><a href="#entendendo-q1">Entendendo a Questão 1</a></li>
     <li><a href="#q2">Questão 2</a></li>
+    <li><a href="#entendendo-q2">Entendendo a Questão 2</a></li>
     <li><a href="#q3">Questão 3</a></li>
     <li><a href="#entendendo-q3">Entendendo a Questão 3</a></li>
     <li><a href="#q4">Questão 4</a></li>
@@ -72,9 +75,28 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
   <h1>Gabarito - P2 2026.1</h1>
   <p class="subtitle">2ª Prova de Álgebra Linear aplicada em 17/06/2026 pelo Prof. Willer Costa (Espaços Vetoriais, Boldrini Cap. 4). As 4 questões estão reproduzidas como no PDF original, com gabarito completo e conferido.</p>
 
-  <div class="alert-info">Cada gabarito (botão "Ver gabarito") traz a explicação passo a passo e, no fim, um quadro <strong>"Como escrever na prova"</strong> com só as linhas que vão para o papel. As Questões 3 e 4 têm ainda uma seção de aprofundamento logo abaixo de cada uma.</div>
+  <div class="alert-info">Como usar esta página: (1) leia o <a href="#vocabulario">vocabulário</a> para saber o que é cada coisa; (2) tente a questão sozinho; (3) abra "Ver gabarito", que traz a explicação passo a passo e, no fim, um quadro <strong>"Como escrever na prova"</strong> com só as linhas que vão para o papel; (4) leia a seção "Entendendo a Questão" logo abaixo de cada uma, com a teoria explicada devagar e um <strong>roteiro prático</strong> para resolver qualquer questão do mesmo tipo.</div>
 
   <div class="alert-warning">A prova não informa a pontuação de cada questão. Os valores nos badges são uma sugestão (total 10,0).</div>
+
+  <h2 id="vocabulario">Vocabulário da prova: o que é cada coisa</h2>
+  <p>Todos os termos que aparecem nas 4 questões, com o significado e como ele aparece na prática. Volte aqui sempre que um termo não estiver claro.</p>
+
+  <table class="variations">
+    <tr><th>Termo</th><th>O que é</th><th>Na prática</th></tr>
+    <tr><td>Vetor de \(\mathbb{R}^n\)</td><td>Uma lista ordenada de \(n\) números reais.</td><td>\((x,y,z,w)\) é um vetor de \(\mathbb{R}^4\).</td></tr>
+    <tr><td>Subespaço</td><td>Subconjunto que contém o vetor nulo e não "deixa sair" ninguém pela soma nem pelo produto por escalar.</td><td>Conjuntos definidos por equações lineares igualadas a zero.</td></tr>
+    <tr><td>Combinação linear (CL)</td><td>Soma de vetores multiplicados por números: \(a_1v_1+\cdots+a_nv_n\).</td><td>"Dá para chegar em \(v\) usando só esses vetores?"</td></tr>
+    <tr><td>Gerar</td><td>Um conjunto gera \(V\) quando todo vetor de \(V\) é CL dos vetores do conjunto.</td><td>Aparece ao escrever o vetor genérico: \(x(\ldots)+y(\ldots)\).</td></tr>
+    <tr><td>LI (linearmente independente)</td><td>A única CL que dá o vetor nulo é a com todos os coeficientes zero.</td><td>Nenhum vetor do conjunto "sobra" (nenhum é CL dos outros).</td></tr>
+    <tr><td>Base</td><td>Conjunto que gera \(V\) <strong>e</strong> é LI.</td><td>O "kit mínimo" de vetores para descrever todo o \(V\).</td></tr>
+    <tr><td>Dimensão</td><td>Número de vetores de uma base (é o mesmo para qualquer base).</td><td>Número de variáveis livres: variáveis menos equações independentes.</td></tr>
+    <tr><td>Coordenadas \([v]_B\)</td><td>Os coeficientes que escrevem \(v\) como CL dos vetores da base \(B\), na ordem.</td><td>\([v]_B=\begin{pmatrix}a\\b\end{pmatrix}\) significa \(v=a\,b_1+b\,b_2\).</td></tr>
+    <tr><td>Matriz de mudança de base \([I]_{BC}\)</td><td>Matriz que converte coordenadas em \(B\) para coordenadas em \(C\).</td><td>Colunas = vetores de \(B\) escritos na base \(C\). Vale \([v]_C=[I]_{BC}[v]_B\).</td></tr>
+    <tr><td>Interseção \(U\cap V\)</td><td>Vetores que estão nos dois subespaços.</td><td>Junte as equações de \(U\) e de \(V\) e resolva.</td></tr>
+    <tr><td>Soma \(U+V\)</td><td>Todos os vetores da forma \(u+v\), com \(u\in U\) e \(v\in V\).</td><td>É gerada pela união das bases de \(U\) e de \(V\).</td></tr>
+    <tr><td>Soma direta \(U\oplus V\)</td><td>Soma em que cada vetor se escreve de um único jeito como \(u+v\).</td><td>Acontece exatamente quando \(U\cap V=\{\mathbf{0}\}\).</td></tr>
+  </table>
 
   <!-- ===================== QUESTÃO 1 ===================== -->
   <div class="exercise" id="q1">
@@ -119,6 +141,62 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       Portanto \(U\) é subespaço de \(\mathbb{R}^3\).</div>
     </div>
   </div>
+
+  <h2 id="entendendo-q1">Entendendo a Questão 1: subespaço vetorial</h2>
+
+  <div class="theory-box">
+    <p>Um <strong>subespaço</strong> de \(\mathbb{R}^3\) é um subconjunto \(U\) que, sozinho, já se comporta como um espaço vetorial com as mesmas operações de \(\mathbb{R}^3\). O teorema que se usa na prova diz que basta verificar três coisas:</p>
+    <ul>
+      <li>\(\mathbf{0}\in U\) (o conjunto não é vazio);</li>
+      <li>\(u_1,u_2\in U \Rightarrow u_1+u_2\in U\) (fechado para a soma);</li>
+      <li>\(u\in U,\ \alpha\in\mathbb{R} \Rightarrow \alpha u\in U\) (fechado para o produto por escalar).</li>
+    </ul>
+    <p>As outras propriedades de espaço vetorial (comutatividade, associatividade etc.) são "herdadas" de \(\mathbb{R}^3\) e não precisam ser verificadas.</p>
+  </div>
+
+  <div class="eli5">
+    <span class="eli5-label">Explicando bem devagar</span>
+    <p>Imagine \(\mathbb{R}^3\) como uma sala e \(U\) como uma folha de papel muito fina, infinita, atravessando a sala. Ser subespaço quer dizer: <strong>quem está na folha não consegue sair dela</strong> usando as duas operações.</p>
+    <ul>
+      <li>Somar duas setas que estão na folha dá outra seta na folha.</li>
+      <li>Esticar, encolher ou inverter (multiplicar por \(\alpha\)) uma seta da folha a mantém na folha.</li>
+    </ul>
+    <p>Repare que multiplicar por \(\alpha=0\) leva qualquer seta para o centro da sala, a origem. Então, se a folha não passar pela origem, ela já falha. É por isso que o primeiro teste é sempre "\(\mathbf{0}\in U\)?".</p>
+    <p>A equação \(x-2y+z=0\) descreve justamente um plano que passa pela origem (o vetor \((1,-2,1)\) é perpendicular a ele).</p>
+  </div>
+
+  <h3>Roteiro prático: provar que um conjunto é subespaço</h3>
+
+  <div class="step"><strong class="step-label">Passo 1: teste o vetor nulo</strong>
+  Substitua \(\mathbf{0}\) em <strong>todas</strong> as condições do conjunto. Se alguma falhar, o conjunto <strong>não</strong> é subespaço e a questão acaba aí (basta mostrar a falha).</div>
+
+  <div class="step"><strong class="step-label">Passo 2: escreva o que significa "estar no conjunto"</strong>
+  Pegue dois vetores <strong>genéricos</strong>, com índices: \(u_1=(x_1,y_1,z_1)\) e \(u_2=(x_2,y_2,z_2)\). Escreva a condição para cada um: \(x_1-2y_1+z_1=0\) e \(x_2-2y_2+z_2=0\). São essas igualdades que você vai usar no passo seguinte.</div>
+
+  <div class="step"><strong class="step-label">Passo 3: soma, reagrupando</strong>
+  Substitua as coordenadas de \(u_1+u_2\) na condição e <strong>reagrupe</strong>: tudo que tem índice 1 de um lado, tudo que tem índice 2 do outro. Cada grupo vale zero pelo Passo 2.</div>
+
+  <div class="step"><strong class="step-label">Passo 4: escalar, colocando \(\alpha\) em evidência</strong>
+  Substitua \(\alpha u_1\) na condição e coloque \(\alpha\) em evidência. O que sobra entre parênteses é a condição de \(u_1\), que vale zero.</div>
+
+  <div class="step"><strong class="step-label">Passo 5: conclua</strong>
+  Escreva a frase final: "Logo \(U\) é subespaço de \(\mathbb{R}^3\)". Professor costuma descontar quando a conclusão não aparece.</div>
+
+  <h3>Reconhecimento rápido: é ou não é subespaço?</h3>
+  <p>Antes de começar a conta, dá para prever a resposta olhando a forma das condições:</p>
+
+  <table class="variations">
+    <tr><th>Condição</th><th>É subespaço?</th><th>Por quê (contraexemplo quando não é)</th></tr>
+    <tr><td>\(x-2y+z=0\)</td><td>Sim</td><td>Equação linear e homogênea (lado direito zero).</td></tr>
+    <tr><td>\(x-2y+z=1\)</td><td>Não</td><td>O vetor nulo falha: \(0-0+0=0\neq1\).</td></tr>
+    <tr><td>\(xy=0\) (em \(\mathbb{R}^2\))</td><td>Não</td><td>Soma falha: \((1,0)\) e \((0,1)\) estão no conjunto, mas \((1,1)\) não (\(1\cdot1\neq0\)).</td></tr>
+    <tr><td>\(x\geq0\) (em \(\mathbb{R}^2\))</td><td>Não</td><td>Escalar falha: \((1,0)\) está, mas \(\alpha=-1\) dá \((-1,0)\), que não está.</td></tr>
+    <tr><td>\(x=y^2\) (em \(\mathbb{R}^2\))</td><td>Não</td><td>Escalar falha: \((1,1)\) está, mas \(2\cdot(1,1)=(2,2)\) não (\(2\neq4\)).</td></tr>
+  </table>
+
+  <div class="alert-info"><span class="badge badge-pattern">PADRÃO</span> Condições que são <strong>equações lineares igualadas a zero</strong> (sem constante solta, sem produto de variáveis, sem potência, sem desigualdade) sempre definem subespaço. Mesmo sabendo disso, quando o enunciado diz "verifique", faça a verificação completa dos Passos 1 a 5.</div>
+
+  <div class="note-complement">Extra (não pedido na questão): \(\dim U=3-1=2\). Isolando \(x=2y-z\), temos \((2y-z,\ y,\ z)=y\,(2,1,0)+z\,(-1,0,1)\), então \(\{(2,1,0),(-1,0,1)\}\) é uma base de \(U\). É o mesmo procedimento da Questão 2.</div>
 
   <!-- ===================== QUESTÃO 2 ===================== -->
   <div class="exercise" id="q2">
@@ -180,6 +258,70 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
       Base: \(\{(1,0,1,-2),(0,1,1,1)\}\), \(\dim V=2\).<br>
       2.2) \(2(1)-(-1)+3=6\neq0\). Logo \(v\notin V\).</div>
     </div>
+  </div>
+
+  <h2 id="entendendo-q2">Entendendo a Questão 2: base, dimensão e pertinência</h2>
+
+  <div class="theory-box">
+    <p>Um conjunto \(\{v_1,\ldots,v_k\}\) é <strong>base</strong> de \(V\) quando cumpre duas condições ao mesmo tempo:</p>
+    <ul>
+      <li><strong>gera</strong> \(V\): todo vetor de \(V\) é combinação linear de \(v_1,\ldots,v_k\);</li>
+      <li>é <strong>LI</strong>: \(a_1v_1+\cdots+a_kv_k=\mathbf{0}\) só acontece com \(a_1=\cdots=a_k=0\).</li>
+    </ul>
+    <p>A <strong>dimensão</strong> de \(V\) é o número de vetores de qualquer base. Para um subespaço de \(\mathbb{R}^n\) dado por equações:</p>
+    \[\dim V=(\text{número de variáveis})-(\text{número de equações independentes})\]
+  </div>
+
+  <div class="eli5">
+    <span class="eli5-label">Explicando bem devagar</span>
+    <p>Pense na base como um <strong>kit mínimo de peças</strong>:</p>
+    <ul>
+      <li>"Gerar" é: com essas peças dá para montar <strong>qualquer</strong> vetor de \(V\).</li>
+      <li>"LI" é: <strong>nenhuma peça sobra</strong>. Se uma peça pudesse ser montada com as outras, ela seria dispensável.</li>
+    </ul>
+    <p>A dimensão conta os <strong>graus de liberdade</strong>. Em \(\mathbb{R}^4\) você escolhe 4 números à vontade. Cada equação independente "amarra" uma variável às outras e tira um grau de liberdade. Com 2 equações, sobram \(4-2=2\) escolhas livres (\(x\) e \(y\)), então a base tem 2 vetores, um para cada escolha livre.</p>
+  </div>
+
+  <h3>Roteiro prático: base de um subespaço dado por equações</h3>
+
+  <div class="step"><strong class="step-label">Passo 1: preveja a dimensão</strong>
+  Variáveis menos equações independentes: \(4-2=2\). Você já sabe que a base terá 2 vetores; se sair outro número no final, há erro.</div>
+
+  <div class="step"><strong class="step-label">Passo 2: isole uma variável por equação</strong>
+  Prefira variáveis com coeficiente \(1\) ou \(-1\), assim não aparecem frações. Aqui: \(z=x+y\) e \(w=y-2x\). As que não foram isoladas (\(x\) e \(y\)) são as livres.</div>
+
+  <div class="step"><strong class="step-label">Passo 3: escreva o vetor genérico só com as livres</strong>
+  \[(x,y,z,w)=(x,\ y,\ x+y,\ y-2x)\]</div>
+
+  <div class="step"><strong class="step-label">Passo 4: um vetor para cada variável livre</strong>
+  Atalho prático: para achar o vetor que acompanha uma livre, faça essa livre valer \(1\) e as outras livres valerem \(0\):
+  \[x=1,\ y=0:\quad(1,\ 0,\ 1+0,\ 0-2)=(1,0,1,-2)\]
+  \[x=0,\ y=1:\quad(0,\ 1,\ 0+1,\ 1-0)=(0,1,1,1)\]
+  É o mesmo resultado de separar \(x(\ldots)+y(\ldots)\), só que mais rápido e com menos chance de erro de sinal.</div>
+
+  <div class="step"><strong class="step-label">Passo 5: justifique LI e conclua</strong>
+  Nas posições das livres, os vetores têm o padrão \((1,0)\) e \((0,1)\), então são LI automaticamente. Na prova, escreva a verificação pela definição (como no gabarito) e conclua com a base e a dimensão.</div>
+
+  <div class="step"><strong class="step-label">E se eu escolher outras variáveis livres?</strong>
+  A base muda, mas continua correta. Por exemplo, deixando \(z\) e \(w\) livres, resolvemos \(x+y=z\) e \(2x-y=-w\). Somando as duas: \(3x=z-w\), então
+  \[x=\frac{z-w}{3},\qquad y=z-x=\frac{2z+w}{3}\]
+  \[(x,y,z,w)=z\left(\tfrac13,\tfrac23,1,0\right)+w\left(-\tfrac13,\tfrac13,0,1\right)\]
+  Multiplicando cada vetor por 3 (isso não muda o subespaço gerado nem a independência), outra base é \(\{(1,2,3,0),\ (-1,1,0,3)\}\). Conferindo \((1,2,3,0)\): \(1+2-3=0\) e \(2-2+0=0\) ✓. Conferindo \((-1,1,0,3)\): \(-1+1-0=0\) e \(-2-1+3=0\) ✓. Funciona, mas deu mais trabalho por causa das frações. Por isso a regra prática do coeficiente \(\pm1\).</div>
+
+  <h3>Roteiro prático: o vetor pertence ao subespaço?</h3>
+
+  <div class="step"><strong class="step-label">Passo 1: substitua o vetor em todas as equações</strong>
+  Se uma única equação falhar, o vetor não pertence. Foi o que aconteceu com \(v=(1,-1,0,3)\): a segunda equação deu \(6\neq0\).</div>
+
+  <div class="step"><strong class="step-label">Passo 2: se todas passarem, os coeficientes já estão no vetor</strong>
+  Como \((x,y,z,w)=x\,(1,0,1,-2)+y\,(0,1,1,1)\), os coeficientes da combinação linear são <strong>as próprias variáveis livres do vetor</strong>, ou seja, suas duas primeiras coordenadas. Não é preciso resolver sistema.</div>
+
+  <div class="example-box">
+    <p><strong>Como seria o "caso afirmativo".</strong> Com \(v'=(1,-1,0,-3)\) no lugar de \(v\):</p>
+    \[x+y-z=1-1-0=0 \quad ✓ \qquad 2x-y+w=2+1-3=0 \quad ✓\]
+    <p>Então \(v'\in V\), e como \(x=1\), \(y=-1\):</p>
+    \[v'=1\cdot(1,0,1,-2)+(-1)\cdot(0,1,1,1)=(1-0,\ 0-1,\ 1-1,\ -2-1)=(1,-1,0,-3) \quad ✓\]
+    <p>O \(v\) da prova difere desse \(v'\) só no sinal da última coordenada. A questão foi montada para pegar quem não confere as duas equações.</p>
   </div>
 
   <!-- ===================== QUESTÃO 3 ===================== -->
@@ -258,6 +400,30 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
   <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Nesta questão a matriz \(\begin{pmatrix}-1&1\\1&1\end{pmatrix}\) é <strong>simétrica</strong>: colocar os vetores de \(B\) nas linhas em vez das colunas daria a mesma matriz e o mesmo resultado. O erro ficaria escondido aqui, mas em outra questão (por exemplo \(B=\{(1,2),(0,1)\}\)) ele muda a resposta. Treine sempre "vetores da base nas <strong>colunas</strong>".</div>
 
   <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> A ordem dos vetores da base importa. Com \(B'=\{(1,1),(-1,1)\}\) (mesmos vetores, ordem trocada), o mesmo \(v=(-4,4)\) teria \([v]_{B'}=(0,4)\), e não \((4,0)\).</div>
+
+  <h3>Roteiro prático: questões de coordenadas e mudança de base</h3>
+
+  <div class="step"><strong class="step-label">Passo 1: descubra o sentido da conversão</strong>
+  Pergunte: "o que o enunciado me deu e o que ele pede?". Aqui deu \([v]_B\) e pediu \([v]_C\): o sentido é <strong>de \(B\) para \(C\)</strong>, então a matriz é \([I]_{BC}\).</div>
+
+  <div class="step"><strong class="step-label">Passo 2: monte a matriz pelas colunas</strong>
+  Cada coluna de \([I]_{BC}\) é um vetor de \(B\) escrito na base \(C\), na ordem dada. Quando \(C\) é a canônica, basta copiar os vetores de \(B\) em pé.</div>
+
+  <div class="step"><strong class="step-label">Passo 3: multiplique</strong>
+  \([v]_C=[I]_{BC}\,[v]_B\). Faça linha por coluna, escrevendo cada conta.</div>
+
+  <div class="step"><strong class="step-label">Passo 4: confira</strong>
+  A combinação dos vetores de \(B\) com os coeficientes de \([v]_B\) tem de dar o vetor encontrado: \(4(-1,1)+0(1,1)=(-4,4)\) ✓.</div>
+
+  <p>As variações que costumam cair e o que fazer em cada uma:</p>
+
+  <table class="variations">
+    <tr><th>A prova dá</th><th>A prova pede</th><th>O que fazer</th></tr>
+    <tr><td>\([v]_B\) (com \(C\) canônica)</td><td>\([v]_C\) ou \(v\)</td><td>\([v]_C=[I]_{BC}[v]_B\), ou fazer a combinação dos vetores de \(B\) direto. <strong>Caso desta prova.</strong></td></tr>
+    <tr><td>\(v\) (ou \([v]_C\))</td><td>\([v]_B\)</td><td>Resolver o sistema \(a\,b_1+b\,b_2=v\) (mais rápido em \(2\times2\)), ou usar \([I]_{CB}=([I]_{BC})^{-1}\).</td></tr>
+    <tr><td>As duas bases</td><td>Só a matriz \([I]_{BC}\)</td><td>Colunas = vetores de \(B\) escritos em \(C\).</td></tr>
+    <tr><td>Duas bases não canônicas \(\beta,\beta'\)</td><td>\([I]_{\beta'\beta}\)</td><td>Para cada vetor de \(\beta'\), resolva um sistema para achar suas coordenadas em \(\beta\); cada resultado vira uma coluna.</td></tr>
+  </table>
 
   <!-- ===================== QUESTÃO 4 ===================== -->
   <div class="exercise" id="q4">
@@ -370,6 +536,25 @@ MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
   </table>
 
   <div class="alert-info"><span class="badge badge-pattern">PADRÃO</span> Para \(U\oplus V=\mathbb{R}^n\) são necessárias as duas condições: \(U\cap V=\{\mathbf{0}\}\) <strong>e</strong> \(\dim U+\dim V=n\). Nesta prova, \(\dim U+\dim V=1+2=3\neq4\), então a soma nunca poderia ser \(\mathbb{R}^4\), mesmo sendo direta.</div>
+
+  <h3>Roteiro prático: questões de interseção, soma e soma direta</h3>
+
+  <div class="step"><strong class="step-label">Passo 1: base e dimensão de cada subespaço</strong>
+  Use o roteiro da <a href="#entendendo-q2">Questão 2</a>: vetor genérico, um vetor por variável livre. Anote \(\dim U\) e \(\dim V\).</div>
+
+  <div class="step"><strong class="step-label">Passo 2: interseção</strong>
+  Se os dois são dados por equações (caso desta prova), <strong>junte todas as equações</strong> e resolva o sistema. Se um deles é dado por geradores (como \(W_2=[(1,1,0,1),(0,1,1,0)]\) na Prova de Treino A), escreva o vetor genérico dele, \(a(\ldots)+b(\ldots)\), e substitua nas equações do outro.</div>
+
+  <div class="step"><strong class="step-label">Passo 3: dimensão da soma</strong>
+  \(\dim(U+V)=\dim U+\dim V-\dim(U\cap V)\). Para conferir, junte as bases de \(U\) e \(V\) e veja quantos vetores LI sobram.</div>
+
+  <div class="step"><strong class="step-label">Passo 4: soma direta?</strong>
+  Olhe <strong>só</strong> para a interseção: \(U\cap V=\{\mathbf{0}\}\) significa direta; qualquer vetor não nulo em comum significa não direta.</div>
+
+  <div class="step"><strong class="step-label">Passo 5: é o espaço todo?</strong>
+  Olhe <strong>só</strong> para a dimensão: \(\dim(U+V)\) igual à dimensão do espaço significa sim; menor significa não. Se for "não", exiba um vetor que falta, como \((1,0,0,0)\) aqui.</div>
+
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Cada pergunta tem o seu critério: "direta?" se decide pela <strong>interseção</strong>; "é o espaço todo?" se decide pela <strong>dimensão da soma</strong>. Misturar os critérios é o erro mais comum nesse tipo de questão.</div>
 
   <!-- ===================== RESUMO ===================== -->
   <h2 id="resumo">Resumo da prova</h2>
