@@ -497,6 +497,14 @@ main h3 {
   margin-bottom: 0.4rem;
 }
 
+/* Fórmulas dentro de rótulos em maiúsculas não podem virar maiúsculas (v viraria V, alfa viraria A) */
+.step > strong.step-label mjx-container,
+.board-solve .board-label mjx-container,
+.eli5-label mjx-container {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 /* ── Tabelas ── */
 
 table.variations, table.data-table {
