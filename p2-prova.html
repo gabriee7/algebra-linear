@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabarito P2 2026.1 | Guia Álgebra Linear</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">Guia Álgebra Linear
+      <small>MPA06855 · Plano de estudo de 3 dias</small>
+    </a>
+    <nav class="top-nav">
+      <a href="index.html">Início</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle">P1</button>
+        <div class="nav-dropdown-menu nav-dropdown-menu-wide">
+          <span class="nav-group-label">Dia 1 - Matrizes</span>
+          <a href="dia1.html">Teoria e exercícios</a>
+          <a href="metodo1.html">Passo a passo</a>
+          <span class="nav-group-label">Dia 2 - Inversíveis</span>
+          <a href="dia2.html">Teoria e exercícios</a>
+          <a href="metodo2.html">Passo a passo</a>
+          <span class="nav-group-label">Dia 3 - Determinantes</span>
+          <a href="dia3.html">Teoria e exercícios</a>
+          <a href="metodo3.html">Passo a passo</a>
+          <span class="nav-group-label">Material extra</span>
+          <a href="boldrini.html">Livro Boldrini</a>
+          <span class="nav-group-label">Provas antigas</span>
+          <a href="prova-anterior.html">Gabarito P1 2026.1</a>
+          <a href="questoes-ineditas.html">Questões inéditas</a>
+          <a href="teste-2023.html">Teste 15/09/2023</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-toggle active">P2</button>
+        <div class="nav-dropdown-menu">
+          <a href="p2-index.html">Visão geral</a>
+          <a href="p2-dia1.html">Dia 1 - Espaço Vetorial</a>
+          <a href="p2-dia2.html">Dia 2 - Combinação Linear</a>
+          <a href="p2-dia3.html">Dia 3 - Base e Mudança de Base</a>
+          <a href="p2-prova.html" class="active">Gabarito P2 2026.1</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="toc">
+  <details class="toc-details" open>
+  <summary>Nesta página</summary>
+  <ul>
+    <li><a href="#q1">Questão 1</a></li>
+    <li><a href="#q2">Questão 2</a></li>
+    <li><a href="#q3">Questão 3</a></li>
+    <li><a href="#entendendo-q3">Entendendo a Questão 3</a></li>
+    <li><a href="#q4">Questão 4</a></li>
+    <li><a href="#entendendo-q4">Entendendo a Questão 4</a></li>
+    <li><a href="#resumo">Resumo da prova</a></li>
+  </ul>
+  </details>
+</aside>
+
+<main>
+  <h1>Gabarito - P2 2026.1</h1>
+  <p class="subtitle">2ª Prova de Álgebra Linear aplicada em 17/06/2026 pelo Prof. Willer Costa (Espaços Vetoriais, Boldrini Cap. 4). As 4 questões estão reproduzidas como no PDF original, com gabarito completo e conferido.</p>
+
+  <div class="alert-info">Cada gabarito (botão "Ver gabarito") traz a explicação passo a passo e, no fim, um quadro <strong>"Como escrever na prova"</strong> com só as linhas que vão para o papel. As Questões 3 e 4 têm ainda uma seção de aprofundamento logo abaixo de cada uma.</div>
+
+  <div class="alert-warning">A prova não informa a pontuação de cada questão. Os valores nos badges são uma sugestão (total 10,0).</div>
+
+  <!-- ===================== QUESTÃO 1 ===================== -->
+  <div class="exercise" id="q1">
+    <h3>Questão 1 <span class="badge badge-gray">2,0 pts (sugestão)</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-q1')">Ver gabarito</button></h3>
+    <div class="enunciado">Verifique que \(U=\{(x,y,z)\in\mathbb{R}^3 : x-2y+z=0\}\) é um subespaço de \(\mathbb{R}^3\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-q1">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Questão 1</h3>
+
+      <div class="theory-box"><p>Um subconjunto \(U\) de um espaço vetorial é <strong>subespaço</strong> quando: (i) \(U\) não é vazio (basta mostrar que \(\mathbf{0}\in U\)); (ii) a soma de dois vetores de \(U\) continua em \(U\); (iii) um escalar vezes um vetor de \(U\) continua em \(U\).</p></div>
+
+      <div class="step"><strong class="step-label">1. \(U\) não é vazio</strong>
+      Testamos o vetor nulo na equação de \(U\):
+      \[0-2\cdot 0+0=0\]
+      A equação é satisfeita, logo \((0,0,0)\in U\). Se o vetor nulo não satisfizesse a equação, \(U\) já não seria subespaço e a questão acabaria aqui.</div>
+
+      <div class="step"><strong class="step-label">2. Fechamento da soma</strong>
+      Pegamos dois vetores <strong>genéricos</strong> de \(U\), \(u_1=(x_1,y_1,z_1)\) e \(u_2=(x_2,y_2,z_2)\). Estar em \(U\) significa:
+      \[x_1-2y_1+z_1=0 \qquad\text{e}\qquad x_2-2y_2+z_2=0\]
+      O vetor soma é \(u_1+u_2=(x_1+x_2,\ y_1+y_2,\ z_1+z_2)\). Colocamos suas coordenadas na equação de \(U\) e reagrupamos os termos de cada vetor:
+      \[(x_1+x_2)-2(y_1+y_2)+(z_1+z_2)=(x_1-2y_1+z_1)+(x_2-2y_2+z_2)=0+0=0\]
+      Logo \(u_1+u_2\in U\).</div>
+
+      <div class="step"><strong class="step-label">3. Fechamento do produto por escalar</strong>
+      Seja \(u_1=(x_1,y_1,z_1)\in U\) e \(\alpha\in\mathbb{R}\). Então \(\alpha u_1=(\alpha x_1,\ \alpha y_1,\ \alpha z_1)\) e, colocando \(\alpha\) em evidência:
+      \[\alpha x_1-2\alpha y_1+\alpha z_1=\alpha(x_1-2y_1+z_1)=\alpha\cdot 0=0\]
+      Logo \(\alpha u_1\in U\).</div>
+
+      <div class="step"><strong class="step-label">Por que funciona</strong>
+      A equação que define \(U\) é <strong>linear e homogênea</strong> (lado direito igual a zero). É isso que permite "separar" a soma e "tirar" o \(\alpha\). Se fosse \(x-2y+z=1\), o vetor nulo já falharia (\(0\neq 1\)), e \(U\) não seria subespaço.</div>
+
+      <div class="step"><strong class="step-label">Cuidado</strong> <span class="badge badge-trap">ARMADILHA</span> Testar com vetores numéricos, como "\((1,1,1)+(2,1,0)\) está em \(U\)". Exemplos não provam nada; a verificação tem de usar vetores genéricos.</div>
+
+      <span class="answer-final">Resposta: \(U\) é subespaço vetorial de \(\mathbb{R}^3\) (um plano pela origem).</span>
+
+      <div class="board-solve"><span class="board-label">Como escrever na prova</span><br>
+      \(0-2\cdot0+0=0 \Rightarrow (0,0,0)\in U\).<br>
+      Sejam \(u_1,u_2\in U\): \((x_1+x_2)-2(y_1+y_2)+(z_1+z_2)=(x_1-2y_1+z_1)+(x_2-2y_2+z_2)=0+0=0\). Logo \(u_1+u_2\in U\).<br>
+      Seja \(\alpha\in\mathbb{R}\): \(\alpha x_1-2\alpha y_1+\alpha z_1=\alpha(x_1-2y_1+z_1)=\alpha\cdot0=0\). Logo \(\alpha u_1\in U\).<br>
+      Portanto \(U\) é subespaço de \(\mathbb{R}^3\).</div>
+    </div>
+  </div>
+
+  <!-- ===================== QUESTÃO 2 ===================== -->
+  <div class="exercise" id="q2">
+    <h3>Questão 2 <span class="badge badge-gray">3,0 pts (sugestão)</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-q2')">Ver gabarito</button></h3>
+    <div class="enunciado">Considere o subespaço de \(\mathbb{R}^4\): \(V=\{(x,y,z,w)\in\mathbb{R}^4 : x+y-z=0,\ 2x-y+w=0\}\).<br>
+    2.1 Determine uma base para \(V\).<br>
+    2.2 Verifique se o vetor \(v=(1,-1,0,3)\) pertence a \(V\). Em caso afirmativo, escreva \(v\) como combinação linear da base encontrada no item anterior.</div>
+  </div>
+  <div class="modal-overlay" id="modal-q2">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Questão 2</h3>
+
+      <h4>2.1) Base de \(V\)</h4>
+
+      <div class="step"><strong class="step-label">1. Isolar variáveis</strong>
+      São 4 variáveis e 2 equações, então sobram 2 variáveis livres. Em cada equação isolamos uma variável com coeficiente 1 (assim não aparecem frações):
+      \[x+y-z=0 \;\Rightarrow\; z=x+y\]
+      \[2x-y+w=0 \;\Rightarrow\; w=y-2x\]
+      As variáveis livres são \(x\) e \(y\).</div>
+
+      <div class="step"><strong class="step-label">2. Vetor genérico de \(V\)</strong>
+      Substituímos \(z\) e \(w\) no vetor \((x,y,z,w)\) e separamos as parcelas que têm \(x\) das que têm \(y\):
+      \[(x,y,z,w)=(x,\ y,\ x+y,\ y-2x)=(x,\ 0,\ x,\ -2x)+(0,\ y,\ y,\ y)\]
+      \[=x\,(1,0,1,-2)+y\,(0,1,1,1)\]
+      Todo vetor de \(V\) é combinação linear de \((1,0,1,-2)\) e \((0,1,1,1)\): esses dois vetores <strong>geram</strong> \(V\).</div>
+
+      <div class="step"><strong class="step-label">3. Verificar que são LI (pela definição)</strong>
+      \[a(1,0,1,-2)+b(0,1,1,1)=(0,0,0,0) \;\Rightarrow\; (a,\ b,\ a+b,\ -2a+b)=(0,0,0,0)\]
+      As duas primeiras coordenadas já dão \(a=0\) e \(b=0\). Só existe a solução trivial, logo são LI.<br><br>
+      Repare: nas posições das variáveis livres (\(x\) e \(y\), coordenadas 1 e 2), os vetores são \((1,0)\) e \((0,1)\). Por isso os vetores obtidos por parametrização são <strong>sempre</strong> LI.</div>
+
+      <div class="step"><strong class="step-label">Atalho (só para 2 vetores)</strong> <span class="badge badge-pattern">PADRÃO</span> Dois vetores são LD se e somente se um é múltiplo do outro. Aqui, se \((0,1,1,1)=k(1,0,1,-2)\), a 1ª coordenada dá \(k=0\) e a 2ª dá \(1=0\), contradição. Com 3 ou mais vetores esse atalho <strong>não</strong> vale: \((1,0),(0,1),(1,1)\) não são múltiplos dois a dois, mas são LD.</div>
+
+      <span class="answer-final">Base de \(V\): \(\{(1,0,1,-2),\ (0,1,1,1)\}\), \(\dim V=2\)</span>
+
+      <div class="alert-info">Escolher outras variáveis livres (por exemplo \(z\) e \(w\)) gera outra base, igualmente correta. A dimensão é sempre 2.</div>
+
+      <h4>2.2) \(v=(1,-1,0,3)\in V\)?</h4>
+
+      <div class="step"><strong class="step-label">1. Primeira equação</strong>
+      \[x+y-z=1+(-1)-0=0\]
+      Satisfeita.</div>
+
+      <div class="step"><strong class="step-label">2. Segunda equação</strong>
+      \[2x-y+w=2(1)-(-1)+3=2+1+3=6\neq 0\]
+      Não satisfeita. Basta uma equação falhar para \(v\) não pertencer a \(V\).</div>
+
+      <div class="step"><strong class="step-label">3. Conferência pela parametrização</strong>
+      O vetor de \(V\) com \(x=1\) e \(y=-1\) é \((1,\ -1,\ 1+(-1),\ -1-2)=(1,-1,0,-3)\), que difere de \(v\) na última coordenada.</div>
+
+      <div class="step"><strong class="step-label">Cuidado</strong> <span class="badge badge-trap">ARMADILHA</span> O "em caso afirmativo" do enunciado induz a achar que a resposta é sim. Quem testa só a primeira equação (que dá zero) e sai montando a combinação linear erra a questão.</div>
+
+      <span class="answer-final">Resposta: \(v\notin V\); logo não se escreve como combinação linear da base de \(V\).</span>
+
+      <div class="board-solve"><span class="board-label">Como escrever na prova</span><br>
+      2.1) \(z=x+y\), \(w=y-2x\). \((x,y,z,w)=(x,y,x+y,y-2x)=x(1,0,1,-2)+y(0,1,1,1)\).<br>
+      \(a(1,0,1,-2)+b(0,1,1,1)=0 \Rightarrow (a,b,a+b,-2a+b)=0 \Rightarrow a=b=0\): LI.<br>
+      Base: \(\{(1,0,1,-2),(0,1,1,1)\}\), \(\dim V=2\).<br>
+      2.2) \(2(1)-(-1)+3=6\neq0\). Logo \(v\notin V\).</div>
+    </div>
+  </div>
+
+  <!-- ===================== QUESTÃO 3 ===================== -->
+  <div class="exercise" id="q3">
+    <h3>Questão 3 <span class="badge badge-gray">2,0 pts (sugestão)</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-q3')">Ver gabarito</button></h3>
+    <div class="enunciado">Sejam \(C=\{(1,0),(0,1)\}\) e \(B=\{(-1,1),(1,1)\}\) bases ordenadas de \(\mathbb{R}^2\). Sabendo que \([v]_B=\begin{pmatrix}4\\0\end{pmatrix}\), determine \([v]_C\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-q3">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Questão 3</h3>
+
+      <div class="step"><strong class="step-label">1. Ler o que o enunciado deu</strong>
+      \([v]_B\) <strong>não é o vetor \(v\)</strong>: são os coeficientes que escrevem \(v\) como combinação dos vetores de \(B\), na ordem em que \(B\) foi dada:
+      \[[v]_B=\begin{pmatrix}4\\0\end{pmatrix} \quad\Longleftrightarrow\quad v=4\cdot(-1,1)+0\cdot(1,1)\]</div>
+
+      <div class="step"><strong class="step-label">2. Método 1: calcular \(v\) diretamente</strong>
+      \[v=(-4,\ 4)+(0,\ 0)=(-4,\ 4)\]
+      Como \(C\) é a base canônica, \((-4,4)=-4\,(1,0)+4\,(0,1)\): as coordenadas em \(C\) são as próprias entradas de \(v\).
+      \[[v]_C=\begin{pmatrix}-4\\4\end{pmatrix}\]</div>
+
+      <div class="step"><strong class="step-label">3. Método 2: matriz de mudança de base</strong>
+      A matriz que leva coordenadas em \(B\) para coordenadas em \(C\) é \([I]_{BC}\) (no Boldrini impresso e nas provas de treino: \([I]^B_C\)). Suas <strong>colunas</strong> são os vetores de \(B\) escritos na base \(C\):
+      \[[I]_{BC}=\begin{pmatrix}-1&1\\1&1\end{pmatrix}\]
+      e vale \([v]_C=[I]_{BC}\,[v]_B\):
+      \[[v]_C=\begin{pmatrix}-1&1\\1&1\end{pmatrix}\begin{pmatrix}4\\0\end{pmatrix}=\begin{pmatrix}(-1)\cdot4+1\cdot0\\1\cdot4+1\cdot0\end{pmatrix}=\begin{pmatrix}-4\\4\end{pmatrix}\]</div>
+
+      <div class="step"><strong class="step-label">4. Conferir pelo caminho de volta</strong>
+      Se a resposta está certa, escrever \((-4,4)\) na base \(B\) tem de devolver \((4,0)\):
+      \[a(-1,1)+b(1,1)=(-4,4) \;\Rightarrow\; \begin{cases}-a+b=-4\\a+b=4\end{cases} \;\Rightarrow\; b=0,\ a=4 \quad ✓\]</div>
+
+      <div class="step"><strong class="step-label">Cuidado</strong> <span class="badge badge-trap">ARMADILHA</span> Usar a inversa sem necessidade. \([I]_{BC}\) já faz o caminho pedido (de \(B\) para \(C\)); a inversa \([I]_{CB}\) só entra no caminho contrário.</div>
+
+      <span class="answer-final">Resposta: \([v]_C=\begin{pmatrix}-4\\4\end{pmatrix}\)</span>
+
+      <div class="board-solve"><span class="board-label">Como escrever na prova</span><br>
+      \([I]_{BC}=\begin{pmatrix}-1&1\\1&1\end{pmatrix}\)<br>
+      \([v]_C=[I]_{BC}[v]_B=\begin{pmatrix}-1&1\\1&1\end{pmatrix}\begin{pmatrix}4\\0\end{pmatrix}=\begin{pmatrix}-4\\4\end{pmatrix}\)<br>
+      Conferência: \(4(-1,1)+0(1,1)=(-4,4)\).</div>
+    </div>
+  </div>
+
+  <h2 id="entendendo-q3">Entendendo a Questão 3: coordenadas e mudança de base</h2>
+
+  <div class="theory-box">
+    <p>Se \(B=\{b_1,b_2\}\) é uma base <strong>ordenada</strong> de \(\mathbb{R}^2\), todo vetor \(v\) se escreve de um único jeito como \(v=a_1b_1+a_2b_2\). O vetor coluna desses coeficientes é chamado de <strong>coordenadas de \(v\) na base \(B\)</strong>:</p>
+    \[[v]_B=\begin{pmatrix}a_1\\a_2\end{pmatrix}\]
+  </div>
+
+  <div class="eli5">
+    <span class="eli5-label">Explicando bem devagar</span>
+    <p>Pense numa base como um par de "réguas" com direções próprias. As coordenadas dizem <strong>quantos passos dar em cada régua</strong> para chegar até \(v\).</p>
+    <p>Na base canônica \(C\), as réguas são "1 para a direita" \((1,0)\) e "1 para cima" \((0,1)\). Por isso as coordenadas em \(C\) coincidem com as entradas do vetor: \((-4,4)\) é "4 para a esquerda, 4 para cima".</p>
+    <p>Na base \(B\), as réguas são \(b_1=(-1,1)\) (diagonal para cima e para a esquerda) e \(b_2=(1,1)\) (diagonal para cima e para a direita). \([v]_B=(4,0)\) diz: "dê 4 passos em \(b_1\) e nenhum em \(b_2\)". Quatro passos de \((-1,1)\) levam a \((-4,4)\). É o mesmo ponto do plano, descrito com réguas diferentes.</p>
+  </div>
+
+  <div class="step"><strong class="step-label">Por que as colunas de \([I]_{BC}\) são os vetores de \(B\)</strong>
+  Partimos de \(v=4\,b_1+0\,b_2\). Escrever isso em coordenadas de \(C\) é tomar coordenadas dos dois lados, e coordenadas respeitam soma e escalar:
+  \[[v]_C=4\,[b_1]_C+0\,[b_2]_C\]
+  Uma combinação de vetores coluna é exatamente um produto "matriz vezes vetor", em que as colunas da matriz são esses vetores:
+  \[4\begin{pmatrix}-1\\1\end{pmatrix}+0\begin{pmatrix}1\\1\end{pmatrix}=\begin{pmatrix}-1&1\\1&1\end{pmatrix}\begin{pmatrix}4\\0\end{pmatrix}\]
+  É daí que vem a regra: <strong>coluna \(i\) de \([I]_{BC}\) = coordenadas do \(i\)-ésimo vetor de \(B\) na base \(C\)</strong>. Como \(C\) é a canônica, essas coordenadas são os próprios vetores de \(B\).</div>
+
+  <div class="step"><strong class="step-label">Como lembrar a direção</strong>
+  Leia os índices como uma seta: \([I]_{BC}\) recebe coordenadas em \(B\) e devolve coordenadas em \(C\).
+  \[[v]_C=[I]_{BC}\,[v]_B\]
+  O índice \(B\) da matriz "encosta" no \([v]_B\) da direita, como se cancelasse. Na notação do Boldrini impresso, \([I]^B_C\), vale a mesma ideia: \([v]_C=[I]^B_C\,[v]_B\).</div>
+
+  <div class="step"><strong class="step-label">E se a prova pedisse o caminho contrário?</strong>
+  Se fosse dado \(v=(-4,4)\) e pedido \([v]_B\), seria preciso a matriz inversa, \([I]_{CB}=([I]_{BC})^{-1}\). Para uma matriz \(2\times2\), \(\begin{pmatrix}a&b\\c&d\end{pmatrix}^{-1}=\frac{1}{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}\):
+  \[\det[I]_{BC}=(-1)(1)-(1)(1)=-2\]
+  \[[I]_{CB}=\frac{1}{-2}\begin{pmatrix}1&-1\\-1&-1\end{pmatrix}=\begin{pmatrix}-1/2&1/2\\1/2&1/2\end{pmatrix}\]
+  \[[v]_B=[I]_{CB}\,[v]_C=\begin{pmatrix}-1/2&1/2\\1/2&1/2\end{pmatrix}\begin{pmatrix}-4\\4\end{pmatrix}=\begin{pmatrix}2+2\\-2+2\end{pmatrix}=\begin{pmatrix}4\\0\end{pmatrix} \quad ✓\]
+  Voltamos ao \([v]_B\) do enunciado, o que também confirma a resposta.</div>
+
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> Nesta questão a matriz \(\begin{pmatrix}-1&1\\1&1\end{pmatrix}\) é <strong>simétrica</strong>: colocar os vetores de \(B\) nas linhas em vez das colunas daria a mesma matriz e o mesmo resultado. O erro ficaria escondido aqui, mas em outra questão (por exemplo \(B=\{(1,2),(0,1)\}\)) ele muda a resposta. Treine sempre "vetores da base nas <strong>colunas</strong>".</div>
+
+  <div class="alert-warning"><span class="badge badge-trap">ARMADILHA</span> A ordem dos vetores da base importa. Com \(B'=\{(1,1),(-1,1)\}\) (mesmos vetores, ordem trocada), o mesmo \(v=(-4,4)\) teria \([v]_{B'}=(0,4)\), e não \((4,0)\).</div>
+
+  <!-- ===================== QUESTÃO 4 ===================== -->
+  <div class="exercise" id="q4">
+    <h3>Questão 4 <span class="badge badge-gray">3,0 pts (sugestão)</span> <button class="gabarito-btn" onclick="abrirGabarito('modal-q4')">Ver gabarito</button></h3>
+    <div class="enunciado">Considere os subespaços de \(\mathbb{R}^4\): \(U=\{(x,y,z,w)\in\mathbb{R}^4 : x+y=0 \text{ e } z=w=0\}\) e \(V=\{(x,y,z,w)\in\mathbb{R}^4 : x=y=0\}\). Determine:<br>
+    4.1 uma base para \(U\) e \(V\);<br>
+    4.2 \(\dim U\cap V\) e \(\dim(U+V)\);<br>
+    4.3 A soma \(U+V\) é direta? Justifique sua resposta!<br>
+    4.4 Verifique se \(\mathbb{R}^4=U+V\).</div>
+  </div>
+  <div class="modal-overlay" id="modal-q4">
+    <div class="modal-box">
+      <button class="modal-close" onclick="fecharGabarito(this)">&times;</button>
+      <h3>Gabarito - Questão 4</h3>
+
+      <h4>4.1) Bases de \(U\) e de \(V\)</h4>
+
+      <div class="step"><strong class="step-label">1. Vetor genérico de \(U\)</strong>
+      As condições são \(x+y=0\) (ou seja, \(y=-x\)) e \(z=w=0\). Só \(x\) fica livre:
+      \[(x,y,z,w)=(x,\ -x,\ 0,\ 0)=x\,(1,-1,0,0)\]
+      Um único vetor não nulo é sempre LI. Base de \(U\): \(\{(1,-1,0,0)\}\), \(\dim U=1\) (uma reta em \(\mathbb{R}^4\)).</div>
+
+      <div class="step"><strong class="step-label">2. Vetor genérico de \(V\)</strong>
+      A condição é \(x=y=0\); \(z\) e \(w\) ficam livres:
+      \[(x,y,z,w)=(0,\ 0,\ z,\ w)=z\,(0,0,1,0)+w\,(0,0,0,1)\]
+      Os dois vetores são LI (cada um tem entrada não nula onde o outro tem zero). Base de \(V\): \(\{(0,0,1,0),(0,0,0,1)\}\), \(\dim V=2\) (um plano em \(\mathbb{R}^4\)).</div>
+
+      <h4>4.2) \(\dim(U\cap V)\) e \(\dim(U+V)\)</h4>
+
+      <div class="step"><strong class="step-label">1. Interseção: juntar todas as condições</strong>
+      Um vetor de \(U\cap V\) está nos dois subespaços, então satisfaz as equações de \(U\) <strong>e</strong> as de \(V\):
+      \[x+y=0,\qquad z=w=0,\qquad x=y=0\]
+      Todas as coordenadas são zero: \(U\cap V=\{\mathbf{0}\}\) e \(\dim(U\cap V)=0\).</div>
+
+      <div class="step"><strong class="step-label">2. Soma: fórmula das dimensões</strong>
+      \[\dim(U+V)=\dim U+\dim V-\dim(U\cap V)=1+2-0=3\]</div>
+
+      <div class="step"><strong class="step-label">3. Conferência pela união das bases</strong>
+      \(U+V\) é gerado pela união das bases, \(\{(1,-1,0,0),(0,0,1,0),(0,0,0,1)\}\). Esses 3 vetores são LI, então formam uma base de \(U+V\) e confirmam \(\dim(U+V)=3\).</div>
+
+      <h4>4.3) A soma é direta?</h4>
+
+      <div class="step"><strong class="step-label">Critério</strong>
+      \(U+V\) é soma direta (\(U\oplus V\)) se e somente se \(U\cap V=\{\mathbf{0}\}\). Pelo item 4.2, isso vale.</div>
+
+      <span class="answer-final">Sim, a soma é direta: \(U+V=U\oplus V\).</span>
+
+      <h4>4.4) \(\mathbb{R}^4=U+V\)?</h4>
+
+      <div class="step"><strong class="step-label">Comparar dimensões</strong>
+      \[\dim(U+V)=3<4=\dim\mathbb{R}^4\]
+      Um subespaço de \(\mathbb{R}^4\) só é o espaço todo se tiver dimensão 4. Logo \(U+V\neq\mathbb{R}^4\).</div>
+
+      <div class="step"><strong class="step-label">Cuidado</strong> <span class="badge badge-trap">ARMADILHA</span> "Soma direta" não quer dizer "soma igual ao espaço todo". Aqui a soma é direta e mesmo assim não é \(\mathbb{R}^4\).</div>
+
+      <span class="answer-final">Respostas: bases \(\{(1,-1,0,0)\}\) e \(\{(0,0,1,0),(0,0,0,1)\}\); \(\dim(U\cap V)=0\), \(\dim(U+V)=3\); a soma é direta; \(\mathbb{R}^4\neq U+V\).</span>
+
+      <div class="board-solve"><span class="board-label">Como escrever na prova</span><br>
+      4.1) \(U\): \((x,-x,0,0)=x(1,-1,0,0)\). Base \(\{(1,-1,0,0)\}\), \(\dim U=1\).<br>
+      \(V\): \((0,0,z,w)=z(0,0,1,0)+w(0,0,0,1)\). Base \(\{(0,0,1,0),(0,0,0,1)\}\), \(\dim V=2\).<br>
+      4.2) \(x+y=0,\ z=w=0,\ x=y=0 \Rightarrow U\cap V=\{0\}\), \(\dim=0\).<br>
+      \(\dim(U+V)=1+2-0=3\).<br>
+      4.3) \(U\cap V=\{0\}\Rightarrow\) a soma é direta.<br>
+      4.4) \(\dim(U+V)=3<4 \Rightarrow \mathbb{R}^4\neq U+V\).</div>
+    </div>
+  </div>
+
+  <h2 id="entendendo-q4">Entendendo a Questão 4: interseção, soma e soma direta</h2>
+
+  <div class="theory-box">
+    <p><strong>Interseção</strong> \(U\cap V\): vetores que estão nos dois subespaços ao mesmo tempo.</p>
+    <p><strong>Soma</strong> \(U+V=\{u+v : u\in U,\ v\in V\}\): todos os vetores que se obtêm somando um vetor de \(U\) com um de \(V\). É o menor subespaço que contém \(U\) e \(V\).</p>
+    <p><strong>Soma direta</strong> \(U\oplus V\): a soma em que <strong>cada vetor de \(U+V\) se escreve de um único jeito</strong> como \(u+v\). Isso acontece exatamente quando \(U\cap V=\{\mathbf{0}\}\).</p>
+    <p><strong>Fórmula das dimensões:</strong> \(\dim(U+V)=\dim U+\dim V-\dim(U\cap V)\).</p>
+  </div>
+
+  <div class="eli5">
+    <span class="eli5-label">Explicando bem devagar</span>
+    <p>Em \(\mathbb{R}^4\) não dá para desenhar, mas dá para "ler" cada subespaço pelas coordenadas livres:</p>
+    <ul>
+      <li>\(U\) só mexe nas coordenadas \(x\) e \(y\), e mesmo assim de forma amarrada (\(y=-x\)): é uma <strong>reta</strong>.</li>
+      <li>\(V\) só mexe em \(z\) e \(w\), livremente: é um <strong>plano</strong>.</li>
+    </ul>
+    <p>Eles mexem em coordenadas <strong>diferentes</strong>, então a única coisa em comum é o vetor nulo. Por isso a interseção é \(\{\mathbf{0}\}\).</p>
+    <p>Somando, ganhamos tudo que tem a forma \((a,-a,z,w)\): \(z\) e \(w\) ficam livres, mas \(x\) e \(y\) continuam amarrados por \(y=-x\). Sobra uma "restrição" (\(x+y=0\)), então a soma não ocupa as 4 dimensões, só 3.</p>
+  </div>
+
+  <div class="step"><strong class="step-label">Por que a fórmula desconta a interseção</strong>
+  Juntando a base de \(U\) com a base de \(V\), os vetores da interseção seriam contados duas vezes, uma em cada base. A fórmula tira essa repetição. Aqui a interseção é \(\{\mathbf{0}\}\), então não há o que descontar: \(1+2-0=3\).</div>
+
+  <div class="step"><strong class="step-label">Por que "soma direta" é o mesmo que "interseção nula"</strong>
+  Suponha que um vetor tenha duas escritas, \(u+v=u'+v'\), com \(u,u'\in U\) e \(v,v'\in V\). Então
+  \[u-u'=v'-v\]
+  O lado esquerdo está em \(U\) e o direito em \(V\), logo esse vetor está em \(U\cap V\). Se \(U\cap V=\{\mathbf{0}\}\), ele é zero: \(u=u'\) e \(v=v'\), ou seja, a escrita é única. Se a interseção tivesse um vetor não nulo, daria para "passar" esse vetor de uma parcela para a outra e obter duas escritas diferentes.</div>
+
+  <div class="step"><strong class="step-label">Descrevendo \(U+V\) explicitamente</strong>
+  Somando um vetor genérico de cada subespaço:
+  \[(a,\ -a,\ 0,\ 0)+(0,\ 0,\ z,\ w)=(a,\ -a,\ z,\ w)\]
+  Então \(U+V=\{(x,y,z,w)\in\mathbb{R}^4 : x+y=0\}\). Isso dá um vetor concreto fora da soma: \((1,0,0,0)\) tem \(x+y=1\neq0\), logo \((1,0,0,0)\notin U+V\). É mais uma forma de justificar o item 4.4.</div>
+
+  <div class="step"><strong class="step-label">As duas perguntas são independentes</strong>
+  "A soma é direta?" e "a soma é o espaço todo?" medem coisas diferentes. Todas as quatro combinações acontecem:</div>
+
+  <table class="variations">
+    <tr><th>Situação</th><th>Soma direta?</th><th>É o espaço todo?</th><th>Exemplo</th></tr>
+    <tr><td>Esta prova (P2 2026.1)</td><td>Sim (\(U\cap V=\{\mathbf{0}\}\))</td><td>Não (\(\dim=3<4\))</td><td>\(U\) reta, \(V\) plano em \(\mathbb{R}^4\)</td></tr>
+    <tr><td>Prova de Treino B, Q3</td><td>Não (\(\dim(W_1\cap W_2)=1\))</td><td>Sim (\(\dim=4=\dim M(2,2)\))</td><td>\(W_1,W_2\subset M(2,2)\), dimensões 2 e 3</td></tr>
+    <tr><td>Prova de Treino A, Q3</td><td>Não</td><td>Não (\(\dim=3<4\))</td><td>\(W_1,W_2\subset\mathbb{R}^4\), dimensões 2 e 2</td></tr>
+    <tr><td>Caso clássico</td><td>Sim</td><td>Sim</td><td>eixo \(x\) \(\oplus\) eixo \(y\) \(=\mathbb{R}^2\)</td></tr>
+  </table>
+
+  <div class="alert-info"><span class="badge badge-pattern">PADRÃO</span> Para \(U\oplus V=\mathbb{R}^n\) são necessárias as duas condições: \(U\cap V=\{\mathbf{0}\}\) <strong>e</strong> \(\dim U+\dim V=n\). Nesta prova, \(\dim U+\dim V=1+2=3\neq4\), então a soma nunca poderia ser \(\mathbb{R}^4\), mesmo sendo direta.</div>
+
+  <!-- ===================== RESUMO ===================== -->
+  <h2 id="resumo">Resumo da prova</h2>
+  <table class="variations">
+    <tr><th>Questão</th><th>Assunto</th><th>Resposta</th><th>Onde mais erra</th></tr>
+    <tr><td>1</td><td>Subespaço</td><td>\(U\) é subespaço</td><td>Testar com números em vez de vetores genéricos</td></tr>
+    <tr><td>2.1</td><td>Base de subespaço dado por equações</td><td>\(\{(1,0,1,-2),(0,1,1,1)\}\), \(\dim V=2\)</td><td>Não justificar que os vetores são LI</td></tr>
+    <tr><td>2.2</td><td>Pertinência</td><td>\(v\notin V\)</td><td>Testar só a 1ª equação e forçar a combinação linear</td></tr>
+    <tr><td>3</td><td>Mudança de base</td><td>\([v]_C=(-4,4)^T\)</td><td>Confundir \([v]_B\) com \(v\); usar a inversa sem necessidade</td></tr>
+    <tr><td>4</td><td>Interseção, soma, soma direta</td><td>\(\dim(U\cap V)=0\), \(\dim(U+V)=3\), direta, \(\neq\mathbb{R}^4\)</td><td>Achar que soma direta implica soma igual ao espaço todo</td></tr>
+  </table>
+
+  <div class="alert-success">Fim do gabarito. Para revisar a teoria por trás de cada questão, veja o <a href="p2-dia1.html">Dia 1</a> (subespaço), o <a href="p2-dia2.html">Dia 2</a> (combinação linear e LI) e o <a href="p2-dia3.html">Dia 3</a> (base e mudança de base).</div>
+
+</main>
+</div>
+
+<footer class="site-footer">
+  Guia de estudos pessoal - Álgebra Linear (MPA06855) - Gabarito da P2 2026.1, Prof. Willer Costa.
+</footer>
+<script src="modal.js"></script>
+<script src="nav.js"></script>
+</body>
+</html>
